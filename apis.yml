@@ -3,7 +3,7 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/ngrok/refs/heads/main/apis.yml
 apis:
   - aid: ngrok:ngrok
-    name: Ngrok
+    name: Ngrok API
     tags:
       - Gateways
       - Compute
@@ -13,14 +13,21 @@ apis:
       - Demonstration
       - Platform
       - Proxies
-    humanURL: https://ngrok.com
+    humanURL: https://ngrok.com/docs/api
     properties:
-      - url: https://ngrok.com
+      - url: https://ngrok.com/docs/api
         type: Documentation
+      - url: openapi/ngrok-api-openapi.yml
+        type: OpenAPI
     description: >-
-      The ngrok API provides programmatic access to all of ngroks resources. The
-      API is REST-ish. It follows most of the conventions of a REST API but
-      diverges ...
+      The ngrok API provides programmatic access to all of ngrok's resources.
+      The API is REST-ish. It follows most of the conventions of a REST API but
+      diverges slightly when the REST model does not fit well. The API listens
+      only on port 443 to help avoid any accidental unencrypted requests. All
+      API access requires an API key. Resources include endpoints, tunnels,
+      edges (HTTPS, TCP, TLS), backends, reserved domains and addresses, IP
+      policies and restrictions, TLS and SSH certificates, event subscriptions,
+      API keys, and credentials.
 name: Ngrok
 tags:
   - Gateways
@@ -35,7 +42,7 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2025-01-08'
-modified: '2026-01-03'
+modified: '2026-03-14'
 position: Consumer
 description: >-
   Ngrok is a service that creates secure tunnels to local servers, allowing them

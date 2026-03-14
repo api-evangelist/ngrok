@@ -1,0 +1,4116 @@
+openapi: 3.1.0
+info:
+  title: Ngrok API
+  description: >-
+    The ngrok API provides programmatic access to all of ngrok's resources.
+    The API is REST-ish. It follows most of the conventions of a REST API but
+    diverges slightly when the REST model does not fit well. The API listens
+    only on port 443 to help avoid any accidental unencrypted requests. All
+    API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+  - url: https://api.ngrok.com
+    description: Ngrok API Production Server
+security:
+  - bearerAuth: []
+  - apiKeyAuth: []
+paths:
+  # Abuse Reports
+  /abuse_reports:
+    post:
+      operationId: createAbuseReport
+      summary: Create Abuse Report
+      description: Creates a new abuse report which will be reviewed by our system and abuse response team.
+      tags:
+        - Abuse Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                urls:
+                  type: array
+                  items:
+                    type: string
+                  description: A list of URLs associated with the abuse report.
+                metadata:
+                  type: string
+                  description: Arbitrary user-defined metadata.
+      responses:
+        '201':
+          description: Abuse report created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AbuseReport'
+  /abuse_reports/{id}:
+    get:
+      operationId: getAbuseReport
+      summary: Get Abuse Report
+      description: Get the detailed status of an abuse report by ID.
+      tags:
+        - Abuse Reports
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Abuse report details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AbuseReport'
+
+  # Agent Ingresses
+  /agent_ingresses:
+    post:
+      operationId: createAgentIngress
+      summary: Create Agent Ingress
+      description: Create a new Agent Ingress.
+      tags:
+        - Agent Ingresses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                domain:
+                  type: string
+                  description: The domain that the agent ingress will listen on.
+                certificate_management_policy:
+                  type: object
+                  properties:
+                    authority:
+                      type: string
+                    private_key_type:
+                      type: string
+      responses:
+        '201':
+          description: Agent ingress created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentIngress'
+    get:
+      operationId: listAgentIngresses
+      summary: List Agent Ingresses
+      description: List all Agent Ingresses.
+      tags:
+        - Agent Ingresses
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of agent ingresses.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentIngressList'
+  /agent_ingresses/{id}:
+    get:
+      operationId: getAgentIngress
+      summary: Get Agent Ingress
+      description: Get the details of an Agent Ingress by ID.
+      tags:
+        - Agent Ingresses
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Agent ingress details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentIngress'
+    patch:
+      operationId: updateAgentIngress
+      summary: Update Agent Ingress
+      description: Update attributes of an Agent Ingress by ID.
+      tags:
+        - Agent Ingresses
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: Agent ingress updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentIngress'
+    delete:
+      operationId: deleteAgentIngress
+      summary: Delete Agent Ingress
+      description: Delete an Agent Ingress by ID.
+      tags:
+        - Agent Ingresses
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Agent ingress deleted.
+
+  # API Keys
+  /api_keys:
+    post:
+      operationId: createApiKey
+      summary: Create API Key
+      description: Create a new API key.
+      tags:
+        - API Keys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                owner_id:
+                  type: string
+                  description: The ID of the owner resource.
+      responses:
+        '201':
+          description: API key created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+    get:
+      operationId: listApiKeys
+      summary: List API Keys
+      description: List all API keys on this account.
+      tags:
+        - API Keys
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of API keys.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKeyList'
+  /api_keys/{id}:
+    get:
+      operationId: getApiKey
+      summary: Get API Key
+      description: Get the details of an API key by ID.
+      tags:
+        - API Keys
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: API key details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+    patch:
+      operationId: updateApiKey
+      summary: Update API Key
+      description: Update attributes of an API key by ID.
+      tags:
+        - API Keys
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: API key updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKey'
+    delete:
+      operationId: deleteApiKey
+      summary: Delete API Key
+      description: Delete an API key by ID.
+      tags:
+        - API Keys
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: API key deleted.
+
+  # Certificate Authorities
+  /certificate_authorities:
+    post:
+      operationId: createCertificateAuthority
+      summary: Create Certificate Authority
+      description: Upload a new Certificate Authority.
+      tags:
+        - Certificate Authorities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ca_pem
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                ca_pem:
+                  type: string
+                  description: The PEM-encoded CA certificate.
+      responses:
+        '201':
+          description: Certificate authority created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateAuthority'
+    get:
+      operationId: listCertificateAuthorities
+      summary: List Certificate Authorities
+      description: List all Certificate Authorities on this account.
+      tags:
+        - Certificate Authorities
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of certificate authorities.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateAuthorityList'
+  /certificate_authorities/{id}:
+    get:
+      operationId: getCertificateAuthority
+      summary: Get Certificate Authority
+      description: Get the details of a Certificate Authority by ID.
+      tags:
+        - Certificate Authorities
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Certificate authority details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateAuthority'
+    patch:
+      operationId: updateCertificateAuthority
+      summary: Update Certificate Authority
+      description: Update attributes of a Certificate Authority by ID.
+      tags:
+        - Certificate Authorities
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: Certificate authority updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateAuthority'
+    delete:
+      operationId: deleteCertificateAuthority
+      summary: Delete Certificate Authority
+      description: Delete a Certificate Authority by ID.
+      tags:
+        - Certificate Authorities
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Certificate authority deleted.
+
+  # Credentials (Tunnel Credentials)
+  /credentials:
+    post:
+      operationId: createCredential
+      summary: Create Credential
+      description: Create a new tunnel authtoken credential.
+      tags:
+        - Credentials
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                acl:
+                  type: array
+                  items:
+                    type: string
+                  description: Access control list of IP CIDRs.
+                owner_id:
+                  type: string
+      responses:
+        '201':
+          description: Credential created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential'
+    get:
+      operationId: listCredentials
+      summary: List Credentials
+      description: List all tunnel authtoken credentials on this account.
+      tags:
+        - Credentials
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialList'
+  /credentials/{id}:
+    get:
+      operationId: getCredential
+      summary: Get Credential
+      description: Get the details of a tunnel authtoken credential by ID.
+      tags:
+        - Credentials
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Credential details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential'
+    patch:
+      operationId: updateCredential
+      summary: Update Credential
+      description: Update attributes of a tunnel authtoken credential by ID.
+      tags:
+        - Credentials
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                acl:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Credential updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential'
+    delete:
+      operationId: deleteCredential
+      summary: Delete Credential
+      description: Delete a tunnel authtoken credential by ID.
+      tags:
+        - Credentials
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Credential deleted.
+
+  # Endpoints
+  /endpoints:
+    post:
+      operationId: createEndpoint
+      summary: Create Endpoint
+      description: Create a new endpoint.
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL for this endpoint.
+                type:
+                  type: string
+                  description: Whether the endpoint is ephemeral or edge.
+                description:
+                  type: string
+                metadata:
+                  type: string
+                bindings:
+                  type: array
+                  items:
+                    type: string
+                traffic_policy:
+                  type: string
+                  description: The traffic policy attached to this endpoint.
+      responses:
+        '201':
+          description: Endpoint created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+    get:
+      operationId: listEndpoints
+      summary: List Endpoints
+      description: List all active endpoints on the account.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of endpoints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointList'
+  /endpoints/{id}:
+    get:
+      operationId: getEndpoint
+      summary: Get Endpoint
+      description: Get the details of an endpoint by ID.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Endpoint details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+    patch:
+      operationId: updateEndpoint
+      summary: Update Endpoint
+      description: Update an endpoint by ID.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                description:
+                  type: string
+                metadata:
+                  type: string
+                bindings:
+                  type: array
+                  items:
+                    type: string
+                traffic_policy:
+                  type: string
+      responses:
+        '200':
+          description: Endpoint updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+    delete:
+      operationId: deleteEndpoint
+      summary: Delete Endpoint
+      description: Delete an endpoint by ID.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Endpoint deleted.
+
+  # Event Destinations
+  /event_destinations:
+    post:
+      operationId: createEventDestination
+      summary: Create Event Destination
+      description: Create a new Event Destination.
+      tags:
+        - Event Destinations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                format:
+                  type: string
+                  description: The output format, such as json or plain.
+                target:
+                  type: object
+                  description: An object that encapsulates where and how to send event data.
+                  properties:
+                    firehose:
+                      type: object
+                    kinesis:
+                      type: object
+                    cloudwatch_logs:
+                      type: object
+                    datadog:
+                      type: object
+                    azure_logs_ingestion:
+                      type: object
+      responses:
+        '201':
+          description: Event destination created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDestination'
+    get:
+      operationId: listEventDestinations
+      summary: List Event Destinations
+      description: List all Event Destinations on this account.
+      tags:
+        - Event Destinations
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of event destinations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDestinationList'
+  /event_destinations/{id}:
+    get:
+      operationId: getEventDestination
+      summary: Get Event Destination
+      description: Get the details of an Event Destination by ID.
+      tags:
+        - Event Destinations
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Event destination details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDestination'
+    patch:
+      operationId: updateEventDestination
+      summary: Update Event Destination
+      description: Update attributes of an Event Destination by ID.
+      tags:
+        - Event Destinations
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                format:
+                  type: string
+                target:
+                  type: object
+      responses:
+        '200':
+          description: Event destination updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDestination'
+    delete:
+      operationId: deleteEventDestination
+      summary: Delete Event Destination
+      description: Delete an Event Destination by ID.
+      tags:
+        - Event Destinations
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Event destination deleted.
+
+  # Event Subscriptions
+  /event_subscriptions:
+    post:
+      operationId: createEventSubscription
+      summary: Create Event Subscription
+      description: Create an Event Subscription.
+      tags:
+        - Event Subscriptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                sources:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                  description: Sources that will publish events to this subscription.
+                destination_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: IDs of destinations that will receive events.
+      responses:
+        '201':
+          description: Event subscription created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSubscription'
+    get:
+      operationId: listEventSubscriptions
+      summary: List Event Subscriptions
+      description: List all Event Subscriptions on this account.
+      tags:
+        - Event Subscriptions
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of event subscriptions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSubscriptionList'
+  /event_subscriptions/{id}:
+    get:
+      operationId: getEventSubscription
+      summary: Get Event Subscription
+      description: Get an Event Subscription by ID.
+      tags:
+        - Event Subscriptions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Event subscription details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSubscription'
+    patch:
+      operationId: updateEventSubscription
+      summary: Update Event Subscription
+      description: Update an Event Subscription by ID.
+      tags:
+        - Event Subscriptions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                sources:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                destination_ids:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Event subscription updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSubscription'
+    delete:
+      operationId: deleteEventSubscription
+      summary: Delete Event Subscription
+      description: Delete an Event Subscription by ID.
+      tags:
+        - Event Subscriptions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Event subscription deleted.
+
+  # IP Policies
+  /ip_policies:
+    post:
+      operationId: createIpPolicy
+      summary: Create IP Policy
+      description: Create a new IP policy.
+      tags:
+        - IP Policies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '201':
+          description: IP policy created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicy'
+    get:
+      operationId: listIpPolicies
+      summary: List IP Policies
+      description: List all IP policies on this account.
+      tags:
+        - IP Policies
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of IP policies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyList'
+  /ip_policies/{id}:
+    get:
+      operationId: getIpPolicy
+      summary: Get IP Policy
+      description: Get the details of an IP policy by ID.
+      tags:
+        - IP Policies
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: IP policy details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicy'
+    patch:
+      operationId: updateIpPolicy
+      summary: Update IP Policy
+      description: Update attributes of an IP policy by ID.
+      tags:
+        - IP Policies
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: IP policy updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicy'
+    delete:
+      operationId: deleteIpPolicy
+      summary: Delete IP Policy
+      description: Delete an IP policy by ID.
+      tags:
+        - IP Policies
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: IP policy deleted.
+
+  # IP Policy Rules
+  /ip_policy_rules:
+    post:
+      operationId: createIpPolicyRule
+      summary: Create IP Policy Rule
+      description: Create a new IP policy rule attached to an IP policy.
+      tags:
+        - IP Policy Rules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - cidr
+                - ip_policy_id
+                - action
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                cidr:
+                  type: string
+                  description: An IP address or CIDR range.
+                ip_policy_id:
+                  type: string
+                  description: ID of the IP policy this rule belongs to.
+                action:
+                  type: string
+                  enum:
+                    - allow
+                    - deny
+                  description: The action to take for this rule.
+      responses:
+        '201':
+          description: IP policy rule created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyRule'
+    get:
+      operationId: listIpPolicyRules
+      summary: List IP Policy Rules
+      description: List all IP policy rules on this account.
+      tags:
+        - IP Policy Rules
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of IP policy rules.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyRuleList'
+  /ip_policy_rules/{id}:
+    get:
+      operationId: getIpPolicyRule
+      summary: Get IP Policy Rule
+      description: Get the details of an IP policy rule by ID.
+      tags:
+        - IP Policy Rules
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: IP policy rule details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyRule'
+    patch:
+      operationId: updateIpPolicyRule
+      summary: Update IP Policy Rule
+      description: Update attributes of an IP policy rule by ID.
+      tags:
+        - IP Policy Rules
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                cidr:
+                  type: string
+      responses:
+        '200':
+          description: IP policy rule updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyRule'
+    delete:
+      operationId: deleteIpPolicyRule
+      summary: Delete IP Policy Rule
+      description: Delete an IP policy rule by ID.
+      tags:
+        - IP Policy Rules
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: IP policy rule deleted.
+
+  # IP Restrictions
+  /ip_restrictions:
+    post:
+      operationId: createIpRestriction
+      summary: Create IP Restriction
+      description: Create a new IP restriction.
+      tags:
+        - IP Restrictions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - type
+                - ip_policy_ids
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                enforced:
+                  type: boolean
+                type:
+                  type: string
+                  description: The type of IP restriction (dashboard, api, agent, endpoints).
+                ip_policy_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of IP policy IDs to enforce.
+      responses:
+        '201':
+          description: IP restriction created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpRestriction'
+    get:
+      operationId: listIpRestrictions
+      summary: List IP Restrictions
+      description: List all IP restrictions on this account.
+      tags:
+        - IP Restrictions
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of IP restrictions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpRestrictionList'
+  /ip_restrictions/{id}:
+    get:
+      operationId: getIpRestriction
+      summary: Get IP Restriction
+      description: Get the details of an IP restriction by ID.
+      tags:
+        - IP Restrictions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: IP restriction details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpRestriction'
+    patch:
+      operationId: updateIpRestriction
+      summary: Update IP Restriction
+      description: Update attributes of an IP restriction by ID.
+      tags:
+        - IP Restrictions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                enforced:
+                  type: boolean
+                ip_policy_ids:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: IP restriction updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpRestriction'
+    delete:
+      operationId: deleteIpRestriction
+      summary: Delete IP Restriction
+      description: Delete an IP restriction by ID.
+      tags:
+        - IP Restrictions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: IP restriction deleted.
+
+  # Reserved Addresses
+  /reserved_addrs:
+    post:
+      operationId: createReservedAddr
+      summary: Create Reserved Address
+      description: Create a new reserved address.
+      tags:
+        - Reserved Addresses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                region:
+                  type: string
+                  description: Reserve an address in a specific geographic region.
+      responses:
+        '201':
+          description: Reserved address created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedAddr'
+    get:
+      operationId: listReservedAddrs
+      summary: List Reserved Addresses
+      description: List all reserved addresses on this account.
+      tags:
+        - Reserved Addresses
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of reserved addresses.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedAddrList'
+  /reserved_addrs/{id}:
+    get:
+      operationId: getReservedAddr
+      summary: Get Reserved Address
+      description: Get the details of a reserved address by ID.
+      tags:
+        - Reserved Addresses
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Reserved address details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedAddr'
+    patch:
+      operationId: updateReservedAddr
+      summary: Update Reserved Address
+      description: Update attributes of a reserved address by ID.
+      tags:
+        - Reserved Addresses
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: Reserved address updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedAddr'
+    delete:
+      operationId: deleteReservedAddr
+      summary: Delete Reserved Address
+      description: Delete a reserved address by ID.
+      tags:
+        - Reserved Addresses
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Reserved address deleted.
+
+  # Reserved Domains
+  /reserved_domains:
+    post:
+      operationId: createReservedDomain
+      summary: Create Reserved Domain
+      description: Create a new reserved domain.
+      tags:
+        - Reserved Domains
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - domain
+              properties:
+                domain:
+                  type: string
+                  description: Hostname of the reserved domain.
+                region:
+                  type: string
+                  description: Reserve the domain in a specific geographic region.
+                description:
+                  type: string
+                metadata:
+                  type: string
+                certificate_id:
+                  type: string
+                  description: ID of a TLS certificate to use for connections.
+                certificate_management_policy:
+                  type: object
+                  properties:
+                    authority:
+                      type: string
+                    private_key_type:
+                      type: string
+      responses:
+        '201':
+          description: Reserved domain created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedDomain'
+    get:
+      operationId: listReservedDomains
+      summary: List Reserved Domains
+      description: List all reserved domains on this account.
+      tags:
+        - Reserved Domains
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of reserved domains.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedDomainList'
+  /reserved_domains/{id}:
+    get:
+      operationId: getReservedDomain
+      summary: Get Reserved Domain
+      description: Get the details of a reserved domain by ID.
+      tags:
+        - Reserved Domains
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Reserved domain details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedDomain'
+    patch:
+      operationId: updateReservedDomain
+      summary: Update Reserved Domain
+      description: Update attributes of a reserved domain by ID.
+      tags:
+        - Reserved Domains
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                certificate_id:
+                  type: string
+                certificate_management_policy:
+                  type: object
+                  properties:
+                    authority:
+                      type: string
+                    private_key_type:
+                      type: string
+      responses:
+        '200':
+          description: Reserved domain updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedDomain'
+    delete:
+      operationId: deleteReservedDomain
+      summary: Delete Reserved Domain
+      description: Delete a reserved domain by ID.
+      tags:
+        - Reserved Domains
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Reserved domain deleted.
+
+  # SSH Certificate Authorities
+  /ssh_certificate_authorities:
+    post:
+      operationId: createSshCertificateAuthority
+      summary: Create SSH Certificate Authority
+      description: Create a new SSH Certificate Authority.
+      tags:
+        - SSH Certificate Authorities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                private_key_type:
+                  type: string
+                  description: The type of private key for this CA.
+                elliptic_curve:
+                  type: string
+                  description: The elliptic curve to use for the CA key.
+                key_size:
+                  type: integer
+                  description: The key size in bits for RSA keys.
+      responses:
+        '201':
+          description: SSH certificate authority created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshCertificateAuthority'
+    get:
+      operationId: listSshCertificateAuthorities
+      summary: List SSH Certificate Authorities
+      description: List all SSH Certificate Authorities on this account.
+      tags:
+        - SSH Certificate Authorities
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of SSH certificate authorities.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshCertificateAuthorityList'
+  /ssh_certificate_authorities/{id}:
+    get:
+      operationId: getSshCertificateAuthority
+      summary: Get SSH Certificate Authority
+      description: Get the details of an SSH Certificate Authority by ID.
+      tags:
+        - SSH Certificate Authorities
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: SSH certificate authority details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshCertificateAuthority'
+    patch:
+      operationId: updateSshCertificateAuthority
+      summary: Update SSH Certificate Authority
+      description: Update an SSH Certificate Authority by ID.
+      tags:
+        - SSH Certificate Authorities
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: SSH certificate authority updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshCertificateAuthority'
+    delete:
+      operationId: deleteSshCertificateAuthority
+      summary: Delete SSH Certificate Authority
+      description: Delete an SSH Certificate Authority by ID.
+      tags:
+        - SSH Certificate Authorities
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: SSH certificate authority deleted.
+
+  # SSH Credentials
+  /ssh_credentials:
+    post:
+      operationId: createSshCredential
+      summary: Create SSH Credential
+      description: Create a new SSH credential for authenticating to ngrok tunnels.
+      tags:
+        - SSH Credentials
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - public_key
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                acl:
+                  type: array
+                  items:
+                    type: string
+                public_key:
+                  type: string
+                  description: The PEM-encoded public key of the SSH credential.
+                owner_id:
+                  type: string
+      responses:
+        '201':
+          description: SSH credential created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshCredential'
+    get:
+      operationId: listSshCredentials
+      summary: List SSH Credentials
+      description: List all SSH credentials on this account.
+      tags:
+        - SSH Credentials
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of SSH credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshCredentialList'
+  /ssh_credentials/{id}:
+    get:
+      operationId: getSshCredential
+      summary: Get SSH Credential
+      description: Get the details of an SSH credential by ID.
+      tags:
+        - SSH Credentials
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: SSH credential details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshCredential'
+    patch:
+      operationId: updateSshCredential
+      summary: Update SSH Credential
+      description: Update attributes of an SSH credential by ID.
+      tags:
+        - SSH Credentials
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                acl:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: SSH credential updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshCredential'
+    delete:
+      operationId: deleteSshCredential
+      summary: Delete SSH Credential
+      description: Delete an SSH credential by ID.
+      tags:
+        - SSH Credentials
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: SSH credential deleted.
+
+  # SSH Host Certificates
+  /ssh_host_certificates:
+    post:
+      operationId: createSshHostCertificate
+      summary: Create SSH Host Certificate
+      description: Create a new SSH Host Certificate.
+      tags:
+        - SSH Host Certificates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ssh_certificate_authority_id
+                - public_key
+              properties:
+                ssh_certificate_authority_id:
+                  type: string
+                public_key:
+                  type: string
+                principals:
+                  type: array
+                  items:
+                    type: string
+                valid_after:
+                  type: string
+                  format: date-time
+                valid_until:
+                  type: string
+                  format: date-time
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '201':
+          description: SSH host certificate created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshHostCertificate'
+    get:
+      operationId: listSshHostCertificates
+      summary: List SSH Host Certificates
+      description: List all SSH Host Certificates on this account.
+      tags:
+        - SSH Host Certificates
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of SSH host certificates.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshHostCertificateList'
+  /ssh_host_certificates/{id}:
+    get:
+      operationId: getSshHostCertificate
+      summary: Get SSH Host Certificate
+      description: Get the details of an SSH Host Certificate by ID.
+      tags:
+        - SSH Host Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: SSH host certificate details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshHostCertificate'
+    patch:
+      operationId: updateSshHostCertificate
+      summary: Update SSH Host Certificate
+      description: Update an SSH Host Certificate by ID.
+      tags:
+        - SSH Host Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: SSH host certificate updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshHostCertificate'
+    delete:
+      operationId: deleteSshHostCertificate
+      summary: Delete SSH Host Certificate
+      description: Delete an SSH Host Certificate by ID.
+      tags:
+        - SSH Host Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: SSH host certificate deleted.
+
+  # SSH User Certificates
+  /ssh_user_certificates:
+    post:
+      operationId: createSshUserCertificate
+      summary: Create SSH User Certificate
+      description: Create a new SSH User Certificate.
+      tags:
+        - SSH User Certificates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ssh_certificate_authority_id
+                - public_key
+              properties:
+                ssh_certificate_authority_id:
+                  type: string
+                public_key:
+                  type: string
+                principals:
+                  type: array
+                  items:
+                    type: string
+                critical_options:
+                  type: object
+                  additionalProperties:
+                    type: string
+                extensions:
+                  type: object
+                  additionalProperties:
+                    type: string
+                valid_after:
+                  type: string
+                  format: date-time
+                valid_until:
+                  type: string
+                  format: date-time
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '201':
+          description: SSH user certificate created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshUserCertificate'
+    get:
+      operationId: listSshUserCertificates
+      summary: List SSH User Certificates
+      description: List all SSH User Certificates on this account.
+      tags:
+        - SSH User Certificates
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of SSH user certificates.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshUserCertificateList'
+  /ssh_user_certificates/{id}:
+    get:
+      operationId: getSshUserCertificate
+      summary: Get SSH User Certificate
+      description: Get the details of an SSH User Certificate by ID.
+      tags:
+        - SSH User Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: SSH user certificate details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshUserCertificate'
+    patch:
+      operationId: updateSshUserCertificate
+      summary: Update SSH User Certificate
+      description: Update an SSH User Certificate by ID.
+      tags:
+        - SSH User Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: SSH user certificate updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshUserCertificate'
+    delete:
+      operationId: deleteSshUserCertificate
+      summary: Delete SSH User Certificate
+      description: Delete an SSH User Certificate by ID.
+      tags:
+        - SSH User Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: SSH user certificate deleted.
+
+  # TLS Certificates
+  /tls_certificates:
+    post:
+      operationId: createTlsCertificate
+      summary: Create TLS Certificate
+      description: Upload a new TLS certificate.
+      tags:
+        - TLS Certificates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - certificate_pem
+                - private_key_pem
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                certificate_pem:
+                  type: string
+                  description: PEM-encoded certificate chain.
+                private_key_pem:
+                  type: string
+                  description: PEM-encoded private key.
+      responses:
+        '201':
+          description: TLS certificate created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsCertificate'
+    get:
+      operationId: listTlsCertificates
+      summary: List TLS Certificates
+      description: List all TLS certificates on this account.
+      tags:
+        - TLS Certificates
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of TLS certificates.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsCertificateList'
+  /tls_certificates/{id}:
+    get:
+      operationId: getTlsCertificate
+      summary: Get TLS Certificate
+      description: Get the details of a TLS certificate by ID.
+      tags:
+        - TLS Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: TLS certificate details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsCertificate'
+    patch:
+      operationId: updateTlsCertificate
+      summary: Update TLS Certificate
+      description: Update attributes of a TLS certificate by ID.
+      tags:
+        - TLS Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: TLS certificate updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsCertificate'
+    delete:
+      operationId: deleteTlsCertificate
+      summary: Delete TLS Certificate
+      description: Delete a TLS certificate by ID.
+      tags:
+        - TLS Certificates
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: TLS certificate deleted.
+
+  # Tunnel Sessions
+  /tunnel_sessions:
+    get:
+      operationId: listTunnelSessions
+      summary: List Tunnel Sessions
+      description: List all online tunnel sessions running on this account.
+      tags:
+        - Tunnel Sessions
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of tunnel sessions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelSessionList'
+  /tunnel_sessions/{id}:
+    get:
+      operationId: getTunnelSession
+      summary: Get Tunnel Session
+      description: Get the details of a tunnel session by ID.
+      tags:
+        - Tunnel Sessions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Tunnel session details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelSession'
+  /tunnel_sessions/{id}/restart:
+    post:
+      operationId: restartTunnelSession
+      summary: Restart Tunnel Session
+      description: Issues a command to the ngrok agent to restart a tunnel session.
+      tags:
+        - Tunnel Sessions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Tunnel session restart issued.
+  /tunnel_sessions/{id}/stop:
+    post:
+      operationId: stopTunnelSession
+      summary: Stop Tunnel Session
+      description: Issues a command to the ngrok agent to stop a tunnel session.
+      tags:
+        - Tunnel Sessions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Tunnel session stop issued.
+  /tunnel_sessions/{id}/update:
+    post:
+      operationId: updateTunnelSessionAgent
+      summary: Update Tunnel Session Agent
+      description: Issues a command to the ngrok agent to update itself to the latest version.
+      tags:
+        - Tunnel Sessions
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                version:
+                  type: string
+                  description: The version to update the agent to.
+      responses:
+        '204':
+          description: Tunnel session update issued.
+
+  # Tunnels
+  /tunnels:
+    get:
+      operationId: listTunnels
+      summary: List Tunnels
+      description: List all online tunnels currently running on the account.
+      tags:
+        - Tunnels
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of tunnels.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelList'
+  /tunnels/{id}:
+    get:
+      operationId: getTunnel
+      summary: Get Tunnel
+      description: Get the details of a tunnel by ID.
+      tags:
+        - Tunnels
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Tunnel details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tunnel'
+
+  # Edges - HTTPS
+  /edges/https:
+    post:
+      operationId: createHttpsEdge
+      summary: Create HTTPS Edge
+      description: Create an HTTPS Edge.
+      tags:
+        - Edges HTTPS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                hostports:
+                  type: array
+                  items:
+                    type: string
+                  description: Hostports served by this edge.
+      responses:
+        '201':
+          description: HTTPS edge created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpsEdge'
+    get:
+      operationId: listHttpsEdges
+      summary: List HTTPS Edges
+      description: List all HTTPS Edges on this account.
+      tags:
+        - Edges HTTPS
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of HTTPS edges.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpsEdgeList'
+  /edges/https/{id}:
+    get:
+      operationId: getHttpsEdge
+      summary: Get HTTPS Edge
+      description: Get an HTTPS Edge by ID.
+      tags:
+        - Edges HTTPS
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: HTTPS edge details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpsEdge'
+    patch:
+      operationId: updateHttpsEdge
+      summary: Update HTTPS Edge
+      description: Update an HTTPS Edge by ID.
+      tags:
+        - Edges HTTPS
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                hostports:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: HTTPS edge updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpsEdge'
+    delete:
+      operationId: deleteHttpsEdge
+      summary: Delete HTTPS Edge
+      description: Delete an HTTPS Edge by ID.
+      tags:
+        - Edges HTTPS
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: HTTPS edge deleted.
+
+  # Edges - TCP
+  /edges/tcp:
+    post:
+      operationId: createTcpEdge
+      summary: Create TCP Edge
+      description: Create a TCP Edge.
+      tags:
+        - Edges TCP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                hostports:
+                  type: array
+                  items:
+                    type: string
+                backend:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    backend_id:
+                      type: string
+                ip_restriction:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    ip_policy_ids:
+                      type: array
+                      items:
+                        type: string
+      responses:
+        '201':
+          description: TCP edge created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcpEdge'
+    get:
+      operationId: listTcpEdges
+      summary: List TCP Edges
+      description: List all TCP Edges on this account.
+      tags:
+        - Edges TCP
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of TCP edges.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcpEdgeList'
+  /edges/tcp/{id}:
+    get:
+      operationId: getTcpEdge
+      summary: Get TCP Edge
+      description: Get a TCP Edge by ID.
+      tags:
+        - Edges TCP
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: TCP edge details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcpEdge'
+    patch:
+      operationId: updateTcpEdge
+      summary: Update TCP Edge
+      description: Update a TCP Edge by ID.
+      tags:
+        - Edges TCP
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                hostports:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: TCP edge updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcpEdge'
+    delete:
+      operationId: deleteTcpEdge
+      summary: Delete TCP Edge
+      description: Delete a TCP Edge by ID.
+      tags:
+        - Edges TCP
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: TCP edge deleted.
+
+  # Edges - TLS
+  /edges/tls:
+    post:
+      operationId: createTlsEdge
+      summary: Create TLS Edge
+      description: Create a TLS Edge.
+      tags:
+        - Edges TLS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                hostports:
+                  type: array
+                  items:
+                    type: string
+                backend:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    backend_id:
+                      type: string
+                ip_restriction:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    ip_policy_ids:
+                      type: array
+                      items:
+                        type: string
+                mutual_tls:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    certificate_authority_ids:
+                      type: array
+                      items:
+                        type: string
+                tls_termination:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    min_version:
+                      type: string
+      responses:
+        '201':
+          description: TLS edge created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsEdge'
+    get:
+      operationId: listTlsEdges
+      summary: List TLS Edges
+      description: List all TLS Edges on this account.
+      tags:
+        - Edges TLS
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of TLS edges.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsEdgeList'
+  /edges/tls/{id}:
+    get:
+      operationId: getTlsEdge
+      summary: Get TLS Edge
+      description: Get a TLS Edge by ID.
+      tags:
+        - Edges TLS
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: TLS edge details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsEdge'
+    patch:
+      operationId: updateTlsEdge
+      summary: Update TLS Edge
+      description: Update a TLS Edge by ID.
+      tags:
+        - Edges TLS
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                hostports:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: TLS edge updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsEdge'
+    delete:
+      operationId: deleteTlsEdge
+      summary: Delete TLS Edge
+      description: Delete a TLS Edge by ID.
+      tags:
+        - Edges TLS
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: TLS edge deleted.
+
+  # Backends - Tunnel Group
+  /backends/tunnel_group:
+    post:
+      operationId: createTunnelGroupBackend
+      summary: Create Tunnel Group Backend
+      description: Create a new Tunnel Group backend.
+      tags:
+        - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                labels:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: Labels to watch for tunnels on this backend.
+      responses:
+        '201':
+          description: Tunnel group backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelGroupBackend'
+    get:
+      operationId: listTunnelGroupBackends
+      summary: List Tunnel Group Backends
+      description: List all Tunnel Group backends on this account.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of tunnel group backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelGroupBackendList'
+  /backends/tunnel_group/{id}:
+    get:
+      operationId: getTunnelGroupBackend
+      summary: Get Tunnel Group Backend
+      description: Get a Tunnel Group backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Tunnel group backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelGroupBackend'
+    patch:
+      operationId: updateTunnelGroupBackend
+      summary: Update Tunnel Group Backend
+      description: Update a Tunnel Group backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                labels:
+                  type: object
+                  additionalProperties:
+                    type: string
+      responses:
+        '200':
+          description: Tunnel group backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelGroupBackend'
+    delete:
+      operationId: deleteTunnelGroupBackend
+      summary: Delete Tunnel Group Backend
+      description: Delete a Tunnel Group backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Tunnel group backend deleted.
+
+  # Backends - Weighted
+  /backends/weighted:
+    post:
+      operationId: createWeightedBackend
+      summary: Create Weighted Backend
+      description: Create a new Weighted backend.
+      tags:
+        - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                backends:
+                  type: object
+                  additionalProperties:
+                    type: integer
+                  description: Map of backend ID to weight.
+      responses:
+        '201':
+          description: Weighted backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedBackend'
+    get:
+      operationId: listWeightedBackends
+      summary: List Weighted Backends
+      description: List all Weighted backends on this account.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of weighted backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedBackendList'
+  /backends/weighted/{id}:
+    get:
+      operationId: getWeightedBackend
+      summary: Get Weighted Backend
+      description: Get a Weighted backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Weighted backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedBackend'
+    patch:
+      operationId: updateWeightedBackend
+      summary: Update Weighted Backend
+      description: Update a Weighted backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                backends:
+                  type: object
+                  additionalProperties:
+                    type: integer
+      responses:
+        '200':
+          description: Weighted backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedBackend'
+    delete:
+      operationId: deleteWeightedBackend
+      summary: Delete Weighted Backend
+      description: Delete a Weighted backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Weighted backend deleted.
+
+  # Backends - Failover
+  /backends/failover:
+    post:
+      operationId: createFailoverBackend
+      summary: Create Failover Backend
+      description: Create a new Failover backend.
+      tags:
+        - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                backends:
+                  type: array
+                  items:
+                    type: string
+                  description: The IDs of the backends in order of failover priority.
+      responses:
+        '201':
+          description: Failover backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailoverBackend'
+    get:
+      operationId: listFailoverBackends
+      summary: List Failover Backends
+      description: List all Failover backends on this account.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of failover backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailoverBackendList'
+  /backends/failover/{id}:
+    get:
+      operationId: getFailoverBackend
+      summary: Get Failover Backend
+      description: Get a Failover backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Failover backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailoverBackend'
+    patch:
+      operationId: updateFailoverBackend
+      summary: Update Failover Backend
+      description: Update a Failover backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                backends:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Failover backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailoverBackend'
+    delete:
+      operationId: deleteFailoverBackend
+      summary: Delete Failover Backend
+      description: Delete a Failover backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Failover backend deleted.
+
+  # Backends - HTTP Response
+  /backends/http_response:
+    post:
+      operationId: createHttpResponseBackend
+      summary: Create HTTP Response Backend
+      description: Create a new HTTP Response backend that returns a static response.
+      tags:
+        - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                body:
+                  type: string
+                  description: The response body to return.
+                headers:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: Headers to include in the response.
+                status_code:
+                  type: integer
+                  description: The HTTP status code to return.
+      responses:
+        '201':
+          description: HTTP response backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBackend'
+    get:
+      operationId: listHttpResponseBackends
+      summary: List HTTP Response Backends
+      description: List all HTTP Response backends on this account.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of HTTP response backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBackendList'
+  /backends/http_response/{id}:
+    get:
+      operationId: getHttpResponseBackend
+      summary: Get HTTP Response Backend
+      description: Get an HTTP Response backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: HTTP response backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBackend'
+    patch:
+      operationId: updateHttpResponseBackend
+      summary: Update HTTP Response Backend
+      description: Update an HTTP Response backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                body:
+                  type: string
+                headers:
+                  type: object
+                  additionalProperties:
+                    type: string
+                status_code:
+                  type: integer
+      responses:
+        '200':
+          description: HTTP response backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBackend'
+    delete:
+      operationId: deleteHttpResponseBackend
+      summary: Delete HTTP Response Backend
+      description: Delete an HTTP Response backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: HTTP response backend deleted.
+
+  # Backends - Static Address
+  /backends/static_address:
+    post:
+      operationId: createStaticAddressBackend
+      summary: Create Static Address Backend
+      description: Create a new Static Address backend.
+      tags:
+        - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                address:
+                  type: string
+                  description: The address to forward traffic to.
+                tls:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+      responses:
+        '201':
+          description: Static address backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticAddressBackend'
+    get:
+      operationId: listStaticAddressBackends
+      summary: List Static Address Backends
+      description: List all Static Address backends on this account.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/BeforeId'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of static address backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticAddressBackendList'
+  /backends/static_address/{id}:
+    get:
+      operationId: getStaticAddressBackend
+      summary: Get Static Address Backend
+      description: Get a Static Address backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Static address backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticAddressBackend'
+    patch:
+      operationId: updateStaticAddressBackend
+      summary: Update Static Address Backend
+      description: Update a Static Address backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                address:
+                  type: string
+      responses:
+        '200':
+          description: Static address backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticAddressBackend'
+    delete:
+      operationId: deleteStaticAddressBackend
+      summary: Delete Static Address Backend
+      description: Delete a Static Address backend by ID.
+      tags:
+        - Backends
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Static address backend deleted.
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Use an ngrok API key as a Bearer token. Create API keys from the
+        ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        Pass the API key in the Authorization header prefixed with
+        'Bearer '.
+
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+
+  schemas:
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+
+    AbuseReport:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        urls:
+          type: array
+          items:
+            type: string
+        metadata:
+          type: string
+        status:
+          type: string
+        hostnames:
+          type: array
+          items:
+            type: object
+            properties:
+              hostname:
+                type: string
+              status:
+                type: string
+
+    AgentIngress:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        domain:
+          type: string
+        ns_targets:
+          type: array
+          items:
+            type: string
+        region_domains:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        certificate_management_policy:
+          type: object
+        certificate_management_status:
+          type: object
+
+    AgentIngressList:
+      type: object
+      properties:
+        ingresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentIngress'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    ApiKey:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        token:
+          type: string
+          description: Only present in create response.
+        owner_id:
+          type: string
+
+    ApiKeyList:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiKey'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    CertificateAuthority:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        ca_pem:
+          type: string
+        subject_common_name:
+          type: string
+        not_before:
+          type: string
+          format: date-time
+        not_after:
+          type: string
+          format: date-time
+        key_usages:
+          type: array
+          items:
+            type: string
+        extended_key_usages:
+          type: array
+          items:
+            type: string
+
+    CertificateAuthorityList:
+      type: object
+      properties:
+        certificate_authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/CertificateAuthority'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    Credential:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        token:
+          type: string
+          description: Only present in create response.
+        acl:
+          type: array
+          items:
+            type: string
+        owner_id:
+          type: string
+
+    CredentialList:
+      type: object
+      properties:
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/Credential'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    Endpoint:
+      type: object
+      properties:
+        id:
+          type: string
+        region:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        public_url:
+          type: string
+        proto:
+          type: string
+        url:
+          type: string
+        type:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        domain:
+          $ref: '#/components/schemas/Ref'
+        tcp_addr:
+          $ref: '#/components/schemas/Ref'
+        tunnel:
+          $ref: '#/components/schemas/Ref'
+        edge:
+          $ref: '#/components/schemas/Ref'
+        bindings:
+          type: array
+          items:
+            type: string
+        traffic_policy:
+          type: string
+        uri:
+          type: string
+
+    EndpointList:
+      type: object
+      properties:
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Endpoint'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    EventDestination:
+      type: object
+      properties:
+        id:
+          type: string
+        metadata:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        format:
+          type: string
+        target:
+          type: object
+        uri:
+          type: string
+
+    EventDestinationList:
+      type: object
+      properties:
+        event_destinations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventDestination'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    EventSubscription:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        metadata:
+          type: string
+        description:
+          type: string
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              uri:
+                type: string
+        destinations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ref'
+
+    EventSubscriptionList:
+      type: object
+      properties:
+        event_subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSubscription'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    IpPolicy:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+
+    IpPolicyList:
+      type: object
+      properties:
+        ip_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPolicy'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    IpPolicyRule:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        cidr:
+          type: string
+        ip_policy:
+          $ref: '#/components/schemas/Ref'
+        action:
+          type: string
+
+    IpPolicyRuleList:
+      type: object
+      properties:
+        ip_policy_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPolicyRule'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    IpRestriction:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        enforced:
+          type: boolean
+        type:
+          type: string
+        ip_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ref'
+
+    IpRestrictionList:
+      type: object
+      properties:
+        ip_restrictions:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpRestriction'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    ReservedAddr:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        addr:
+          type: string
+        region:
+          type: string
+
+    ReservedAddrList:
+      type: object
+      properties:
+        reserved_addrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReservedAddr'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    ReservedDomain:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        domain:
+          type: string
+        region:
+          type: string
+        cname_target:
+          type: string
+        certificate:
+          $ref: '#/components/schemas/Ref'
+        certificate_management_policy:
+          type: object
+        certificate_management_status:
+          type: object
+        acme_challenge_cname_target:
+          type: string
+
+    ReservedDomainList:
+      type: object
+      properties:
+        reserved_domains:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReservedDomain'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    SshCertificateAuthority:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        public_key:
+          type: string
+        key_type:
+          type: string
+
+    SshCertificateAuthorityList:
+      type: object
+      properties:
+        ssh_certificate_authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SshCertificateAuthority'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    SshCredential:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        public_key:
+          type: string
+        acl:
+          type: array
+          items:
+            type: string
+        owner_id:
+          type: string
+
+    SshCredentialList:
+      type: object
+      properties:
+        ssh_credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/SshCredential'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    SshHostCertificate:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        public_key:
+          type: string
+        key_type:
+          type: string
+        ssh_certificate_authority_id:
+          type: string
+        principals:
+          type: array
+          items:
+            type: string
+        valid_after:
+          type: string
+          format: date-time
+        valid_until:
+          type: string
+          format: date-time
+        certificate:
+          type: string
+
+    SshHostCertificateList:
+      type: object
+      properties:
+        ssh_host_certificates:
+          type: array
+          items:
+            $ref: '#/components/schemas/SshHostCertificate'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    SshUserCertificate:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        public_key:
+          type: string
+        key_type:
+          type: string
+        ssh_certificate_authority_id:
+          type: string
+        principals:
+          type: array
+          items:
+            type: string
+        critical_options:
+          type: object
+          additionalProperties:
+            type: string
+        extensions:
+          type: object
+          additionalProperties:
+            type: string
+        valid_after:
+          type: string
+          format: date-time
+        valid_until:
+          type: string
+          format: date-time
+        certificate:
+          type: string
+
+    SshUserCertificateList:
+      type: object
+      properties:
+        ssh_user_certificates:
+          type: array
+          items:
+            $ref: '#/components/schemas/SshUserCertificate'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    TlsCertificate:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        certificate_pem:
+          type: string
+        subject_common_name:
+          type: string
+        subject_alternative_names:
+          type: object
+          properties:
+            dns_names:
+              type: array
+              items:
+                type: string
+            ips:
+              type: array
+              items:
+                type: string
+        not_before:
+          type: string
+          format: date-time
+        not_after:
+          type: string
+          format: date-time
+        key_usages:
+          type: array
+          items:
+            type: string
+        extended_key_usages:
+          type: array
+          items:
+            type: string
+        private_key_type:
+          type: string
+
+    TlsCertificateList:
+      type: object
+      properties:
+        tls_certificates:
+          type: array
+          items:
+            $ref: '#/components/schemas/TlsCertificate'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    TunnelSession:
+      type: object
+      properties:
+        agent_version:
+          type: string
+        credential:
+          $ref: '#/components/schemas/Ref'
+        id:
+          type: string
+        ip:
+          type: string
+        metadata:
+          type: string
+        os:
+          type: string
+        region:
+          type: string
+        started_at:
+          type: string
+          format: date-time
+        transport:
+          type: string
+        uri:
+          type: string
+
+    TunnelSessionList:
+      type: object
+      properties:
+        tunnel_sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TunnelSession'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    Tunnel:
+      type: object
+      properties:
+        id:
+          type: string
+        public_url:
+          type: string
+        started_at:
+          type: string
+          format: date-time
+        metadata:
+          type: string
+        proto:
+          type: string
+        region:
+          type: string
+        tunnel_session:
+          $ref: '#/components/schemas/Ref'
+        endpoint:
+          $ref: '#/components/schemas/Ref'
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ref'
+        forwards_to:
+          type: string
+        uri:
+          type: string
+
+    TunnelList:
+      type: object
+      properties:
+        tunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tunnel'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    HttpsEdge:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        uri:
+          type: string
+        hostports:
+          type: array
+          items:
+            type: string
+        routes:
+          type: array
+          items:
+            type: object
+
+    HttpsEdgeList:
+      type: object
+      properties:
+        https_edges:
+          type: array
+          items:
+            $ref: '#/components/schemas/HttpsEdge'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    TcpEdge:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        uri:
+          type: string
+        hostports:
+          type: array
+          items:
+            type: string
+        backend:
+          type: object
+        ip_restriction:
+          type: object
+
+    TcpEdgeList:
+      type: object
+      properties:
+        tcp_edges:
+          type: array
+          items:
+            $ref: '#/components/schemas/TcpEdge'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    TlsEdge:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        uri:
+          type: string
+        hostports:
+          type: array
+          items:
+            type: string
+        backend:
+          type: object
+        ip_restriction:
+          type: object
+        mutual_tls:
+          type: object
+        tls_termination:
+          type: object
+
+    TlsEdgeList:
+      type: object
+      properties:
+        tls_edges:
+          type: array
+          items:
+            $ref: '#/components/schemas/TlsEdge'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    TunnelGroupBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        tunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ref'
+
+    TunnelGroupBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/TunnelGroupBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    WeightedBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        backends:
+          type: object
+          additionalProperties:
+            type: integer
+
+    WeightedBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeightedBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    FailoverBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        backends:
+          type: array
+          items:
+            type: string
+
+    FailoverBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/FailoverBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    HttpResponseBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        body:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        status_code:
+          type: integer
+
+    HttpResponseBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/HttpResponseBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    StaticAddressBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        address:
+          type: string
+        tls:
+          type: object
+
+    StaticAddressBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/StaticAddressBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: Unique error code for this error condition.
+        status_code:
+          type: integer
+          description: HTTP status code.
+        msg:
+          type: string
+          description: Human-readable error message.
+        details:
+          type: object
+          description: Additional details about the error.
+
+tags:
+  - name: Abuse Reports
+    description: Abuse Reports allow you to submit reports of abusive endpoints.
+  - name: Agent Ingresses
+    description: Agent Ingresses are the addresses ngrok agents connect to.
+  - name: API Keys
+    description: API Keys are used to authenticate to the ngrok API.
+  - name: Backends
+    description: Backends define how traffic is handled, including tunnel group, weighted, failover, HTTP response, and static address backends.
+  - name: Certificate Authorities
+    description: Certificate Authorities are x509 certificates used for mutual TLS authentication.
+  - name: Credentials
+    description: Tunnel Credentials are authtokens used to start ngrok tunnels.
+  - name: Edges HTTPS
+    description: HTTPS Edges define HTTPS endpoints with routes and modules.
+  - name: Edges TCP
+    description: TCP Edges define TCP endpoints for non-HTTP protocols.
+  - name: Edges TLS
+    description: TLS Edges define TLS endpoints with TLS termination and mutual TLS.
+  - name: Endpoints
+    description: Endpoints represent the public URLs of active tunnels and edges.
+  - name: Event Destinations
+    description: Event Destinations define where event data is sent.
+  - name: Event Subscriptions
+    description: Event Subscriptions define which events trigger notifications.
+  - name: IP Policies
+    description: IP Policies contain rules to allow or deny traffic from IP ranges.
+  - name: IP Policy Rules
+    description: IP Policy Rules are CIDR-based allow/deny rules within an IP Policy.
+  - name: IP Restrictions
+    description: IP Restrictions apply IP Policies to specific ngrok resources.
+  - name: Reserved Addresses
+    description: Reserved Addresses are static TCP addresses for TCP tunnels.
+  - name: Reserved Domains
+    description: Reserved Domains are custom hostnames for HTTP/HTTPS/TLS tunnels.
+  - name: SSH Certificate Authorities
+    description: SSH Certificate Authorities manage keys for signing SSH certificates.
+  - name: SSH Credentials
+    description: SSH Credentials are public keys for authenticating SSH tunnel sessions.
+  - name: SSH Host Certificates
+    description: SSH Host Certificates authenticate ngrok tunnel servers to clients.
+  - name: SSH User Certificates
+    description: SSH User Certificates authenticate users to ngrok SSH tunnel servers.
+  - name: TLS Certificates
+    description: TLS Certificates are x509 certificate/key pairs used to terminate TLS traffic.
+  - name: Tunnel Sessions
+    description: Tunnel Sessions represent running ngrok agent connections.
+  - name: Tunnels
+    description: Tunnels represent individual tunnels within a tunnel session.
