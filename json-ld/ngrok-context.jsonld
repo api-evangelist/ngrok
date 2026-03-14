@@ -1,0 +1,175 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "ngrok": "https://ngrok.com/docs/api/resources/",
+    "Tunnel": {
+      "@id": "ngrok:tunnels",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "public_url": "https://schema.org/url",
+        "started_at": "https://schema.org/dateCreated",
+        "metadata": "https://schema.org/additionalProperty",
+        "proto": "https://schema.org/encodingFormat",
+        "region": "https://schema.org/locationCreated",
+        "tunnel_session": {
+          "@id": "ngrok:tunnel-sessions",
+          "@type": "@id"
+        },
+        "endpoint": {
+          "@id": "ngrok:endpoints",
+          "@type": "@id"
+        },
+        "labels": "https://schema.org/keywords",
+        "forwards_to": "https://schema.org/url"
+      }
+    },
+    "Endpoint": {
+      "@id": "ngrok:endpoints",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "public_url": "https://schema.org/url",
+        "proto": "https://schema.org/encodingFormat",
+        "type": "https://schema.org/category",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "region": "https://schema.org/locationCreated",
+        "domain": {
+          "@id": "ngrok:reserved-domains",
+          "@type": "@id"
+        },
+        "tcp_addr": {
+          "@id": "ngrok:reserved-addrs",
+          "@type": "@id"
+        },
+        "tunnel": {
+          "@id": "ngrok:tunnels",
+          "@type": "@id"
+        },
+        "edge": {
+          "@id": "ngrok:edges-https",
+          "@type": "@id"
+        },
+        "traffic_policy": "https://schema.org/conditionsOfAccess"
+      }
+    },
+    "HttpsEdge": {
+      "@id": "ngrok:edges-https",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "created_at": "https://schema.org/dateCreated",
+        "hostports": "https://schema.org/url",
+        "routes": "https://schema.org/hasPart"
+      }
+    },
+    "TcpEdge": {
+      "@id": "ngrok:edges-tcp",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "created_at": "https://schema.org/dateCreated",
+        "hostports": "https://schema.org/url",
+        "backend": "https://schema.org/hasPart",
+        "ip_restriction": "https://schema.org/conditionsOfAccess"
+      }
+    },
+    "TlsEdge": {
+      "@id": "ngrok:edges-tls",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "created_at": "https://schema.org/dateCreated",
+        "hostports": "https://schema.org/url",
+        "backend": "https://schema.org/hasPart",
+        "ip_restriction": "https://schema.org/conditionsOfAccess",
+        "mutual_tls": "https://schema.org/conditionsOfAccess",
+        "tls_termination": "https://schema.org/actionOption"
+      }
+    },
+    "ReservedDomain": {
+      "@id": "ngrok:reserved-domains",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "domain": "https://schema.org/url",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "region": "https://schema.org/locationCreated",
+        "cname_target": "https://schema.org/url",
+        "certificate": {
+          "@id": "ngrok:tls-certificates",
+          "@type": "@id"
+        }
+      }
+    },
+    "ReservedAddr": {
+      "@id": "ngrok:reserved-addrs",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "addr": "https://schema.org/url",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "region": "https://schema.org/locationCreated"
+      }
+    },
+    "ApiKey": {
+      "@id": "ngrok:api-keys",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "token": "https://schema.org/accessCode",
+        "owner_id": "https://schema.org/identifier"
+      }
+    },
+    "IpPolicy": {
+      "@id": "ngrok:ip-policies",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty"
+      }
+    },
+    "TlsCertificate": {
+      "@id": "ngrok:tls-certificates",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "certificate_pem": "https://schema.org/text",
+        "subject_common_name": "https://schema.org/name",
+        "not_before": "https://schema.org/validFrom",
+        "not_after": "https://schema.org/validThrough",
+        "private_key_type": "https://schema.org/category"
+      }
+    },
+    "EventSubscription": {
+      "@id": "ngrok:event-subscriptions",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "description": "https://schema.org/description",
+        "metadata": "https://schema.org/additionalProperty",
+        "sources": "https://schema.org/hasPart",
+        "destinations": {
+          "@id": "ngrok:event-destinations",
+          "@type": "@id"
+        }
+      }
+    },
+    "TunnelSession": {
+      "@id": "ngrok:tunnel-sessions",
+      "@context": {
+        "id": "https://schema.org/identifier",
+        "agent_version": "https://schema.org/softwareVersion",
+        "ip": "https://schema.org/identifier",
+        "metadata": "https://schema.org/additionalProperty",
+        "os": "https://schema.org/operatingSystem",
+        "region": "https://schema.org/locationCreated",
+        "started_at": "https://schema.org/dateCreated",
+        "transport": "https://schema.org/encodingFormat"
+      }
+    }
+  }
+}

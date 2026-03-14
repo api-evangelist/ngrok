@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/tunnel.json",
+  "title": "ngrok Tunnel",
+  "description": "A Tunnel represents an individual tunnel connection within a tunnel session, exposing a local service via a public URL through the ngrok network.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the tunnel."
+    },
+    "public_url": {
+      "type": "string",
+      "description": "The public URL of the tunnel."
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the tunnel was started."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata for the tunnel."
+    },
+    "proto": {
+      "type": "string",
+      "description": "The protocol of the tunnel (e.g., http, https, tcp, tls)."
+    },
+    "region": {
+      "type": "string",
+      "description": "The ngrok region where the tunnel is running."
+    },
+    "tunnel_session": {
+      "type": "object",
+      "description": "Reference to the tunnel session that created this tunnel.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "endpoint": {
+      "type": "object",
+      "description": "Reference to the endpoint associated with this tunnel.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Labels assigned to the tunnel for routing with labeled tunnels."
+    },
+    "backends": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "References to the backends this tunnel is attached to."
+    },
+    "forwards_to": {
+      "type": "string",
+      "description": "The address that this tunnel forwards traffic to."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the tunnel API resource."
+    }
+  }
+}

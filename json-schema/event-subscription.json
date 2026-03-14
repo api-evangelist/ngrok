@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/event-subscription.json",
+  "title": "ngrok Event Subscription",
+  "description": "An Event Subscription defines which events trigger notifications and where those notifications are sent.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the event subscription."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the event subscription API resource."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the subscription was created."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description."
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of event source."
+          },
+          "uri": {
+            "type": "string",
+            "description": "URI of the event source."
+          }
+        }
+      },
+      "description": "The event sources that trigger this subscription."
+    },
+    "destinations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "References to event destinations where notifications are sent."
+    }
+  }
+}

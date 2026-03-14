@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/ip-policy.json",
+  "title": "ngrok IP Policy",
+  "description": "An IP Policy contains rules to allow or deny traffic from specific IP address ranges.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the IP policy."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the IP policy API resource."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the IP policy was created."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    }
+  }
+}

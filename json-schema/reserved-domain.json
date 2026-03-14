@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/reserved-domain.json",
+  "title": "ngrok Reserved Domain",
+  "description": "A Reserved Domain is a custom hostname reserved for use with HTTP, HTTPS, or TLS tunnels and edges.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the reserved domain."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the reserved domain API resource."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the reserved domain was created."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "domain": {
+      "type": "string",
+      "description": "The hostname of the reserved domain."
+    },
+    "region": {
+      "type": "string",
+      "description": "The ngrok region where the domain is reserved."
+    },
+    "cname_target": {
+      "type": "string",
+      "description": "The DNS CNAME target for custom domains."
+    },
+    "certificate": {
+      "type": "object",
+      "description": "Reference to the TLS certificate for the domain.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "certificate_management_policy": {
+      "type": "object",
+      "description": "The certificate management policy for automated TLS certificates."
+    },
+    "certificate_management_status": {
+      "type": "object",
+      "description": "The status of the certificate management process."
+    },
+    "acme_challenge_cname_target": {
+      "type": "string",
+      "description": "The CNAME target for ACME certificate validation challenges."
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/api-key.json",
+  "title": "ngrok API Key",
+  "description": "An API Key is used to authenticate requests to the ngrok API.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the API key."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the API key resource."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the API key."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the API key was created."
+    },
+    "token": {
+      "type": "string",
+      "description": "The API key token. Only present in the response to a create request."
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "The owner of the API key, if owned by a bot user."
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/tls-certificate.json",
+  "title": "ngrok TLS Certificate",
+  "description": "A TLS Certificate is an x509 certificate and private key pair used to terminate TLS traffic on ngrok endpoints.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the TLS certificate."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the TLS certificate API resource."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the certificate was uploaded."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "certificate_pem": {
+      "type": "string",
+      "description": "The PEM-encoded certificate chain."
+    },
+    "subject_common_name": {
+      "type": "string",
+      "description": "The subject common name from the certificate."
+    },
+    "subject_alternative_names": {
+      "type": "object",
+      "description": "Subject alternative names from the certificate.",
+      "properties": {
+        "dns_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "DNS name SANs."
+        },
+        "ips": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "IP address SANs."
+        }
+      }
+    },
+    "not_before": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The certificate is not valid before this time."
+    },
+    "not_after": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The certificate is not valid after this time."
+    },
+    "key_usages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key usage extensions from the certificate."
+    },
+    "extended_key_usages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Extended key usage extensions from the certificate."
+    },
+    "private_key_type": {
+      "type": "string",
+      "description": "The type of the private key (rsa, ecdsa, ed25519)."
+    }
+  }
+}

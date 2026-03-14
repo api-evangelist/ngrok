@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/https-edge.json",
+  "title": "ngrok HTTPS Edge",
+  "description": "An HTTPS Edge defines an HTTPS endpoint with routes and modules that can be configured for traffic management, authentication, and other policies.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the HTTPS edge."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the edge."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the edge was created."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the edge API resource."
+    },
+    "hostports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The host:port combinations that this edge listens on."
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "The routes associated with this HTTPS edge."
+    }
+  }
+}

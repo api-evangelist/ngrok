@@ -19,6 +19,32 @@ apis:
         type: Documentation
       - url: openapi/ngrok-api-openapi.yml
         type: OpenAPI
+      - url: json-schema/tunnel.json
+        type: JSONSchema
+      - url: json-schema/endpoint.json
+        type: JSONSchema
+      - url: json-schema/https-edge.json
+        type: JSONSchema
+      - url: json-schema/tcp-edge.json
+        type: JSONSchema
+      - url: json-schema/tls-edge.json
+        type: JSONSchema
+      - url: json-schema/reserved-domain.json
+        type: JSONSchema
+      - url: json-schema/reserved-addr.json
+        type: JSONSchema
+      - url: json-schema/api-key.json
+        type: JSONSchema
+      - url: json-schema/ip-policy.json
+        type: JSONSchema
+      - url: json-schema/tls-certificate.json
+        type: JSONSchema
+      - url: json-schema/event-subscription.json
+        type: JSONSchema
+      - url: json-schema/tunnel-session.json
+        type: JSONSchema
+      - url: json-ld/ngrok-context.jsonld
+        type: JSONLD
     description: >-
       The ngrok API provides programmatic access to all of ngrok's resources.
       The API is REST-ish. It follows most of the conventions of a REST API but
@@ -41,6 +67,31 @@ tags:
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
+common:
+  - url: https://ngrok.com/docs
+    name: Documentation
+    type: Documentation
+    description: 'null'
+  - url: https://ngrok.com/blog
+    name: Blog
+    type: Blog
+    description: 'null'
+  - url: https://ngrok.com/docs/api
+    name: API Reference
+    type: Documentation
+    description: 'null'
+  - url: https://github.com/ngrok
+    name: GitHub Organization
+    type: GitHubOrg
+    description: 'null'
+  - url: https://ngrok.com/pricing
+    name: Pricing
+    type: Pricing
+    description: 'null'
+  - url: https://ngrok.com/support
+    name: Support
+    type: Support
+    description: 'null'
 created: '2025-01-08'
 modified: '2026-03-14'
 position: Consumer

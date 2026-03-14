@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/reserved-addr.json",
+  "title": "ngrok Reserved Address",
+  "description": "A Reserved Address is a static TCP address reserved for use with TCP tunnels.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the reserved address."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the reserved address API resource."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the reserved address was created."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "addr": {
+      "type": "string",
+      "description": "The reserved TCP address in host:port format."
+    },
+    "region": {
+      "type": "string",
+      "description": "The ngrok region where the address is reserved."
+    }
+  }
+}

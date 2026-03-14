@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/tls-edge.json",
+  "title": "ngrok TLS Edge",
+  "description": "A TLS Edge defines a TLS endpoint with TLS termination, mutual TLS, backend, and IP restriction configurations.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the TLS edge."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the edge."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the edge was created."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the edge API resource."
+    },
+    "hostports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The host:port combinations that this edge listens on."
+    },
+    "backend": {
+      "type": "object",
+      "description": "The backend configuration for the TLS edge."
+    },
+    "ip_restriction": {
+      "type": "object",
+      "description": "The IP restriction module configuration."
+    },
+    "mutual_tls": {
+      "type": "object",
+      "description": "The mutual TLS module configuration."
+    },
+    "tls_termination": {
+      "type": "object",
+      "description": "The TLS termination module configuration."
+    }
+  }
+}

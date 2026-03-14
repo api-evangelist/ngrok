@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/tunnel-session.json",
+  "title": "ngrok Tunnel Session",
+  "description": "A Tunnel Session represents a running ngrok agent connection to the ngrok service.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the tunnel session."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the tunnel session API resource."
+    },
+    "agent_version": {
+      "type": "string",
+      "description": "The version of the ngrok agent."
+    },
+    "credential": {
+      "type": "object",
+      "description": "Reference to the credential used to authenticate the session.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      }
+    },
+    "ip": {
+      "type": "string",
+      "description": "The IP address of the agent."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "os": {
+      "type": "string",
+      "description": "The operating system of the agent host."
+    },
+    "region": {
+      "type": "string",
+      "description": "The ngrok region the session is connected to."
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the session started."
+    },
+    "transport": {
+      "type": "string",
+      "description": "The transport protocol used for the session."
+    }
+  }
+}

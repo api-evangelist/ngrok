@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/ngrok/blob/main/json-schema/tcp-edge.json",
+  "title": "ngrok TCP Edge",
+  "description": "A TCP Edge defines a TCP endpoint for non-HTTP protocols with backend and IP restriction configurations.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the TCP edge."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the edge."
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Arbitrary user-defined metadata."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the edge was created."
+    },
+    "uri": {
+      "type": "string",
+      "description": "URI of the edge API resource."
+    },
+    "hostports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The host:port combinations that this edge listens on."
+    },
+    "backend": {
+      "type": "object",
+      "description": "The backend configuration for the TCP edge."
+    },
+    "ip_restriction": {
+      "type": "object",
+      "description": "The IP restriction module configuration."
+    }
+  }
+}
