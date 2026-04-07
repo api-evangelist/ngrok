@@ -5,14 +5,14 @@ apis:
   - aid: ngrok:ngrok
     name: Ngrok API
     tags:
-      - Gateways
       - Compute
-      - Tunnels
-      - Servers
-      - Testing
       - Demonstration
+      - Gateways
       - Platform
       - Proxies
+      - Servers
+      - Testing
+      - Tunnels
     humanURL: https://ngrok.com/docs/api
     properties:
       - url: https://ngrok.com/docs/api
@@ -53,14 +53,14 @@ apis:
       an API key.
 name: Ngrok
 tags:
-  - Gateways
   - Compute
-  - Tunnels
-  - Servers
-  - Testing
   - Demonstration
+  - Gateways
   - Platform
   - Proxies
+  - Servers
+  - Testing
+  - Tunnels
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
