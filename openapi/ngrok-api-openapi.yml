@@ -25,7 +25,7 @@ paths:
   /abuse_reports:
     post:
       operationId: createAbuseReport
-      summary: Create Abuse Report
+      summary: Ngrok Create Abuse Report
       description: Creates a new abuse report which will be reviewed by our system and abuse response team.
       tags:
         - Abuse Reports
@@ -54,7 +54,7 @@ paths:
   /abuse_reports/{id}:
     get:
       operationId: getAbuseReport
-      summary: Get Abuse Report
+      summary: Ngrok Get Abuse Report
       description: Get the detailed status of an abuse report by ID.
       tags:
         - Abuse Reports
@@ -72,7 +72,7 @@ paths:
   /agent_ingresses:
     post:
       operationId: createAgentIngress
-      summary: Create Agent Ingress
+      summary: Ngrok Create Agent Ingress
       description: Create a new Agent Ingress.
       tags:
         - Agent Ingresses
@@ -106,7 +106,7 @@ paths:
                 $ref: '#/components/schemas/AgentIngress'
     get:
       operationId: listAgentIngresses
-      summary: List Agent Ingresses
+      summary: Ngrok List Agent Ingresses
       description: List all Agent Ingresses.
       tags:
         - Agent Ingresses
@@ -123,7 +123,7 @@ paths:
   /agent_ingresses/{id}:
     get:
       operationId: getAgentIngress
-      summary: Get Agent Ingress
+      summary: Ngrok Get Agent Ingress
       description: Get the details of an Agent Ingress by ID.
       tags:
         - Agent Ingresses
@@ -138,7 +138,7 @@ paths:
                 $ref: '#/components/schemas/AgentIngress'
     patch:
       operationId: updateAgentIngress
-      summary: Update Agent Ingress
+      summary: Ngrok Update Agent Ingress
       description: Update attributes of an Agent Ingress by ID.
       tags:
         - Agent Ingresses
@@ -164,7 +164,7 @@ paths:
                 $ref: '#/components/schemas/AgentIngress'
     delete:
       operationId: deleteAgentIngress
-      summary: Delete Agent Ingress
+      summary: Ngrok Delete Agent Ingress
       description: Delete an Agent Ingress by ID.
       tags:
         - Agent Ingresses
@@ -178,7 +178,7 @@ paths:
   /api_keys:
     post:
       operationId: createApiKey
-      summary: Create API Key
+      summary: Ngrok Create API Key
       description: Create a new API key.
       tags:
         - API Keys
@@ -205,7 +205,7 @@ paths:
                 $ref: '#/components/schemas/ApiKey'
     get:
       operationId: listApiKeys
-      summary: List API Keys
+      summary: Ngrok List API Keys
       description: List all API keys on this account.
       tags:
         - API Keys
@@ -222,7 +222,7 @@ paths:
   /api_keys/{id}:
     get:
       operationId: getApiKey
-      summary: Get API Key
+      summary: Ngrok Get API Key
       description: Get the details of an API key by ID.
       tags:
         - API Keys
@@ -237,7 +237,7 @@ paths:
                 $ref: '#/components/schemas/ApiKey'
     patch:
       operationId: updateApiKey
-      summary: Update API Key
+      summary: Ngrok Update API Key
       description: Update attributes of an API key by ID.
       tags:
         - API Keys
@@ -263,7 +263,7 @@ paths:
                 $ref: '#/components/schemas/ApiKey'
     delete:
       operationId: deleteApiKey
-      summary: Delete API Key
+      summary: Ngrok Delete API Key
       description: Delete an API key by ID.
       tags:
         - API Keys
@@ -277,7 +277,7 @@ paths:
   /certificate_authorities:
     post:
       operationId: createCertificateAuthority
-      summary: Create Certificate Authority
+      summary: Ngrok Create Certificate Authority
       description: Upload a new Certificate Authority.
       tags:
         - Certificate Authorities
@@ -306,7 +306,7 @@ paths:
                 $ref: '#/components/schemas/CertificateAuthority'
     get:
       operationId: listCertificateAuthorities
-      summary: List Certificate Authorities
+      summary: Ngrok List Certificate Authorities
       description: List all Certificate Authorities on this account.
       tags:
         - Certificate Authorities
@@ -323,7 +323,7 @@ paths:
   /certificate_authorities/{id}:
     get:
       operationId: getCertificateAuthority
-      summary: Get Certificate Authority
+      summary: Ngrok Get Certificate Authority
       description: Get the details of a Certificate Authority by ID.
       tags:
         - Certificate Authorities
@@ -338,7 +338,7 @@ paths:
                 $ref: '#/components/schemas/CertificateAuthority'
     patch:
       operationId: updateCertificateAuthority
-      summary: Update Certificate Authority
+      summary: Ngrok Update Certificate Authority
       description: Update attributes of a Certificate Authority by ID.
       tags:
         - Certificate Authorities
@@ -364,7 +364,7 @@ paths:
                 $ref: '#/components/schemas/CertificateAuthority'
     delete:
       operationId: deleteCertificateAuthority
-      summary: Delete Certificate Authority
+      summary: Ngrok Delete Certificate Authority
       description: Delete a Certificate Authority by ID.
       tags:
         - Certificate Authorities
@@ -378,7 +378,7 @@ paths:
   /credentials:
     post:
       operationId: createCredential
-      summary: Create Credential
+      summary: Ngrok Create Credential
       description: Create a new tunnel authtoken credential.
       tags:
         - Credentials
@@ -409,7 +409,7 @@ paths:
                 $ref: '#/components/schemas/Credential'
     get:
       operationId: listCredentials
-      summary: List Credentials
+      summary: Ngrok List Credentials
       description: List all tunnel authtoken credentials on this account.
       tags:
         - Credentials
@@ -426,7 +426,7 @@ paths:
   /credentials/{id}:
     get:
       operationId: getCredential
-      summary: Get Credential
+      summary: Ngrok Get Credential
       description: Get the details of a tunnel authtoken credential by ID.
       tags:
         - Credentials
@@ -441,7 +441,7 @@ paths:
                 $ref: '#/components/schemas/Credential'
     patch:
       operationId: updateCredential
-      summary: Update Credential
+      summary: Ngrok Update Credential
       description: Update attributes of a tunnel authtoken credential by ID.
       tags:
         - Credentials
@@ -471,7 +471,7 @@ paths:
                 $ref: '#/components/schemas/Credential'
     delete:
       operationId: deleteCredential
-      summary: Delete Credential
+      summary: Ngrok Delete Credential
       description: Delete a tunnel authtoken credential by ID.
       tags:
         - Credentials
@@ -485,7 +485,7 @@ paths:
   /endpoints:
     post:
       operationId: createEndpoint
-      summary: Create Endpoint
+      summary: Ngrok Create Endpoint
       description: Create a new endpoint.
       tags:
         - Endpoints
@@ -522,7 +522,7 @@ paths:
                 $ref: '#/components/schemas/Endpoint'
     get:
       operationId: listEndpoints
-      summary: List Endpoints
+      summary: Ngrok List Endpoints
       description: List all active endpoints on the account.
       tags:
         - Endpoints
@@ -539,7 +539,7 @@ paths:
   /endpoints/{id}:
     get:
       operationId: getEndpoint
-      summary: Get Endpoint
+      summary: Ngrok Get Endpoint
       description: Get the details of an endpoint by ID.
       tags:
         - Endpoints
@@ -554,7 +554,7 @@ paths:
                 $ref: '#/components/schemas/Endpoint'
     patch:
       operationId: updateEndpoint
-      summary: Update Endpoint
+      summary: Ngrok Update Endpoint
       description: Update an endpoint by ID.
       tags:
         - Endpoints
@@ -588,7 +588,7 @@ paths:
                 $ref: '#/components/schemas/Endpoint'
     delete:
       operationId: deleteEndpoint
-      summary: Delete Endpoint
+      summary: Ngrok Delete Endpoint
       description: Delete an endpoint by ID.
       tags:
         - Endpoints
@@ -602,7 +602,7 @@ paths:
   /event_destinations:
     post:
       operationId: createEventDestination
-      summary: Create Event Destination
+      summary: Ngrok Create Event Destination
       description: Create a new Event Destination.
       tags:
         - Event Destinations
@@ -643,7 +643,7 @@ paths:
                 $ref: '#/components/schemas/EventDestination'
     get:
       operationId: listEventDestinations
-      summary: List Event Destinations
+      summary: Ngrok List Event Destinations
       description: List all Event Destinations on this account.
       tags:
         - Event Destinations
@@ -660,7 +660,7 @@ paths:
   /event_destinations/{id}:
     get:
       operationId: getEventDestination
-      summary: Get Event Destination
+      summary: Ngrok Get Event Destination
       description: Get the details of an Event Destination by ID.
       tags:
         - Event Destinations
@@ -675,7 +675,7 @@ paths:
                 $ref: '#/components/schemas/EventDestination'
     patch:
       operationId: updateEventDestination
-      summary: Update Event Destination
+      summary: Ngrok Update Event Destination
       description: Update attributes of an Event Destination by ID.
       tags:
         - Event Destinations
@@ -705,7 +705,7 @@ paths:
                 $ref: '#/components/schemas/EventDestination'
     delete:
       operationId: deleteEventDestination
-      summary: Delete Event Destination
+      summary: Ngrok Delete Event Destination
       description: Delete an Event Destination by ID.
       tags:
         - Event Destinations
@@ -719,7 +719,7 @@ paths:
   /event_subscriptions:
     post:
       operationId: createEventSubscription
-      summary: Create Event Subscription
+      summary: Ngrok Create Event Subscription
       description: Create an Event Subscription.
       tags:
         - Event Subscriptions
@@ -756,7 +756,7 @@ paths:
                 $ref: '#/components/schemas/EventSubscription'
     get:
       operationId: listEventSubscriptions
-      summary: List Event Subscriptions
+      summary: Ngrok List Event Subscriptions
       description: List all Event Subscriptions on this account.
       tags:
         - Event Subscriptions
@@ -773,7 +773,7 @@ paths:
   /event_subscriptions/{id}:
     get:
       operationId: getEventSubscription
-      summary: Get Event Subscription
+      summary: Ngrok Get Event Subscription
       description: Get an Event Subscription by ID.
       tags:
         - Event Subscriptions
@@ -788,7 +788,7 @@ paths:
                 $ref: '#/components/schemas/EventSubscription'
     patch:
       operationId: updateEventSubscription
-      summary: Update Event Subscription
+      summary: Ngrok Update Event Subscription
       description: Update an Event Subscription by ID.
       tags:
         - Event Subscriptions
@@ -825,7 +825,7 @@ paths:
                 $ref: '#/components/schemas/EventSubscription'
     delete:
       operationId: deleteEventSubscription
-      summary: Delete Event Subscription
+      summary: Ngrok Delete Event Subscription
       description: Delete an Event Subscription by ID.
       tags:
         - Event Subscriptions
@@ -839,7 +839,7 @@ paths:
   /ip_policies:
     post:
       operationId: createIpPolicy
-      summary: Create IP Policy
+      summary: Ngrok Create IP Policy
       description: Create a new IP policy.
       tags:
         - IP Policies
@@ -863,7 +863,7 @@ paths:
                 $ref: '#/components/schemas/IpPolicy'
     get:
       operationId: listIpPolicies
-      summary: List IP Policies
+      summary: Ngrok List IP Policies
       description: List all IP policies on this account.
       tags:
         - IP Policies
@@ -880,7 +880,7 @@ paths:
   /ip_policies/{id}:
     get:
       operationId: getIpPolicy
-      summary: Get IP Policy
+      summary: Ngrok Get IP Policy
       description: Get the details of an IP policy by ID.
       tags:
         - IP Policies
@@ -895,7 +895,7 @@ paths:
                 $ref: '#/components/schemas/IpPolicy'
     patch:
       operationId: updateIpPolicy
-      summary: Update IP Policy
+      summary: Ngrok Update IP Policy
       description: Update attributes of an IP policy by ID.
       tags:
         - IP Policies
@@ -921,7 +921,7 @@ paths:
                 $ref: '#/components/schemas/IpPolicy'
     delete:
       operationId: deleteIpPolicy
-      summary: Delete IP Policy
+      summary: Ngrok Delete IP Policy
       description: Delete an IP policy by ID.
       tags:
         - IP Policies
@@ -935,7 +935,7 @@ paths:
   /ip_policy_rules:
     post:
       operationId: createIpPolicyRule
-      summary: Create IP Policy Rule
+      summary: Ngrok Create IP Policy Rule
       description: Create a new IP policy rule attached to an IP policy.
       tags:
         - IP Policy Rules
@@ -975,7 +975,7 @@ paths:
                 $ref: '#/components/schemas/IpPolicyRule'
     get:
       operationId: listIpPolicyRules
-      summary: List IP Policy Rules
+      summary: Ngrok List IP Policy Rules
       description: List all IP policy rules on this account.
       tags:
         - IP Policy Rules
@@ -992,7 +992,7 @@ paths:
   /ip_policy_rules/{id}:
     get:
       operationId: getIpPolicyRule
-      summary: Get IP Policy Rule
+      summary: Ngrok Get IP Policy Rule
       description: Get the details of an IP policy rule by ID.
       tags:
         - IP Policy Rules
@@ -1007,7 +1007,7 @@ paths:
                 $ref: '#/components/schemas/IpPolicyRule'
     patch:
       operationId: updateIpPolicyRule
-      summary: Update IP Policy Rule
+      summary: Ngrok Update IP Policy Rule
       description: Update attributes of an IP policy rule by ID.
       tags:
         - IP Policy Rules
@@ -1035,7 +1035,7 @@ paths:
                 $ref: '#/components/schemas/IpPolicyRule'
     delete:
       operationId: deleteIpPolicyRule
-      summary: Delete IP Policy Rule
+      summary: Ngrok Delete IP Policy Rule
       description: Delete an IP policy rule by ID.
       tags:
         - IP Policy Rules
@@ -1049,7 +1049,7 @@ paths:
   /ip_restrictions:
     post:
       operationId: createIpRestriction
-      summary: Create IP Restriction
+      summary: Ngrok Create IP Restriction
       description: Create a new IP restriction.
       tags:
         - IP Restrictions
@@ -1086,7 +1086,7 @@ paths:
                 $ref: '#/components/schemas/IpRestriction'
     get:
       operationId: listIpRestrictions
-      summary: List IP Restrictions
+      summary: Ngrok List IP Restrictions
       description: List all IP restrictions on this account.
       tags:
         - IP Restrictions
@@ -1103,7 +1103,7 @@ paths:
   /ip_restrictions/{id}:
     get:
       operationId: getIpRestriction
-      summary: Get IP Restriction
+      summary: Ngrok Get IP Restriction
       description: Get the details of an IP restriction by ID.
       tags:
         - IP Restrictions
@@ -1118,7 +1118,7 @@ paths:
                 $ref: '#/components/schemas/IpRestriction'
     patch:
       operationId: updateIpRestriction
-      summary: Update IP Restriction
+      summary: Ngrok Update IP Restriction
       description: Update attributes of an IP restriction by ID.
       tags:
         - IP Restrictions
@@ -1150,7 +1150,7 @@ paths:
                 $ref: '#/components/schemas/IpRestriction'
     delete:
       operationId: deleteIpRestriction
-      summary: Delete IP Restriction
+      summary: Ngrok Delete IP Restriction
       description: Delete an IP restriction by ID.
       tags:
         - IP Restrictions
@@ -1164,7 +1164,7 @@ paths:
   /reserved_addrs:
     post:
       operationId: createReservedAddr
-      summary: Create Reserved Address
+      summary: Ngrok Create Reserved Address
       description: Create a new reserved address.
       tags:
         - Reserved Addresses
@@ -1191,7 +1191,7 @@ paths:
                 $ref: '#/components/schemas/ReservedAddr'
     get:
       operationId: listReservedAddrs
-      summary: List Reserved Addresses
+      summary: Ngrok List Reserved Addresses
       description: List all reserved addresses on this account.
       tags:
         - Reserved Addresses
@@ -1208,7 +1208,7 @@ paths:
   /reserved_addrs/{id}:
     get:
       operationId: getReservedAddr
-      summary: Get Reserved Address
+      summary: Ngrok Get Reserved Address
       description: Get the details of a reserved address by ID.
       tags:
         - Reserved Addresses
@@ -1223,7 +1223,7 @@ paths:
                 $ref: '#/components/schemas/ReservedAddr'
     patch:
       operationId: updateReservedAddr
-      summary: Update Reserved Address
+      summary: Ngrok Update Reserved Address
       description: Update attributes of a reserved address by ID.
       tags:
         - Reserved Addresses
@@ -1249,7 +1249,7 @@ paths:
                 $ref: '#/components/schemas/ReservedAddr'
     delete:
       operationId: deleteReservedAddr
-      summary: Delete Reserved Address
+      summary: Ngrok Delete Reserved Address
       description: Delete a reserved address by ID.
       tags:
         - Reserved Addresses
@@ -1263,7 +1263,7 @@ paths:
   /reserved_domains:
     post:
       operationId: createReservedDomain
-      summary: Create Reserved Domain
+      summary: Ngrok Create Reserved Domain
       description: Create a new reserved domain.
       tags:
         - Reserved Domains
@@ -1305,7 +1305,7 @@ paths:
                 $ref: '#/components/schemas/ReservedDomain'
     get:
       operationId: listReservedDomains
-      summary: List Reserved Domains
+      summary: Ngrok List Reserved Domains
       description: List all reserved domains on this account.
       tags:
         - Reserved Domains
@@ -1322,7 +1322,7 @@ paths:
   /reserved_domains/{id}:
     get:
       operationId: getReservedDomain
-      summary: Get Reserved Domain
+      summary: Ngrok Get Reserved Domain
       description: Get the details of a reserved domain by ID.
       tags:
         - Reserved Domains
@@ -1337,7 +1337,7 @@ paths:
                 $ref: '#/components/schemas/ReservedDomain'
     patch:
       operationId: updateReservedDomain
-      summary: Update Reserved Domain
+      summary: Ngrok Update Reserved Domain
       description: Update attributes of a reserved domain by ID.
       tags:
         - Reserved Domains
@@ -1372,7 +1372,7 @@ paths:
                 $ref: '#/components/schemas/ReservedDomain'
     delete:
       operationId: deleteReservedDomain
-      summary: Delete Reserved Domain
+      summary: Ngrok Delete Reserved Domain
       description: Delete a reserved domain by ID.
       tags:
         - Reserved Domains
@@ -1386,7 +1386,7 @@ paths:
   /ssh_certificate_authorities:
     post:
       operationId: createSshCertificateAuthority
-      summary: Create SSH Certificate Authority
+      summary: Ngrok Create SSH Certificate Authority
       description: Create a new SSH Certificate Authority.
       tags:
         - SSH Certificate Authorities
@@ -1419,7 +1419,7 @@ paths:
                 $ref: '#/components/schemas/SshCertificateAuthority'
     get:
       operationId: listSshCertificateAuthorities
-      summary: List SSH Certificate Authorities
+      summary: Ngrok List SSH Certificate Authorities
       description: List all SSH Certificate Authorities on this account.
       tags:
         - SSH Certificate Authorities
@@ -1436,7 +1436,7 @@ paths:
   /ssh_certificate_authorities/{id}:
     get:
       operationId: getSshCertificateAuthority
-      summary: Get SSH Certificate Authority
+      summary: Ngrok Get SSH Certificate Authority
       description: Get the details of an SSH Certificate Authority by ID.
       tags:
         - SSH Certificate Authorities
@@ -1451,7 +1451,7 @@ paths:
                 $ref: '#/components/schemas/SshCertificateAuthority'
     patch:
       operationId: updateSshCertificateAuthority
-      summary: Update SSH Certificate Authority
+      summary: Ngrok Update SSH Certificate Authority
       description: Update an SSH Certificate Authority by ID.
       tags:
         - SSH Certificate Authorities
@@ -1477,7 +1477,7 @@ paths:
                 $ref: '#/components/schemas/SshCertificateAuthority'
     delete:
       operationId: deleteSshCertificateAuthority
-      summary: Delete SSH Certificate Authority
+      summary: Ngrok Delete SSH Certificate Authority
       description: Delete an SSH Certificate Authority by ID.
       tags:
         - SSH Certificate Authorities
@@ -1491,7 +1491,7 @@ paths:
   /ssh_credentials:
     post:
       operationId: createSshCredential
-      summary: Create SSH Credential
+      summary: Ngrok Create SSH Credential
       description: Create a new SSH credential for authenticating to ngrok tunnels.
       tags:
         - SSH Credentials
@@ -1526,7 +1526,7 @@ paths:
                 $ref: '#/components/schemas/SshCredential'
     get:
       operationId: listSshCredentials
-      summary: List SSH Credentials
+      summary: Ngrok List SSH Credentials
       description: List all SSH credentials on this account.
       tags:
         - SSH Credentials
@@ -1543,7 +1543,7 @@ paths:
   /ssh_credentials/{id}:
     get:
       operationId: getSshCredential
-      summary: Get SSH Credential
+      summary: Ngrok Get SSH Credential
       description: Get the details of an SSH credential by ID.
       tags:
         - SSH Credentials
@@ -1558,7 +1558,7 @@ paths:
                 $ref: '#/components/schemas/SshCredential'
     patch:
       operationId: updateSshCredential
-      summary: Update SSH Credential
+      summary: Ngrok Update SSH Credential
       description: Update attributes of an SSH credential by ID.
       tags:
         - SSH Credentials
@@ -1588,7 +1588,7 @@ paths:
                 $ref: '#/components/schemas/SshCredential'
     delete:
       operationId: deleteSshCredential
-      summary: Delete SSH Credential
+      summary: Ngrok Delete SSH Credential
       description: Delete an SSH credential by ID.
       tags:
         - SSH Credentials
@@ -1602,7 +1602,7 @@ paths:
   /ssh_host_certificates:
     post:
       operationId: createSshHostCertificate
-      summary: Create SSH Host Certificate
+      summary: Ngrok Create SSH Host Certificate
       description: Create a new SSH Host Certificate.
       tags:
         - SSH Host Certificates
@@ -1643,7 +1643,7 @@ paths:
                 $ref: '#/components/schemas/SshHostCertificate'
     get:
       operationId: listSshHostCertificates
-      summary: List SSH Host Certificates
+      summary: Ngrok List SSH Host Certificates
       description: List all SSH Host Certificates on this account.
       tags:
         - SSH Host Certificates
@@ -1660,7 +1660,7 @@ paths:
   /ssh_host_certificates/{id}:
     get:
       operationId: getSshHostCertificate
-      summary: Get SSH Host Certificate
+      summary: Ngrok Get SSH Host Certificate
       description: Get the details of an SSH Host Certificate by ID.
       tags:
         - SSH Host Certificates
@@ -1675,7 +1675,7 @@ paths:
                 $ref: '#/components/schemas/SshHostCertificate'
     patch:
       operationId: updateSshHostCertificate
-      summary: Update SSH Host Certificate
+      summary: Ngrok Update SSH Host Certificate
       description: Update an SSH Host Certificate by ID.
       tags:
         - SSH Host Certificates
@@ -1701,7 +1701,7 @@ paths:
                 $ref: '#/components/schemas/SshHostCertificate'
     delete:
       operationId: deleteSshHostCertificate
-      summary: Delete SSH Host Certificate
+      summary: Ngrok Delete SSH Host Certificate
       description: Delete an SSH Host Certificate by ID.
       tags:
         - SSH Host Certificates
@@ -1715,7 +1715,7 @@ paths:
   /ssh_user_certificates:
     post:
       operationId: createSshUserCertificate
-      summary: Create SSH User Certificate
+      summary: Ngrok Create SSH User Certificate
       description: Create a new SSH User Certificate.
       tags:
         - SSH User Certificates
@@ -1764,7 +1764,7 @@ paths:
                 $ref: '#/components/schemas/SshUserCertificate'
     get:
       operationId: listSshUserCertificates
-      summary: List SSH User Certificates
+      summary: Ngrok List SSH User Certificates
       description: List all SSH User Certificates on this account.
       tags:
         - SSH User Certificates
@@ -1781,7 +1781,7 @@ paths:
   /ssh_user_certificates/{id}:
     get:
       operationId: getSshUserCertificate
-      summary: Get SSH User Certificate
+      summary: Ngrok Get SSH User Certificate
       description: Get the details of an SSH User Certificate by ID.
       tags:
         - SSH User Certificates
@@ -1796,7 +1796,7 @@ paths:
                 $ref: '#/components/schemas/SshUserCertificate'
     patch:
       operationId: updateSshUserCertificate
-      summary: Update SSH User Certificate
+      summary: Ngrok Update SSH User Certificate
       description: Update an SSH User Certificate by ID.
       tags:
         - SSH User Certificates
@@ -1822,7 +1822,7 @@ paths:
                 $ref: '#/components/schemas/SshUserCertificate'
     delete:
       operationId: deleteSshUserCertificate
-      summary: Delete SSH User Certificate
+      summary: Ngrok Delete SSH User Certificate
       description: Delete an SSH User Certificate by ID.
       tags:
         - SSH User Certificates
@@ -1836,7 +1836,7 @@ paths:
   /tls_certificates:
     post:
       operationId: createTlsCertificate
-      summary: Create TLS Certificate
+      summary: Ngrok Create TLS Certificate
       description: Upload a new TLS certificate.
       tags:
         - TLS Certificates
@@ -1869,7 +1869,7 @@ paths:
                 $ref: '#/components/schemas/TlsCertificate'
     get:
       operationId: listTlsCertificates
-      summary: List TLS Certificates
+      summary: Ngrok List TLS Certificates
       description: List all TLS certificates on this account.
       tags:
         - TLS Certificates
@@ -1886,7 +1886,7 @@ paths:
   /tls_certificates/{id}:
     get:
       operationId: getTlsCertificate
-      summary: Get TLS Certificate
+      summary: Ngrok Get TLS Certificate
       description: Get the details of a TLS certificate by ID.
       tags:
         - TLS Certificates
@@ -1901,7 +1901,7 @@ paths:
                 $ref: '#/components/schemas/TlsCertificate'
     patch:
       operationId: updateTlsCertificate
-      summary: Update TLS Certificate
+      summary: Ngrok Update TLS Certificate
       description: Update attributes of a TLS certificate by ID.
       tags:
         - TLS Certificates
@@ -1927,7 +1927,7 @@ paths:
                 $ref: '#/components/schemas/TlsCertificate'
     delete:
       operationId: deleteTlsCertificate
-      summary: Delete TLS Certificate
+      summary: Ngrok Delete TLS Certificate
       description: Delete a TLS certificate by ID.
       tags:
         - TLS Certificates
@@ -1941,7 +1941,7 @@ paths:
   /tunnel_sessions:
     get:
       operationId: listTunnelSessions
-      summary: List Tunnel Sessions
+      summary: Ngrok List Tunnel Sessions
       description: List all online tunnel sessions running on this account.
       tags:
         - Tunnel Sessions
@@ -1958,7 +1958,7 @@ paths:
   /tunnel_sessions/{id}:
     get:
       operationId: getTunnelSession
-      summary: Get Tunnel Session
+      summary: Ngrok Get Tunnel Session
       description: Get the details of a tunnel session by ID.
       tags:
         - Tunnel Sessions
@@ -1974,7 +1974,7 @@ paths:
   /tunnel_sessions/{id}/restart:
     post:
       operationId: restartTunnelSession
-      summary: Restart Tunnel Session
+      summary: Ngrok Restart Tunnel Session
       description: Issues a command to the ngrok agent to restart a tunnel session.
       tags:
         - Tunnel Sessions
@@ -1986,7 +1986,7 @@ paths:
   /tunnel_sessions/{id}/stop:
     post:
       operationId: stopTunnelSession
-      summary: Stop Tunnel Session
+      summary: Ngrok Stop Tunnel Session
       description: Issues a command to the ngrok agent to stop a tunnel session.
       tags:
         - Tunnel Sessions
@@ -1998,7 +1998,7 @@ paths:
   /tunnel_sessions/{id}/update:
     post:
       operationId: updateTunnelSessionAgent
-      summary: Update Tunnel Session Agent
+      summary: Ngrok Update Tunnel Session Agent
       description: Issues a command to the ngrok agent to update itself to the latest version.
       tags:
         - Tunnel Sessions
@@ -2021,7 +2021,7 @@ paths:
   /tunnels:
     get:
       operationId: listTunnels
-      summary: List Tunnels
+      summary: Ngrok List Tunnels
       description: List all online tunnels currently running on the account.
       tags:
         - Tunnels
@@ -2038,7 +2038,7 @@ paths:
   /tunnels/{id}:
     get:
       operationId: getTunnel
-      summary: Get Tunnel
+      summary: Ngrok Get Tunnel
       description: Get the details of a tunnel by ID.
       tags:
         - Tunnels
@@ -2056,7 +2056,7 @@ paths:
   /edges/https:
     post:
       operationId: createHttpsEdge
-      summary: Create HTTPS Edge
+      summary: Ngrok Create HTTPS Edge
       description: Create an HTTPS Edge.
       tags:
         - Edges HTTPS
@@ -2085,7 +2085,7 @@ paths:
                 $ref: '#/components/schemas/HttpsEdge'
     get:
       operationId: listHttpsEdges
-      summary: List HTTPS Edges
+      summary: Ngrok List HTTPS Edges
       description: List all HTTPS Edges on this account.
       tags:
         - Edges HTTPS
@@ -2102,7 +2102,7 @@ paths:
   /edges/https/{id}:
     get:
       operationId: getHttpsEdge
-      summary: Get HTTPS Edge
+      summary: Ngrok Get HTTPS Edge
       description: Get an HTTPS Edge by ID.
       tags:
         - Edges HTTPS
@@ -2117,7 +2117,7 @@ paths:
                 $ref: '#/components/schemas/HttpsEdge'
     patch:
       operationId: updateHttpsEdge
-      summary: Update HTTPS Edge
+      summary: Ngrok Update HTTPS Edge
       description: Update an HTTPS Edge by ID.
       tags:
         - Edges HTTPS
@@ -2147,7 +2147,7 @@ paths:
                 $ref: '#/components/schemas/HttpsEdge'
     delete:
       operationId: deleteHttpsEdge
-      summary: Delete HTTPS Edge
+      summary: Ngrok Delete HTTPS Edge
       description: Delete an HTTPS Edge by ID.
       tags:
         - Edges HTTPS
@@ -2161,7 +2161,7 @@ paths:
   /edges/tcp:
     post:
       operationId: createTcpEdge
-      summary: Create TCP Edge
+      summary: Ngrok Create TCP Edge
       description: Create a TCP Edge.
       tags:
         - Edges TCP
@@ -2205,7 +2205,7 @@ paths:
                 $ref: '#/components/schemas/TcpEdge'
     get:
       operationId: listTcpEdges
-      summary: List TCP Edges
+      summary: Ngrok List TCP Edges
       description: List all TCP Edges on this account.
       tags:
         - Edges TCP
@@ -2222,7 +2222,7 @@ paths:
   /edges/tcp/{id}:
     get:
       operationId: getTcpEdge
-      summary: Get TCP Edge
+      summary: Ngrok Get TCP Edge
       description: Get a TCP Edge by ID.
       tags:
         - Edges TCP
@@ -2237,7 +2237,7 @@ paths:
                 $ref: '#/components/schemas/TcpEdge'
     patch:
       operationId: updateTcpEdge
-      summary: Update TCP Edge
+      summary: Ngrok Update TCP Edge
       description: Update a TCP Edge by ID.
       tags:
         - Edges TCP
@@ -2267,7 +2267,7 @@ paths:
                 $ref: '#/components/schemas/TcpEdge'
     delete:
       operationId: deleteTcpEdge
-      summary: Delete TCP Edge
+      summary: Ngrok Delete TCP Edge
       description: Delete a TCP Edge by ID.
       tags:
         - Edges TCP
@@ -2281,7 +2281,7 @@ paths:
   /edges/tls:
     post:
       operationId: createTlsEdge
-      summary: Create TLS Edge
+      summary: Ngrok Create TLS Edge
       description: Create a TLS Edge.
       tags:
         - Edges TLS
@@ -2341,7 +2341,7 @@ paths:
                 $ref: '#/components/schemas/TlsEdge'
     get:
       operationId: listTlsEdges
-      summary: List TLS Edges
+      summary: Ngrok List TLS Edges
       description: List all TLS Edges on this account.
       tags:
         - Edges TLS
@@ -2358,7 +2358,7 @@ paths:
   /edges/tls/{id}:
     get:
       operationId: getTlsEdge
-      summary: Get TLS Edge
+      summary: Ngrok Get TLS Edge
       description: Get a TLS Edge by ID.
       tags:
         - Edges TLS
@@ -2373,7 +2373,7 @@ paths:
                 $ref: '#/components/schemas/TlsEdge'
     patch:
       operationId: updateTlsEdge
-      summary: Update TLS Edge
+      summary: Ngrok Update TLS Edge
       description: Update a TLS Edge by ID.
       tags:
         - Edges TLS
@@ -2403,7 +2403,7 @@ paths:
                 $ref: '#/components/schemas/TlsEdge'
     delete:
       operationId: deleteTlsEdge
-      summary: Delete TLS Edge
+      summary: Ngrok Delete TLS Edge
       description: Delete a TLS Edge by ID.
       tags:
         - Edges TLS
@@ -2417,7 +2417,7 @@ paths:
   /backends/tunnel_group:
     post:
       operationId: createTunnelGroupBackend
-      summary: Create Tunnel Group Backend
+      summary: Ngrok Create Tunnel Group Backend
       description: Create a new Tunnel Group backend.
       tags:
         - Backends
@@ -2446,7 +2446,7 @@ paths:
                 $ref: '#/components/schemas/TunnelGroupBackend'
     get:
       operationId: listTunnelGroupBackends
-      summary: List Tunnel Group Backends
+      summary: Ngrok List Tunnel Group Backends
       description: List all Tunnel Group backends on this account.
       tags:
         - Backends
@@ -2463,7 +2463,7 @@ paths:
   /backends/tunnel_group/{id}:
     get:
       operationId: getTunnelGroupBackend
-      summary: Get Tunnel Group Backend
+      summary: Ngrok Get Tunnel Group Backend
       description: Get a Tunnel Group backend by ID.
       tags:
         - Backends
@@ -2478,7 +2478,7 @@ paths:
                 $ref: '#/components/schemas/TunnelGroupBackend'
     patch:
       operationId: updateTunnelGroupBackend
-      summary: Update Tunnel Group Backend
+      summary: Ngrok Update Tunnel Group Backend
       description: Update a Tunnel Group backend by ID.
       tags:
         - Backends
@@ -2508,7 +2508,7 @@ paths:
                 $ref: '#/components/schemas/TunnelGroupBackend'
     delete:
       operationId: deleteTunnelGroupBackend
-      summary: Delete Tunnel Group Backend
+      summary: Ngrok Delete Tunnel Group Backend
       description: Delete a Tunnel Group backend by ID.
       tags:
         - Backends
@@ -2522,7 +2522,7 @@ paths:
   /backends/weighted:
     post:
       operationId: createWeightedBackend
-      summary: Create Weighted Backend
+      summary: Ngrok Create Weighted Backend
       description: Create a new Weighted backend.
       tags:
         - Backends
@@ -2551,7 +2551,7 @@ paths:
                 $ref: '#/components/schemas/WeightedBackend'
     get:
       operationId: listWeightedBackends
-      summary: List Weighted Backends
+      summary: Ngrok List Weighted Backends
       description: List all Weighted backends on this account.
       tags:
         - Backends
@@ -2568,7 +2568,7 @@ paths:
   /backends/weighted/{id}:
     get:
       operationId: getWeightedBackend
-      summary: Get Weighted Backend
+      summary: Ngrok Get Weighted Backend
       description: Get a Weighted backend by ID.
       tags:
         - Backends
@@ -2583,7 +2583,7 @@ paths:
                 $ref: '#/components/schemas/WeightedBackend'
     patch:
       operationId: updateWeightedBackend
-      summary: Update Weighted Backend
+      summary: Ngrok Update Weighted Backend
       description: Update a Weighted backend by ID.
       tags:
         - Backends
@@ -2613,7 +2613,7 @@ paths:
                 $ref: '#/components/schemas/WeightedBackend'
     delete:
       operationId: deleteWeightedBackend
-      summary: Delete Weighted Backend
+      summary: Ngrok Delete Weighted Backend
       description: Delete a Weighted backend by ID.
       tags:
         - Backends
@@ -2627,7 +2627,7 @@ paths:
   /backends/failover:
     post:
       operationId: createFailoverBackend
-      summary: Create Failover Backend
+      summary: Ngrok Create Failover Backend
       description: Create a new Failover backend.
       tags:
         - Backends
@@ -2656,7 +2656,7 @@ paths:
                 $ref: '#/components/schemas/FailoverBackend'
     get:
       operationId: listFailoverBackends
-      summary: List Failover Backends
+      summary: Ngrok List Failover Backends
       description: List all Failover backends on this account.
       tags:
         - Backends
@@ -2673,7 +2673,7 @@ paths:
   /backends/failover/{id}:
     get:
       operationId: getFailoverBackend
-      summary: Get Failover Backend
+      summary: Ngrok Get Failover Backend
       description: Get a Failover backend by ID.
       tags:
         - Backends
@@ -2688,7 +2688,7 @@ paths:
                 $ref: '#/components/schemas/FailoverBackend'
     patch:
       operationId: updateFailoverBackend
-      summary: Update Failover Backend
+      summary: Ngrok Update Failover Backend
       description: Update a Failover backend by ID.
       tags:
         - Backends
@@ -2718,7 +2718,7 @@ paths:
                 $ref: '#/components/schemas/FailoverBackend'
     delete:
       operationId: deleteFailoverBackend
-      summary: Delete Failover Backend
+      summary: Ngrok Delete Failover Backend
       description: Delete a Failover backend by ID.
       tags:
         - Backends
@@ -2732,7 +2732,7 @@ paths:
   /backends/http_response:
     post:
       operationId: createHttpResponseBackend
-      summary: Create HTTP Response Backend
+      summary: Ngrok Create HTTP Response Backend
       description: Create a new HTTP Response backend that returns a static response.
       tags:
         - Backends
@@ -2767,7 +2767,7 @@ paths:
                 $ref: '#/components/schemas/HttpResponseBackend'
     get:
       operationId: listHttpResponseBackends
-      summary: List HTTP Response Backends
+      summary: Ngrok List HTTP Response Backends
       description: List all HTTP Response backends on this account.
       tags:
         - Backends
@@ -2784,7 +2784,7 @@ paths:
   /backends/http_response/{id}:
     get:
       operationId: getHttpResponseBackend
-      summary: Get HTTP Response Backend
+      summary: Ngrok Get HTTP Response Backend
       description: Get an HTTP Response backend by ID.
       tags:
         - Backends
@@ -2799,7 +2799,7 @@ paths:
                 $ref: '#/components/schemas/HttpResponseBackend'
     patch:
       operationId: updateHttpResponseBackend
-      summary: Update HTTP Response Backend
+      summary: Ngrok Update HTTP Response Backend
       description: Update an HTTP Response backend by ID.
       tags:
         - Backends
@@ -2833,7 +2833,7 @@ paths:
                 $ref: '#/components/schemas/HttpResponseBackend'
     delete:
       operationId: deleteHttpResponseBackend
-      summary: Delete HTTP Response Backend
+      summary: Ngrok Delete HTTP Response Backend
       description: Delete an HTTP Response backend by ID.
       tags:
         - Backends
@@ -2847,7 +2847,7 @@ paths:
   /backends/static_address:
     post:
       operationId: createStaticAddressBackend
-      summary: Create Static Address Backend
+      summary: Ngrok Create Static Address Backend
       description: Create a new Static Address backend.
       tags:
         - Backends
@@ -2879,7 +2879,7 @@ paths:
                 $ref: '#/components/schemas/StaticAddressBackend'
     get:
       operationId: listStaticAddressBackends
-      summary: List Static Address Backends
+      summary: Ngrok List Static Address Backends
       description: List all Static Address backends on this account.
       tags:
         - Backends
@@ -2896,7 +2896,7 @@ paths:
   /backends/static_address/{id}:
     get:
       operationId: getStaticAddressBackend
-      summary: Get Static Address Backend
+      summary: Ngrok Get Static Address Backend
       description: Get a Static Address backend by ID.
       tags:
         - Backends
@@ -2911,7 +2911,7 @@ paths:
                 $ref: '#/components/schemas/StaticAddressBackend'
     patch:
       operationId: updateStaticAddressBackend
-      summary: Update Static Address Backend
+      summary: Ngrok Update Static Address Backend
       description: Update a Static Address backend by ID.
       tags:
         - Backends
@@ -2939,7 +2939,7 @@ paths:
                 $ref: '#/components/schemas/StaticAddressBackend'
     delete:
       operationId: deleteStaticAddressBackend
-      summary: Delete Static Address Backend
+      summary: Ngrok Delete Static Address Backend
       description: Delete a Static Address backend by ID.
       tags:
         - Backends

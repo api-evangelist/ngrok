@@ -46,14 +46,11 @@ apis:
       - url: json-ld/ngrok-context.jsonld
         type: JSONLD
     description: >-
-      The ngrok API provides programmatic access to all of ngrok's resources.
-      The API is REST-ish. It follows most of the conventions of a REST API but
-      diverges slightly when the REST model does not fit well. The API listens
-      only on port 443 to help avoid any accidental unencrypted requests. All
-      API access requires an API key. Resources include endpoints, tunnels,
-      edges (HTTPS, TCP, TLS), backends, reserved domains and addresses, IP
-      policies and restrictions, TLS and SSH certificates, event subscriptions,
-      API keys, and credentials.
+      The ngrok API provides programmatic access to all of ngrok's resources. The
+      API is REST-ish. It follows most of the conventions of a REST API but diverges
+      slightly when the REST model does not fit well. The API listens only on port
+      443 to help avoid any accidental unencrypted requests. All API access requires
+      an API key.
 name: Ngrok
 tags:
   - Gateways
@@ -96,14 +93,11 @@ created: '2025-01-08'
 modified: '2026-03-16'
 position: Consumer
 description: >-
-  Ngrok is a service that creates secure tunnels to local servers, allowing them
-  to be accessed remotely over the internet. This means that developers can
-  easily test and share their web applications without having to deploy them to
-  a public server. Ngrok provides a unique URL for each tunnel, making it simple
-  to share the application with others for testing or demonstration purposes.
-  Additionally, Ngrok offers features such as TCP tunneling, custom headers, and
-  password protection to ensure secure and customizable remote access to local
-  servers.
+  Ngrok is a service that creates secure tunnels to local servers, allowing them to
+  be accessed remotely over the internet. This means that developers can easily test
+  and share their web applications without having to deploy them to a public server.
+  Ngrok provides a unique URL for each tunnel, making it simple to share the application
+  with others for testing or demonstration purposes.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
