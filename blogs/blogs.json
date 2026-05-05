@@ -1,0 +1,13 @@
+{
+  "repo": "ngrok",
+  "feeds": [
+    {
+      "source": "https://ngrok.com/blog",
+      "feed_url": "https://ngrok.com/blog/rss.xml",
+      "saved": 10,
+      "title": "[ngrok news]"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:32:52Z"
+}
