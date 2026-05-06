@@ -1,0 +1,1795 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most
+    of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on
+    port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  tags:
+  - Ngrok
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok
+    baseUri: https://api.ngrok.com
+    description: Ngrok API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{NGROK_TOKEN}}'
+    resources:
+    - name: abuse-reports
+      path: /abuse_reports
+      operations:
+      - name: createabusereport
+        method: POST
+        description: Ngrok Create Abuse Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: abuse-reports-id
+      path: /abuse_reports/{id}
+      operations:
+      - name: getabusereport
+        method: GET
+        description: Ngrok Get Abuse Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: agent-ingresses
+      path: /agent_ingresses
+      operations:
+      - name: createagentingress
+        method: POST
+        description: Ngrok Create Agent Ingress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listagentingresses
+        method: GET
+        description: Ngrok List Agent Ingresses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: agent-ingresses-id
+      path: /agent_ingresses/{id}
+      operations:
+      - name: getagentingress
+        method: GET
+        description: Ngrok Get Agent Ingress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateagentingress
+        method: PATCH
+        description: Ngrok Update Agent Ingress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteagentingress
+        method: DELETE
+        description: Ngrok Delete Agent Ingress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-keys
+      path: /api_keys
+      operations:
+      - name: createapikey
+        method: POST
+        description: Ngrok Create API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listapikeys
+        method: GET
+        description: Ngrok List API Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-keys-id
+      path: /api_keys/{id}
+      operations:
+      - name: getapikey
+        method: GET
+        description: Ngrok Get API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateapikey
+        method: PATCH
+        description: Ngrok Update API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteapikey
+        method: DELETE
+        description: Ngrok Delete API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: certificate-authorities
+      path: /certificate_authorities
+      operations:
+      - name: createcertificateauthority
+        method: POST
+        description: Ngrok Create Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listcertificateauthorities
+        method: GET
+        description: Ngrok List Certificate Authorities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: certificate-authorities-id
+      path: /certificate_authorities/{id}
+      operations:
+      - name: getcertificateauthority
+        method: GET
+        description: Ngrok Get Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecertificateauthority
+        method: PATCH
+        description: Ngrok Update Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecertificateauthority
+        method: DELETE
+        description: Ngrok Delete Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: credentials
+      path: /credentials
+      operations:
+      - name: createcredential
+        method: POST
+        description: Ngrok Create Credential
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listcredentials
+        method: GET
+        description: Ngrok List Credentials
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: credentials-id
+      path: /credentials/{id}
+      operations:
+      - name: getcredential
+        method: GET
+        description: Ngrok Get Credential
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecredential
+        method: PATCH
+        description: Ngrok Update Credential
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecredential
+        method: DELETE
+        description: Ngrok Delete Credential
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: endpoints
+      path: /endpoints
+      operations:
+      - name: createendpoint
+        method: POST
+        description: Ngrok Create Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listendpoints
+        method: GET
+        description: Ngrok List Endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: endpoints-id
+      path: /endpoints/{id}
+      operations:
+      - name: getendpoint
+        method: GET
+        description: Ngrok Get Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateendpoint
+        method: PATCH
+        description: Ngrok Update Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteendpoint
+        method: DELETE
+        description: Ngrok Delete Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event-destinations
+      path: /event_destinations
+      operations:
+      - name: createeventdestination
+        method: POST
+        description: Ngrok Create Event Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listeventdestinations
+        method: GET
+        description: Ngrok List Event Destinations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event-destinations-id
+      path: /event_destinations/{id}
+      operations:
+      - name: geteventdestination
+        method: GET
+        description: Ngrok Get Event Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateeventdestination
+        method: PATCH
+        description: Ngrok Update Event Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteeventdestination
+        method: DELETE
+        description: Ngrok Delete Event Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event-subscriptions
+      path: /event_subscriptions
+      operations:
+      - name: createeventsubscription
+        method: POST
+        description: Ngrok Create Event Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listeventsubscriptions
+        method: GET
+        description: Ngrok List Event Subscriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event-subscriptions-id
+      path: /event_subscriptions/{id}
+      operations:
+      - name: geteventsubscription
+        method: GET
+        description: Ngrok Get Event Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateeventsubscription
+        method: PATCH
+        description: Ngrok Update Event Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteeventsubscription
+        method: DELETE
+        description: Ngrok Delete Event Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ip-policies
+      path: /ip_policies
+      operations:
+      - name: createippolicy
+        method: POST
+        description: Ngrok Create IP Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listippolicies
+        method: GET
+        description: Ngrok List IP Policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ip-policies-id
+      path: /ip_policies/{id}
+      operations:
+      - name: getippolicy
+        method: GET
+        description: Ngrok Get IP Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateippolicy
+        method: PATCH
+        description: Ngrok Update IP Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteippolicy
+        method: DELETE
+        description: Ngrok Delete IP Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ip-policy-rules
+      path: /ip_policy_rules
+      operations:
+      - name: createippolicyrule
+        method: POST
+        description: Ngrok Create IP Policy Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listippolicyrules
+        method: GET
+        description: Ngrok List IP Policy Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ip-policy-rules-id
+      path: /ip_policy_rules/{id}
+      operations:
+      - name: getippolicyrule
+        method: GET
+        description: Ngrok Get IP Policy Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateippolicyrule
+        method: PATCH
+        description: Ngrok Update IP Policy Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteippolicyrule
+        method: DELETE
+        description: Ngrok Delete IP Policy Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ip-restrictions
+      path: /ip_restrictions
+      operations:
+      - name: createiprestriction
+        method: POST
+        description: Ngrok Create IP Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listiprestrictions
+        method: GET
+        description: Ngrok List IP Restrictions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ip-restrictions-id
+      path: /ip_restrictions/{id}
+      operations:
+      - name: getiprestriction
+        method: GET
+        description: Ngrok Get IP Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateiprestriction
+        method: PATCH
+        description: Ngrok Update IP Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteiprestriction
+        method: DELETE
+        description: Ngrok Delete IP Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reserved-addrs
+      path: /reserved_addrs
+      operations:
+      - name: createreservedaddr
+        method: POST
+        description: Ngrok Create Reserved Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listreservedaddrs
+        method: GET
+        description: Ngrok List Reserved Addresses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reserved-addrs-id
+      path: /reserved_addrs/{id}
+      operations:
+      - name: getreservedaddr
+        method: GET
+        description: Ngrok Get Reserved Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatereservedaddr
+        method: PATCH
+        description: Ngrok Update Reserved Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletereservedaddr
+        method: DELETE
+        description: Ngrok Delete Reserved Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reserved-domains
+      path: /reserved_domains
+      operations:
+      - name: createreserveddomain
+        method: POST
+        description: Ngrok Create Reserved Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listreserveddomains
+        method: GET
+        description: Ngrok List Reserved Domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reserved-domains-id
+      path: /reserved_domains/{id}
+      operations:
+      - name: getreserveddomain
+        method: GET
+        description: Ngrok Get Reserved Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: ngrok-rest
+    description: REST adapter for Ngrok API.
+    resources:
+    - path: /abuse_reports
+      name: createabusereport
+      operations:
+      - method: POST
+        name: createabusereport
+        description: Ngrok Create Abuse Report
+        call: ngrok.createabusereport
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /abuse_reports/{id}
+      name: getabusereport
+      operations:
+      - method: GET
+        name: getabusereport
+        description: Ngrok Get Abuse Report
+        call: ngrok.getabusereport
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /agent_ingresses
+      name: createagentingress
+      operations:
+      - method: POST
+        name: createagentingress
+        description: Ngrok Create Agent Ingress
+        call: ngrok.createagentingress
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /agent_ingresses
+      name: listagentingresses
+      operations:
+      - method: GET
+        name: listagentingresses
+        description: Ngrok List Agent Ingresses
+        call: ngrok.listagentingresses
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /agent_ingresses/{id}
+      name: getagentingress
+      operations:
+      - method: GET
+        name: getagentingress
+        description: Ngrok Get Agent Ingress
+        call: ngrok.getagentingress
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /agent_ingresses/{id}
+      name: updateagentingress
+      operations:
+      - method: PATCH
+        name: updateagentingress
+        description: Ngrok Update Agent Ingress
+        call: ngrok.updateagentingress
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /agent_ingresses/{id}
+      name: deleteagentingress
+      operations:
+      - method: DELETE
+        name: deleteagentingress
+        description: Ngrok Delete Agent Ingress
+        call: ngrok.deleteagentingress
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api_keys
+      name: createapikey
+      operations:
+      - method: POST
+        name: createapikey
+        description: Ngrok Create API Key
+        call: ngrok.createapikey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api_keys
+      name: listapikeys
+      operations:
+      - method: GET
+        name: listapikeys
+        description: Ngrok List API Keys
+        call: ngrok.listapikeys
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api_keys/{id}
+      name: getapikey
+      operations:
+      - method: GET
+        name: getapikey
+        description: Ngrok Get API Key
+        call: ngrok.getapikey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api_keys/{id}
+      name: updateapikey
+      operations:
+      - method: PATCH
+        name: updateapikey
+        description: Ngrok Update API Key
+        call: ngrok.updateapikey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api_keys/{id}
+      name: deleteapikey
+      operations:
+      - method: DELETE
+        name: deleteapikey
+        description: Ngrok Delete API Key
+        call: ngrok.deleteapikey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /certificate_authorities
+      name: createcertificateauthority
+      operations:
+      - method: POST
+        name: createcertificateauthority
+        description: Ngrok Create Certificate Authority
+        call: ngrok.createcertificateauthority
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /certificate_authorities
+      name: listcertificateauthorities
+      operations:
+      - method: GET
+        name: listcertificateauthorities
+        description: Ngrok List Certificate Authorities
+        call: ngrok.listcertificateauthorities
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /certificate_authorities/{id}
+      name: getcertificateauthority
+      operations:
+      - method: GET
+        name: getcertificateauthority
+        description: Ngrok Get Certificate Authority
+        call: ngrok.getcertificateauthority
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /certificate_authorities/{id}
+      name: updatecertificateauthority
+      operations:
+      - method: PATCH
+        name: updatecertificateauthority
+        description: Ngrok Update Certificate Authority
+        call: ngrok.updatecertificateauthority
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /certificate_authorities/{id}
+      name: deletecertificateauthority
+      operations:
+      - method: DELETE
+        name: deletecertificateauthority
+        description: Ngrok Delete Certificate Authority
+        call: ngrok.deletecertificateauthority
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /credentials
+      name: createcredential
+      operations:
+      - method: POST
+        name: createcredential
+        description: Ngrok Create Credential
+        call: ngrok.createcredential
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /credentials
+      name: listcredentials
+      operations:
+      - method: GET
+        name: listcredentials
+        description: Ngrok List Credentials
+        call: ngrok.listcredentials
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /credentials/{id}
+      name: getcredential
+      operations:
+      - method: GET
+        name: getcredential
+        description: Ngrok Get Credential
+        call: ngrok.getcredential
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /credentials/{id}
+      name: updatecredential
+      operations:
+      - method: PATCH
+        name: updatecredential
+        description: Ngrok Update Credential
+        call: ngrok.updatecredential
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /credentials/{id}
+      name: deletecredential
+      operations:
+      - method: DELETE
+        name: deletecredential
+        description: Ngrok Delete Credential
+        call: ngrok.deletecredential
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /endpoints
+      name: createendpoint
+      operations:
+      - method: POST
+        name: createendpoint
+        description: Ngrok Create Endpoint
+        call: ngrok.createendpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /endpoints
+      name: listendpoints
+      operations:
+      - method: GET
+        name: listendpoints
+        description: Ngrok List Endpoints
+        call: ngrok.listendpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /endpoints/{id}
+      name: getendpoint
+      operations:
+      - method: GET
+        name: getendpoint
+        description: Ngrok Get Endpoint
+        call: ngrok.getendpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /endpoints/{id}
+      name: updateendpoint
+      operations:
+      - method: PATCH
+        name: updateendpoint
+        description: Ngrok Update Endpoint
+        call: ngrok.updateendpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /endpoints/{id}
+      name: deleteendpoint
+      operations:
+      - method: DELETE
+        name: deleteendpoint
+        description: Ngrok Delete Endpoint
+        call: ngrok.deleteendpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_destinations
+      name: createeventdestination
+      operations:
+      - method: POST
+        name: createeventdestination
+        description: Ngrok Create Event Destination
+        call: ngrok.createeventdestination
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_destinations
+      name: listeventdestinations
+      operations:
+      - method: GET
+        name: listeventdestinations
+        description: Ngrok List Event Destinations
+        call: ngrok.listeventdestinations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_destinations/{id}
+      name: geteventdestination
+      operations:
+      - method: GET
+        name: geteventdestination
+        description: Ngrok Get Event Destination
+        call: ngrok.geteventdestination
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_destinations/{id}
+      name: updateeventdestination
+      operations:
+      - method: PATCH
+        name: updateeventdestination
+        description: Ngrok Update Event Destination
+        call: ngrok.updateeventdestination
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_destinations/{id}
+      name: deleteeventdestination
+      operations:
+      - method: DELETE
+        name: deleteeventdestination
+        description: Ngrok Delete Event Destination
+        call: ngrok.deleteeventdestination
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_subscriptions
+      name: createeventsubscription
+      operations:
+      - method: POST
+        name: createeventsubscription
+        description: Ngrok Create Event Subscription
+        call: ngrok.createeventsubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_subscriptions
+      name: listeventsubscriptions
+      operations:
+      - method: GET
+        name: listeventsubscriptions
+        description: Ngrok List Event Subscriptions
+        call: ngrok.listeventsubscriptions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_subscriptions/{id}
+      name: geteventsubscription
+      operations:
+      - method: GET
+        name: geteventsubscription
+        description: Ngrok Get Event Subscription
+        call: ngrok.geteventsubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_subscriptions/{id}
+      name: updateeventsubscription
+      operations:
+      - method: PATCH
+        name: updateeventsubscription
+        description: Ngrok Update Event Subscription
+        call: ngrok.updateeventsubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event_subscriptions/{id}
+      name: deleteeventsubscription
+      operations:
+      - method: DELETE
+        name: deleteeventsubscription
+        description: Ngrok Delete Event Subscription
+        call: ngrok.deleteeventsubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policies
+      name: createippolicy
+      operations:
+      - method: POST
+        name: createippolicy
+        description: Ngrok Create IP Policy
+        call: ngrok.createippolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policies
+      name: listippolicies
+      operations:
+      - method: GET
+        name: listippolicies
+        description: Ngrok List IP Policies
+        call: ngrok.listippolicies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policies/{id}
+      name: getippolicy
+      operations:
+      - method: GET
+        name: getippolicy
+        description: Ngrok Get IP Policy
+        call: ngrok.getippolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policies/{id}
+      name: updateippolicy
+      operations:
+      - method: PATCH
+        name: updateippolicy
+        description: Ngrok Update IP Policy
+        call: ngrok.updateippolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policies/{id}
+      name: deleteippolicy
+      operations:
+      - method: DELETE
+        name: deleteippolicy
+        description: Ngrok Delete IP Policy
+        call: ngrok.deleteippolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policy_rules
+      name: createippolicyrule
+      operations:
+      - method: POST
+        name: createippolicyrule
+        description: Ngrok Create IP Policy Rule
+        call: ngrok.createippolicyrule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policy_rules
+      name: listippolicyrules
+      operations:
+      - method: GET
+        name: listippolicyrules
+        description: Ngrok List IP Policy Rules
+        call: ngrok.listippolicyrules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policy_rules/{id}
+      name: getippolicyrule
+      operations:
+      - method: GET
+        name: getippolicyrule
+        description: Ngrok Get IP Policy Rule
+        call: ngrok.getippolicyrule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policy_rules/{id}
+      name: updateippolicyrule
+      operations:
+      - method: PATCH
+        name: updateippolicyrule
+        description: Ngrok Update IP Policy Rule
+        call: ngrok.updateippolicyrule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_policy_rules/{id}
+      name: deleteippolicyrule
+      operations:
+      - method: DELETE
+        name: deleteippolicyrule
+        description: Ngrok Delete IP Policy Rule
+        call: ngrok.deleteippolicyrule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_restrictions
+      name: createiprestriction
+      operations:
+      - method: POST
+        name: createiprestriction
+        description: Ngrok Create IP Restriction
+        call: ngrok.createiprestriction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_restrictions
+      name: listiprestrictions
+      operations:
+      - method: GET
+        name: listiprestrictions
+        description: Ngrok List IP Restrictions
+        call: ngrok.listiprestrictions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_restrictions/{id}
+      name: getiprestriction
+      operations:
+      - method: GET
+        name: getiprestriction
+        description: Ngrok Get IP Restriction
+        call: ngrok.getiprestriction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_restrictions/{id}
+      name: updateiprestriction
+      operations:
+      - method: PATCH
+        name: updateiprestriction
+        description: Ngrok Update IP Restriction
+        call: ngrok.updateiprestriction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ip_restrictions/{id}
+      name: deleteiprestriction
+      operations:
+      - method: DELETE
+        name: deleteiprestriction
+        description: Ngrok Delete IP Restriction
+        call: ngrok.deleteiprestriction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reserved_addrs
+      name: createreservedaddr
+      operations:
+      - method: POST
+        name: createreservedaddr
+        description: Ngrok Create Reserved Address
+        call: ngrok.createreservedaddr
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reserved_addrs
+      name: listreservedaddrs
+      operations:
+      - method: GET
+        name: listreservedaddrs
+        description: Ngrok List Reserved Addresses
+        call: ngrok.listreservedaddrs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reserved_addrs/{id}
+      name: getreservedaddr
+      operations:
+      - method: GET
+        name: getreservedaddr
+        description: Ngrok Get Reserved Address
+        call: ngrok.getreservedaddr
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reserved_addrs/{id}
+      name: updatereservedaddr
+      operations:
+      - method: PATCH
+        name: updatereservedaddr
+        description: Ngrok Update Reserved Address
+        call: ngrok.updatereservedaddr
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reserved_addrs/{id}
+      name: deletereservedaddr
+      operations:
+      - method: DELETE
+        name: deletereservedaddr
+        description: Ngrok Delete Reserved Address
+        call: ngrok.deletereservedaddr
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reserved_domains
+      name: createreserveddomain
+      operations:
+      - method: POST
+        name: createreserveddomain
+        description: Ngrok Create Reserved Domain
+        call: ngrok.createreserveddomain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reserved_domains
+      name: listreserveddomains
+      operations:
+      - method: GET
+        name: listreserveddomains
+        description: Ngrok List Reserved Domains
+        call: ngrok.listreserveddomains
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /reserved_domains/{id}
+      name: getreserveddomain
+      operations:
+      - method: GET
+        name: getreserveddomain
+        description: Ngrok Get Reserved Domain
+        call: ngrok.getreserveddomain
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: ngrok-mcp
+    transport: http
+    description: MCP adapter for Ngrok API for AI agent use.
+    tools:
+    - name: createabusereport
+      description: Ngrok Create Abuse Report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createabusereport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getabusereport
+      description: Ngrok Get Abuse Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getabusereport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createagentingress
+      description: Ngrok Create Agent Ingress
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createagentingress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listagentingresses
+      description: Ngrok List Agent Ingresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listagentingresses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getagentingress
+      description: Ngrok Get Agent Ingress
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getagentingress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateagentingress
+      description: Ngrok Update Agent Ingress
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updateagentingress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteagentingress
+      description: Ngrok Delete Agent Ingress
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deleteagentingress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createapikey
+      description: Ngrok Create API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createapikey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listapikeys
+      description: Ngrok List API Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listapikeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapikey
+      description: Ngrok Get API Key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getapikey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateapikey
+      description: Ngrok Update API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updateapikey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapikey
+      description: Ngrok Delete API Key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deleteapikey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createcertificateauthority
+      description: Ngrok Create Certificate Authority
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createcertificateauthority
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcertificateauthorities
+      description: Ngrok List Certificate Authorities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listcertificateauthorities
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcertificateauthority
+      description: Ngrok Get Certificate Authority
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getcertificateauthority
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatecertificateauthority
+      description: Ngrok Update Certificate Authority
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updatecertificateauthority
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletecertificateauthority
+      description: Ngrok Delete Certificate Authority
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deletecertificateauthority
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createcredential
+      description: Ngrok Create Credential
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createcredential
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcredentials
+      description: Ngrok List Credentials
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listcredentials
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcredential
+      description: Ngrok Get Credential
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getcredential
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatecredential
+      description: Ngrok Update Credential
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updatecredential
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletecredential
+      description: Ngrok Delete Credential
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deletecredential
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createendpoint
+      description: Ngrok Create Endpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createendpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listendpoints
+      description: Ngrok List Endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listendpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getendpoint
+      description: Ngrok Get Endpoint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getendpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateendpoint
+      description: Ngrok Update Endpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updateendpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteendpoint
+      description: Ngrok Delete Endpoint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deleteendpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createeventdestination
+      description: Ngrok Create Event Destination
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createeventdestination
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listeventdestinations
+      description: Ngrok List Event Destinations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listeventdestinations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: geteventdestination
+      description: Ngrok Get Event Destination
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.geteventdestination
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateeventdestination
+      description: Ngrok Update Event Destination
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updateeventdestination
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteeventdestination
+      description: Ngrok Delete Event Destination
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deleteeventdestination
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createeventsubscription
+      description: Ngrok Create Event Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createeventsubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listeventsubscriptions
+      description: Ngrok List Event Subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listeventsubscriptions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: geteventsubscription
+      description: Ngrok Get Event Subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.geteventsubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateeventsubscription
+      description: Ngrok Update Event Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updateeventsubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteeventsubscription
+      description: Ngrok Delete Event Subscription
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deleteeventsubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createippolicy
+      description: Ngrok Create IP Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createippolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listippolicies
+      description: Ngrok List IP Policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listippolicies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getippolicy
+      description: Ngrok Get IP Policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getippolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateippolicy
+      description: Ngrok Update IP Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updateippolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteippolicy
+      description: Ngrok Delete IP Policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deleteippolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createippolicyrule
+      description: Ngrok Create IP Policy Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createippolicyrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listippolicyrules
+      description: Ngrok List IP Policy Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listippolicyrules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getippolicyrule
+      description: Ngrok Get IP Policy Rule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getippolicyrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateippolicyrule
+      description: Ngrok Update IP Policy Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updateippolicyrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteippolicyrule
+      description: Ngrok Delete IP Policy Rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deleteippolicyrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createiprestriction
+      description: Ngrok Create IP Restriction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createiprestriction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listiprestrictions
+      description: Ngrok List IP Restrictions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listiprestrictions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getiprestriction
+      description: Ngrok Get IP Restriction
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getiprestriction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateiprestriction
+      description: Ngrok Update IP Restriction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updateiprestriction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteiprestriction
+      description: Ngrok Delete IP Restriction
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deleteiprestriction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createreservedaddr
+      description: Ngrok Create Reserved Address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createreservedaddr
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listreservedaddrs
+      description: Ngrok List Reserved Addresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listreservedaddrs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getreservedaddr
+      description: Ngrok Get Reserved Address
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getreservedaddr
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatereservedaddr
+      description: Ngrok Update Reserved Address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.updatereservedaddr
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletereservedaddr
+      description: Ngrok Delete Reserved Address
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok.deletereservedaddr
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createreserveddomain
+      description: Ngrok Create Reserved Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok.createreserveddomain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listreserveddomains
+      description: Ngrok List Reserved Domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.listreserveddomains
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getreserveddomain
+      description: Ngrok Get Reserved Domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok.getreserveddomain
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    NGROK_TOKEN: NGROK_TOKEN
