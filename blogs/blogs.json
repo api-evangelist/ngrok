@@ -4,10 +4,10 @@
     {
       "source": "https://ngrok.com/blog",
       "feed_url": "https://ngrok.com/blog/rss.xml",
-      "saved": 10,
-      "title": "[ngrok news]"
+      "title": "[ngrok news]",
+      "saved": 0
     }
   ],
   "post_count": 10,
-  "fetched": "2026-05-03T23:32:52Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
