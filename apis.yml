@@ -126,6 +126,11 @@ common:
     title: Kubernetes Operator
   - type: X
     url: https://x.com/ngrokHQ
+  - type: Integrations
+    url: https://ngrok.com/docs/integrations
+integrations:
+  - name: light
+  - name: dark
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
