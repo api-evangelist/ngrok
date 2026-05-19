@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Edges TLS
+  description: 'Ngrok API — Edges TLS. 5 operations. Lead operation: Ngrok Create TLS Edge. Self-contained Naftiko capability
+    covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Edges TLS
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-edges-tls
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Edges TLS business capability. Self-contained, no shared references.
+    resources:
+    - name: edges-tls
+      path: /edges/tls
+      operations:
+      - name: createtlsedge
+        method: POST
+        description: Ngrok Create TLS Edge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listtlsedges
+        method: GET
+        description: Ngrok List TLS Edges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: edges-tls-id
+      path: /edges/tls/{id}
+      operations:
+      - name: gettlsedge
+        method: GET
+        description: Ngrok Get TLS Edge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetlsedge
+        method: PATCH
+        description: Ngrok Update TLS Edge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetlsedge
+        method: DELETE
+        description: Ngrok Delete TLS Edge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-edges-tls-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Edges TLS. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/edges/tls
+      name: edges-tls
+      description: REST surface for edges-tls.
+      operations:
+      - method: POST
+        name: createtlsedge
+        description: Ngrok Create TLS Edge
+        call: ngrok-edges-tls.createtlsedge
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listtlsedges
+        description: Ngrok List TLS Edges
+        call: ngrok-edges-tls.listtlsedges
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/edges/tls/{id}
+      name: edges-tls-id
+      description: REST surface for edges-tls-id.
+      operations:
+      - method: GET
+        name: gettlsedge
+        description: Ngrok Get TLS Edge
+        call: ngrok-edges-tls.gettlsedge
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetlsedge
+        description: Ngrok Update TLS Edge
+        call: ngrok-edges-tls.updatetlsedge
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetlsedge
+        description: Ngrok Delete TLS Edge
+        call: ngrok-edges-tls.deletetlsedge
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-edges-tls-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Edges TLS. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: ngrok-create-tls-edge
+      description: Ngrok Create TLS Edge
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-edges-tls.createtlsedge
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-tls-edges
+      description: Ngrok List TLS Edges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-edges-tls.listtlsedges
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-tls-edge
+      description: Ngrok Get TLS Edge
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-edges-tls.gettlsedge
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-tls-edge
+      description: Ngrok Update TLS Edge
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-edges-tls.updatetlsedge
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-tls-edge
+      description: Ngrok Delete TLS Edge
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-edges-tls.deletetlsedge
+      outputParameters:
+      - type: object
+        mapping: $.

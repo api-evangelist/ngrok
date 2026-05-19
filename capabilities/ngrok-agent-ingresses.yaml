@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Agent Ingresses
+  description: 'Ngrok API — Agent Ingresses. 5 operations. Lead operation: Ngrok Create Agent Ingress. Self-contained Naftiko
+    capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Agent Ingresses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-agent-ingresses
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Agent Ingresses business capability. Self-contained, no shared references.
+    resources:
+    - name: agent_ingresses
+      path: /agent_ingresses
+      operations:
+      - name: createagentingress
+        method: POST
+        description: Ngrok Create Agent Ingress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listagentingresses
+        method: GET
+        description: Ngrok List Agent Ingresses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: agent_ingresses-id
+      path: /agent_ingresses/{id}
+      operations:
+      - name: getagentingress
+        method: GET
+        description: Ngrok Get Agent Ingress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateagentingress
+        method: PATCH
+        description: Ngrok Update Agent Ingress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteagentingress
+        method: DELETE
+        description: Ngrok Delete Agent Ingress
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-agent-ingresses-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Agent Ingresses. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/agent-ingresses
+      name: agent-ingresses
+      description: REST surface for agent_ingresses.
+      operations:
+      - method: POST
+        name: createagentingress
+        description: Ngrok Create Agent Ingress
+        call: ngrok-agent-ingresses.createagentingress
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listagentingresses
+        description: Ngrok List Agent Ingresses
+        call: ngrok-agent-ingresses.listagentingresses
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/agent-ingresses/{id}
+      name: agent-ingresses-id
+      description: REST surface for agent_ingresses-id.
+      operations:
+      - method: GET
+        name: getagentingress
+        description: Ngrok Get Agent Ingress
+        call: ngrok-agent-ingresses.getagentingress
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateagentingress
+        description: Ngrok Update Agent Ingress
+        call: ngrok-agent-ingresses.updateagentingress
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteagentingress
+        description: Ngrok Delete Agent Ingress
+        call: ngrok-agent-ingresses.deleteagentingress
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-agent-ingresses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Agent Ingresses. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ngrok-create-agent-ingress
+      description: Ngrok Create Agent Ingress
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-agent-ingresses.createagentingress
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-agent-ingresses
+      description: Ngrok List Agent Ingresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-agent-ingresses.listagentingresses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-agent-ingress
+      description: Ngrok Get Agent Ingress
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-agent-ingresses.getagentingress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-agent-ingress
+      description: Ngrok Update Agent Ingress
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-agent-ingresses.updateagentingress
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-agent-ingress
+      description: Ngrok Delete Agent Ingress
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-agent-ingresses.deleteagentingress
+      outputParameters:
+      - type: object
+        mapping: $.

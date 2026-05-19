@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Edges TCP
+  description: 'Ngrok API — Edges TCP. 5 operations. Lead operation: Ngrok Create TCP Edge. Self-contained Naftiko capability
+    covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Edges TCP
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-edges-tcp
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Edges TCP business capability. Self-contained, no shared references.
+    resources:
+    - name: edges-tcp
+      path: /edges/tcp
+      operations:
+      - name: createtcpedge
+        method: POST
+        description: Ngrok Create TCP Edge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listtcpedges
+        method: GET
+        description: Ngrok List TCP Edges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: edges-tcp-id
+      path: /edges/tcp/{id}
+      operations:
+      - name: gettcpedge
+        method: GET
+        description: Ngrok Get TCP Edge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetcpedge
+        method: PATCH
+        description: Ngrok Update TCP Edge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetcpedge
+        method: DELETE
+        description: Ngrok Delete TCP Edge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-edges-tcp-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Edges TCP. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/edges/tcp
+      name: edges-tcp
+      description: REST surface for edges-tcp.
+      operations:
+      - method: POST
+        name: createtcpedge
+        description: Ngrok Create TCP Edge
+        call: ngrok-edges-tcp.createtcpedge
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listtcpedges
+        description: Ngrok List TCP Edges
+        call: ngrok-edges-tcp.listtcpedges
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/edges/tcp/{id}
+      name: edges-tcp-id
+      description: REST surface for edges-tcp-id.
+      operations:
+      - method: GET
+        name: gettcpedge
+        description: Ngrok Get TCP Edge
+        call: ngrok-edges-tcp.gettcpedge
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetcpedge
+        description: Ngrok Update TCP Edge
+        call: ngrok-edges-tcp.updatetcpedge
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetcpedge
+        description: Ngrok Delete TCP Edge
+        call: ngrok-edges-tcp.deletetcpedge
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-edges-tcp-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Edges TCP. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: ngrok-create-tcp-edge
+      description: Ngrok Create TCP Edge
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-edges-tcp.createtcpedge
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-tcp-edges
+      description: Ngrok List TCP Edges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-edges-tcp.listtcpedges
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-tcp-edge
+      description: Ngrok Get TCP Edge
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-edges-tcp.gettcpedge
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-tcp-edge
+      description: Ngrok Update TCP Edge
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-edges-tcp.updatetcpedge
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-tcp-edge
+      description: Ngrok Delete TCP Edge
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-edges-tcp.deletetcpedge
+      outputParameters:
+      - type: object
+        mapping: $.

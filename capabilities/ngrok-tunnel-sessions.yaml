@@ -1,0 +1,208 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Tunnel Sessions
+  description: 'Ngrok API — Tunnel Sessions. 5 operations. Lead operation: Ngrok List Tunnel Sessions. Self-contained Naftiko
+    capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Tunnel Sessions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-tunnel-sessions
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Tunnel Sessions business capability. Self-contained, no shared references.
+    resources:
+    - name: tunnel_sessions
+      path: /tunnel_sessions
+      operations:
+      - name: listtunnelsessions
+        method: GET
+        description: Ngrok List Tunnel Sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tunnel_sessions-id
+      path: /tunnel_sessions/{id}
+      operations:
+      - name: gettunnelsession
+        method: GET
+        description: Ngrok Get Tunnel Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tunnel_sessions-id-restart
+      path: /tunnel_sessions/{id}/restart
+      operations:
+      - name: restarttunnelsession
+        method: POST
+        description: Ngrok Restart Tunnel Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tunnel_sessions-id-stop
+      path: /tunnel_sessions/{id}/stop
+      operations:
+      - name: stoptunnelsession
+        method: POST
+        description: Ngrok Stop Tunnel Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tunnel_sessions-id-update
+      path: /tunnel_sessions/{id}/update
+      operations:
+      - name: updatetunnelsessionagent
+        method: POST
+        description: Ngrok Update Tunnel Session Agent
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-tunnel-sessions-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Tunnel Sessions. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/tunnel-sessions
+      name: tunnel-sessions
+      description: REST surface for tunnel_sessions.
+      operations:
+      - method: GET
+        name: listtunnelsessions
+        description: Ngrok List Tunnel Sessions
+        call: ngrok-tunnel-sessions.listtunnelsessions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tunnel-sessions/{id}
+      name: tunnel-sessions-id
+      description: REST surface for tunnel_sessions-id.
+      operations:
+      - method: GET
+        name: gettunnelsession
+        description: Ngrok Get Tunnel Session
+        call: ngrok-tunnel-sessions.gettunnelsession
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tunnel-sessions/{id}/restart
+      name: tunnel-sessions-id-restart
+      description: REST surface for tunnel_sessions-id-restart.
+      operations:
+      - method: POST
+        name: restarttunnelsession
+        description: Ngrok Restart Tunnel Session
+        call: ngrok-tunnel-sessions.restarttunnelsession
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tunnel-sessions/{id}/stop
+      name: tunnel-sessions-id-stop
+      description: REST surface for tunnel_sessions-id-stop.
+      operations:
+      - method: POST
+        name: stoptunnelsession
+        description: Ngrok Stop Tunnel Session
+        call: ngrok-tunnel-sessions.stoptunnelsession
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tunnel-sessions/{id}/update
+      name: tunnel-sessions-id-update
+      description: REST surface for tunnel_sessions-id-update.
+      operations:
+      - method: POST
+        name: updatetunnelsessionagent
+        description: Ngrok Update Tunnel Session Agent
+        call: ngrok-tunnel-sessions.updatetunnelsessionagent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-tunnel-sessions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Tunnel Sessions. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ngrok-list-tunnel-sessions
+      description: Ngrok List Tunnel Sessions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-tunnel-sessions.listtunnelsessions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-tunnel-session
+      description: Ngrok Get Tunnel Session
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-tunnel-sessions.gettunnelsession
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-restart-tunnel-session
+      description: Ngrok Restart Tunnel Session
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-tunnel-sessions.restarttunnelsession
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-stop-tunnel-session
+      description: Ngrok Stop Tunnel Session
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-tunnel-sessions.stoptunnelsession
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-tunnel-session-agent
+      description: Ngrok Update Tunnel Session Agent
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-tunnel-sessions.updatetunnelsessionagent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

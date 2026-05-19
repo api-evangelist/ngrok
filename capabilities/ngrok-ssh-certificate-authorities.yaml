@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — SSH Certificate Authorities
+  description: 'Ngrok API — SSH Certificate Authorities. 5 operations. Lead operation: Ngrok Create SSH Certificate Authority.
+    Self-contained Naftiko capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - SSH Certificate Authorities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-ssh-certificate-authorities
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — SSH Certificate Authorities business capability. Self-contained, no shared references.
+    resources:
+    - name: ssh_certificate_authorities
+      path: /ssh_certificate_authorities
+      operations:
+      - name: createsshcertificateauthority
+        method: POST
+        description: Ngrok Create SSH Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listsshcertificateauthorities
+        method: GET
+        description: Ngrok List SSH Certificate Authorities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ssh_certificate_authorities-id
+      path: /ssh_certificate_authorities/{id}
+      operations:
+      - name: getsshcertificateauthority
+        method: GET
+        description: Ngrok Get SSH Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesshcertificateauthority
+        method: PATCH
+        description: Ngrok Update SSH Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletesshcertificateauthority
+        method: DELETE
+        description: Ngrok Delete SSH Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-ssh-certificate-authorities-rest
+    port: 8080
+    description: REST adapter for Ngrok API — SSH Certificate Authorities. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/ssh-certificate-authorities
+      name: ssh-certificate-authorities
+      description: REST surface for ssh_certificate_authorities.
+      operations:
+      - method: POST
+        name: createsshcertificateauthority
+        description: Ngrok Create SSH Certificate Authority
+        call: ngrok-ssh-certificate-authorities.createsshcertificateauthority
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listsshcertificateauthorities
+        description: Ngrok List SSH Certificate Authorities
+        call: ngrok-ssh-certificate-authorities.listsshcertificateauthorities
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ssh-certificate-authorities/{id}
+      name: ssh-certificate-authorities-id
+      description: REST surface for ssh_certificate_authorities-id.
+      operations:
+      - method: GET
+        name: getsshcertificateauthority
+        description: Ngrok Get SSH Certificate Authority
+        call: ngrok-ssh-certificate-authorities.getsshcertificateauthority
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatesshcertificateauthority
+        description: Ngrok Update SSH Certificate Authority
+        call: ngrok-ssh-certificate-authorities.updatesshcertificateauthority
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesshcertificateauthority
+        description: Ngrok Delete SSH Certificate Authority
+        call: ngrok-ssh-certificate-authorities.deletesshcertificateauthority
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-ssh-certificate-authorities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — SSH Certificate Authorities. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: ngrok-create-ssh-certificate-authority
+      description: Ngrok Create SSH Certificate Authority
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-ssh-certificate-authorities.createsshcertificateauthority
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-ssh-certificate-authorities
+      description: Ngrok List SSH Certificate Authorities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-ssh-certificate-authorities.listsshcertificateauthorities
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-ssh-certificate-authority
+      description: Ngrok Get SSH Certificate Authority
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-ssh-certificate-authorities.getsshcertificateauthority
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-ssh-certificate-authority
+      description: Ngrok Update SSH Certificate Authority
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-ssh-certificate-authorities.updatesshcertificateauthority
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-ssh-certificate-authority
+      description: Ngrok Delete SSH Certificate Authority
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-ssh-certificate-authorities.deletesshcertificateauthority
+      outputParameters:
+      - type: object
+        mapping: $.

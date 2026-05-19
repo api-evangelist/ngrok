@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Tunnels
+  description: 'Ngrok API — Tunnels. 2 operations. Lead operation: Ngrok List Tunnels. Self-contained Naftiko capability covering
+    one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Tunnels
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-tunnels
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Tunnels business capability. Self-contained, no shared references.
+    resources:
+    - name: tunnels
+      path: /tunnels
+      operations:
+      - name: listtunnels
+        method: GET
+        description: Ngrok List Tunnels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tunnels-id
+      path: /tunnels/{id}
+      operations:
+      - name: gettunnel
+        method: GET
+        description: Ngrok Get Tunnel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-tunnels-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Tunnels. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/tunnels
+      name: tunnels
+      description: REST surface for tunnels.
+      operations:
+      - method: GET
+        name: listtunnels
+        description: Ngrok List Tunnels
+        call: ngrok-tunnels.listtunnels
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tunnels/{id}
+      name: tunnels-id
+      description: REST surface for tunnels-id.
+      operations:
+      - method: GET
+        name: gettunnel
+        description: Ngrok Get Tunnel
+        call: ngrok-tunnels.gettunnel
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-tunnels-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Tunnels. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: ngrok-list-tunnels
+      description: Ngrok List Tunnels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-tunnels.listtunnels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-tunnel
+      description: Ngrok Get Tunnel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-tunnels.gettunnel
+      outputParameters:
+      - type: object
+        mapping: $.

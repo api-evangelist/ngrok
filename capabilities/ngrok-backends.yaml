@@ -1,0 +1,833 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Backends
+  description: 'Ngrok API — Backends. 25 operations. Lead operation: Ngrok Create Failover Backend. Self-contained Naftiko
+    capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Backends
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-backends
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Backends business capability. Self-contained, no shared references.
+    resources:
+    - name: backends-failover
+      path: /backends/failover
+      operations:
+      - name: createfailoverbackend
+        method: POST
+        description: Ngrok Create Failover Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listfailoverbackends
+        method: GET
+        description: Ngrok List Failover Backends
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-failover-id
+      path: /backends/failover/{id}
+      operations:
+      - name: getfailoverbackend
+        method: GET
+        description: Ngrok Get Failover Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatefailoverbackend
+        method: PATCH
+        description: Ngrok Update Failover Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletefailoverbackend
+        method: DELETE
+        description: Ngrok Delete Failover Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-http_response
+      path: /backends/http_response
+      operations:
+      - name: createhttpresponsebackend
+        method: POST
+        description: Ngrok Create HTTP Response Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listhttpresponsebackends
+        method: GET
+        description: Ngrok List HTTP Response Backends
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-http_response-id
+      path: /backends/http_response/{id}
+      operations:
+      - name: gethttpresponsebackend
+        method: GET
+        description: Ngrok Get HTTP Response Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatehttpresponsebackend
+        method: PATCH
+        description: Ngrok Update HTTP Response Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletehttpresponsebackend
+        method: DELETE
+        description: Ngrok Delete HTTP Response Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-static_address
+      path: /backends/static_address
+      operations:
+      - name: createstaticaddressbackend
+        method: POST
+        description: Ngrok Create Static Address Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: liststaticaddressbackends
+        method: GET
+        description: Ngrok List Static Address Backends
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-static_address-id
+      path: /backends/static_address/{id}
+      operations:
+      - name: getstaticaddressbackend
+        method: GET
+        description: Ngrok Get Static Address Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatestaticaddressbackend
+        method: PATCH
+        description: Ngrok Update Static Address Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletestaticaddressbackend
+        method: DELETE
+        description: Ngrok Delete Static Address Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-tunnel_group
+      path: /backends/tunnel_group
+      operations:
+      - name: createtunnelgroupbackend
+        method: POST
+        description: Ngrok Create Tunnel Group Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listtunnelgroupbackends
+        method: GET
+        description: Ngrok List Tunnel Group Backends
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-tunnel_group-id
+      path: /backends/tunnel_group/{id}
+      operations:
+      - name: gettunnelgroupbackend
+        method: GET
+        description: Ngrok Get Tunnel Group Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetunnelgroupbackend
+        method: PATCH
+        description: Ngrok Update Tunnel Group Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetunnelgroupbackend
+        method: DELETE
+        description: Ngrok Delete Tunnel Group Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-weighted
+      path: /backends/weighted
+      operations:
+      - name: createweightedbackend
+        method: POST
+        description: Ngrok Create Weighted Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listweightedbackends
+        method: GET
+        description: Ngrok List Weighted Backends
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: backends-weighted-id
+      path: /backends/weighted/{id}
+      operations:
+      - name: getweightedbackend
+        method: GET
+        description: Ngrok Get Weighted Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateweightedbackend
+        method: PATCH
+        description: Ngrok Update Weighted Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteweightedbackend
+        method: DELETE
+        description: Ngrok Delete Weighted Backend
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-backends-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Backends. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/backends/failover
+      name: backends-failover
+      description: REST surface for backends-failover.
+      operations:
+      - method: POST
+        name: createfailoverbackend
+        description: Ngrok Create Failover Backend
+        call: ngrok-backends.createfailoverbackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listfailoverbackends
+        description: Ngrok List Failover Backends
+        call: ngrok-backends.listfailoverbackends
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/failover/{id}
+      name: backends-failover-id
+      description: REST surface for backends-failover-id.
+      operations:
+      - method: GET
+        name: getfailoverbackend
+        description: Ngrok Get Failover Backend
+        call: ngrok-backends.getfailoverbackend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatefailoverbackend
+        description: Ngrok Update Failover Backend
+        call: ngrok-backends.updatefailoverbackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefailoverbackend
+        description: Ngrok Delete Failover Backend
+        call: ngrok-backends.deletefailoverbackend
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/http-response
+      name: backends-http-response
+      description: REST surface for backends-http_response.
+      operations:
+      - method: POST
+        name: createhttpresponsebackend
+        description: Ngrok Create HTTP Response Backend
+        call: ngrok-backends.createhttpresponsebackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listhttpresponsebackends
+        description: Ngrok List HTTP Response Backends
+        call: ngrok-backends.listhttpresponsebackends
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/http-response/{id}
+      name: backends-http-response-id
+      description: REST surface for backends-http_response-id.
+      operations:
+      - method: GET
+        name: gethttpresponsebackend
+        description: Ngrok Get HTTP Response Backend
+        call: ngrok-backends.gethttpresponsebackend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatehttpresponsebackend
+        description: Ngrok Update HTTP Response Backend
+        call: ngrok-backends.updatehttpresponsebackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletehttpresponsebackend
+        description: Ngrok Delete HTTP Response Backend
+        call: ngrok-backends.deletehttpresponsebackend
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/static-address
+      name: backends-static-address
+      description: REST surface for backends-static_address.
+      operations:
+      - method: POST
+        name: createstaticaddressbackend
+        description: Ngrok Create Static Address Backend
+        call: ngrok-backends.createstaticaddressbackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: liststaticaddressbackends
+        description: Ngrok List Static Address Backends
+        call: ngrok-backends.liststaticaddressbackends
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/static-address/{id}
+      name: backends-static-address-id
+      description: REST surface for backends-static_address-id.
+      operations:
+      - method: GET
+        name: getstaticaddressbackend
+        description: Ngrok Get Static Address Backend
+        call: ngrok-backends.getstaticaddressbackend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatestaticaddressbackend
+        description: Ngrok Update Static Address Backend
+        call: ngrok-backends.updatestaticaddressbackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletestaticaddressbackend
+        description: Ngrok Delete Static Address Backend
+        call: ngrok-backends.deletestaticaddressbackend
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/tunnel-group
+      name: backends-tunnel-group
+      description: REST surface for backends-tunnel_group.
+      operations:
+      - method: POST
+        name: createtunnelgroupbackend
+        description: Ngrok Create Tunnel Group Backend
+        call: ngrok-backends.createtunnelgroupbackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listtunnelgroupbackends
+        description: Ngrok List Tunnel Group Backends
+        call: ngrok-backends.listtunnelgroupbackends
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/tunnel-group/{id}
+      name: backends-tunnel-group-id
+      description: REST surface for backends-tunnel_group-id.
+      operations:
+      - method: GET
+        name: gettunnelgroupbackend
+        description: Ngrok Get Tunnel Group Backend
+        call: ngrok-backends.gettunnelgroupbackend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetunnelgroupbackend
+        description: Ngrok Update Tunnel Group Backend
+        call: ngrok-backends.updatetunnelgroupbackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetunnelgroupbackend
+        description: Ngrok Delete Tunnel Group Backend
+        call: ngrok-backends.deletetunnelgroupbackend
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/weighted
+      name: backends-weighted
+      description: REST surface for backends-weighted.
+      operations:
+      - method: POST
+        name: createweightedbackend
+        description: Ngrok Create Weighted Backend
+        call: ngrok-backends.createweightedbackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listweightedbackends
+        description: Ngrok List Weighted Backends
+        call: ngrok-backends.listweightedbackends
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/backends/weighted/{id}
+      name: backends-weighted-id
+      description: REST surface for backends-weighted-id.
+      operations:
+      - method: GET
+        name: getweightedbackend
+        description: Ngrok Get Weighted Backend
+        call: ngrok-backends.getweightedbackend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateweightedbackend
+        description: Ngrok Update Weighted Backend
+        call: ngrok-backends.updateweightedbackend
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteweightedbackend
+        description: Ngrok Delete Weighted Backend
+        call: ngrok-backends.deleteweightedbackend
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-backends-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Backends. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: ngrok-create-failover-backend
+      description: Ngrok Create Failover Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-backends.createfailoverbackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-failover-backends
+      description: Ngrok List Failover Backends
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.listfailoverbackends
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-failover-backend
+      description: Ngrok Get Failover Backend
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.getfailoverbackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-failover-backend
+      description: Ngrok Update Failover Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.updatefailoverbackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-failover-backend
+      description: Ngrok Delete Failover Backend
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-backends.deletefailoverbackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-create-http-response-backend
+      description: Ngrok Create HTTP Response Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-backends.createhttpresponsebackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-http-response-backends
+      description: Ngrok List HTTP Response Backends
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.listhttpresponsebackends
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-http-response-backend
+      description: Ngrok Get HTTP Response Backend
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.gethttpresponsebackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-http-response-backend
+      description: Ngrok Update HTTP Response Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.updatehttpresponsebackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-http-response-backend
+      description: Ngrok Delete HTTP Response Backend
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-backends.deletehttpresponsebackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-create-static-address-backend
+      description: Ngrok Create Static Address Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-backends.createstaticaddressbackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-static-address-backends
+      description: Ngrok List Static Address Backends
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.liststaticaddressbackends
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-static-address-backend
+      description: Ngrok Get Static Address Backend
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.getstaticaddressbackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-static-address-backend
+      description: Ngrok Update Static Address Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.updatestaticaddressbackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-static-address-backend
+      description: Ngrok Delete Static Address Backend
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-backends.deletestaticaddressbackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-create-tunnel-group-backend
+      description: Ngrok Create Tunnel Group Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-backends.createtunnelgroupbackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-tunnel-group-backends
+      description: Ngrok List Tunnel Group Backends
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.listtunnelgroupbackends
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-tunnel-group-backend
+      description: Ngrok Get Tunnel Group Backend
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.gettunnelgroupbackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-tunnel-group-backend
+      description: Ngrok Update Tunnel Group Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.updatetunnelgroupbackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-tunnel-group-backend
+      description: Ngrok Delete Tunnel Group Backend
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-backends.deletetunnelgroupbackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-create-weighted-backend
+      description: Ngrok Create Weighted Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-backends.createweightedbackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-weighted-backends
+      description: Ngrok List Weighted Backends
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.listweightedbackends
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-weighted-backend
+      description: Ngrok Get Weighted Backend
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.getweightedbackend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-weighted-backend
+      description: Ngrok Update Weighted Backend
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-backends.updateweightedbackend
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-weighted-backend
+      description: Ngrok Delete Weighted Backend
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-backends.deleteweightedbackend
+      outputParameters:
+      - type: object
+        mapping: $.

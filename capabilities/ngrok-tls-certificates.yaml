@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — TLS Certificates
+  description: 'Ngrok API — TLS Certificates. 5 operations. Lead operation: Ngrok Create TLS Certificate. Self-contained Naftiko
+    capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - TLS Certificates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-tls-certificates
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — TLS Certificates business capability. Self-contained, no shared references.
+    resources:
+    - name: tls_certificates
+      path: /tls_certificates
+      operations:
+      - name: createtlscertificate
+        method: POST
+        description: Ngrok Create TLS Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listtlscertificates
+        method: GET
+        description: Ngrok List TLS Certificates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tls_certificates-id
+      path: /tls_certificates/{id}
+      operations:
+      - name: gettlscertificate
+        method: GET
+        description: Ngrok Get TLS Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetlscertificate
+        method: PATCH
+        description: Ngrok Update TLS Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetlscertificate
+        method: DELETE
+        description: Ngrok Delete TLS Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-tls-certificates-rest
+    port: 8080
+    description: REST adapter for Ngrok API — TLS Certificates. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/tls-certificates
+      name: tls-certificates
+      description: REST surface for tls_certificates.
+      operations:
+      - method: POST
+        name: createtlscertificate
+        description: Ngrok Create TLS Certificate
+        call: ngrok-tls-certificates.createtlscertificate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listtlscertificates
+        description: Ngrok List TLS Certificates
+        call: ngrok-tls-certificates.listtlscertificates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tls-certificates/{id}
+      name: tls-certificates-id
+      description: REST surface for tls_certificates-id.
+      operations:
+      - method: GET
+        name: gettlscertificate
+        description: Ngrok Get TLS Certificate
+        call: ngrok-tls-certificates.gettlscertificate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetlscertificate
+        description: Ngrok Update TLS Certificate
+        call: ngrok-tls-certificates.updatetlscertificate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetlscertificate
+        description: Ngrok Delete TLS Certificate
+        call: ngrok-tls-certificates.deletetlscertificate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-tls-certificates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — TLS Certificates. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ngrok-create-tls-certificate
+      description: Ngrok Create TLS Certificate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-tls-certificates.createtlscertificate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-tls-certificates
+      description: Ngrok List TLS Certificates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-tls-certificates.listtlscertificates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-tls-certificate
+      description: Ngrok Get TLS Certificate
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-tls-certificates.gettlscertificate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-tls-certificate
+      description: Ngrok Update TLS Certificate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-tls-certificates.updatetlscertificate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-tls-certificate
+      description: Ngrok Delete TLS Certificate
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-tls-certificates.deletetlscertificate
+      outputParameters:
+      - type: object
+        mapping: $.

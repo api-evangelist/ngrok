@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Reserved Domains
+  description: 'Ngrok API — Reserved Domains. 5 operations. Lead operation: Ngrok Create Reserved Domain. Self-contained Naftiko
+    capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Reserved Domains
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-reserved-domains
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Reserved Domains business capability. Self-contained, no shared references.
+    resources:
+    - name: reserved_domains
+      path: /reserved_domains
+      operations:
+      - name: createreserveddomain
+        method: POST
+        description: Ngrok Create Reserved Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listreserveddomains
+        method: GET
+        description: Ngrok List Reserved Domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reserved_domains-id
+      path: /reserved_domains/{id}
+      operations:
+      - name: getreserveddomain
+        method: GET
+        description: Ngrok Get Reserved Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatereserveddomain
+        method: PATCH
+        description: Ngrok Update Reserved Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletereserveddomain
+        method: DELETE
+        description: Ngrok Delete Reserved Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-reserved-domains-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Reserved Domains. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/reserved-domains
+      name: reserved-domains
+      description: REST surface for reserved_domains.
+      operations:
+      - method: POST
+        name: createreserveddomain
+        description: Ngrok Create Reserved Domain
+        call: ngrok-reserved-domains.createreserveddomain
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listreserveddomains
+        description: Ngrok List Reserved Domains
+        call: ngrok-reserved-domains.listreserveddomains
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reserved-domains/{id}
+      name: reserved-domains-id
+      description: REST surface for reserved_domains-id.
+      operations:
+      - method: GET
+        name: getreserveddomain
+        description: Ngrok Get Reserved Domain
+        call: ngrok-reserved-domains.getreserveddomain
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatereserveddomain
+        description: Ngrok Update Reserved Domain
+        call: ngrok-reserved-domains.updatereserveddomain
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletereserveddomain
+        description: Ngrok Delete Reserved Domain
+        call: ngrok-reserved-domains.deletereserveddomain
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-reserved-domains-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Reserved Domains. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ngrok-create-reserved-domain
+      description: Ngrok Create Reserved Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-reserved-domains.createreserveddomain
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-reserved-domains
+      description: Ngrok List Reserved Domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-reserved-domains.listreserveddomains
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-reserved-domain
+      description: Ngrok Get Reserved Domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-reserved-domains.getreserveddomain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-reserved-domain
+      description: Ngrok Update Reserved Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-reserved-domains.updatereserveddomain
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-reserved-domain
+      description: Ngrok Delete Reserved Domain
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-reserved-domains.deletereserveddomain
+      outputParameters:
+      - type: object
+        mapping: $.

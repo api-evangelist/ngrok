@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Endpoints
+  description: 'Ngrok API — Endpoints. 5 operations. Lead operation: Ngrok Create Endpoint. Self-contained Naftiko capability
+    covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Endpoints
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-endpoints
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Endpoints business capability. Self-contained, no shared references.
+    resources:
+    - name: endpoints
+      path: /endpoints
+      operations:
+      - name: createendpoint
+        method: POST
+        description: Ngrok Create Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listendpoints
+        method: GET
+        description: Ngrok List Endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: endpoints-id
+      path: /endpoints/{id}
+      operations:
+      - name: getendpoint
+        method: GET
+        description: Ngrok Get Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateendpoint
+        method: PATCH
+        description: Ngrok Update Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteendpoint
+        method: DELETE
+        description: Ngrok Delete Endpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-endpoints-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Endpoints. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/endpoints
+      name: endpoints
+      description: REST surface for endpoints.
+      operations:
+      - method: POST
+        name: createendpoint
+        description: Ngrok Create Endpoint
+        call: ngrok-endpoints.createendpoint
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listendpoints
+        description: Ngrok List Endpoints
+        call: ngrok-endpoints.listendpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/endpoints/{id}
+      name: endpoints-id
+      description: REST surface for endpoints-id.
+      operations:
+      - method: GET
+        name: getendpoint
+        description: Ngrok Get Endpoint
+        call: ngrok-endpoints.getendpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateendpoint
+        description: Ngrok Update Endpoint
+        call: ngrok-endpoints.updateendpoint
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteendpoint
+        description: Ngrok Delete Endpoint
+        call: ngrok-endpoints.deleteendpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-endpoints-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Endpoints. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: ngrok-create-endpoint
+      description: Ngrok Create Endpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-endpoints.createendpoint
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-endpoints
+      description: Ngrok List Endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-endpoints.listendpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-endpoint
+      description: Ngrok Get Endpoint
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-endpoints.getendpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-endpoint
+      description: Ngrok Update Endpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-endpoints.updateendpoint
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-endpoint
+      description: Ngrok Delete Endpoint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-endpoints.deleteendpoint
+      outputParameters:
+      - type: object
+        mapping: $.

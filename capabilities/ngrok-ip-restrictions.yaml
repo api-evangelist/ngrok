@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — IP Restrictions
+  description: 'Ngrok API — IP Restrictions. 5 operations. Lead operation: Ngrok Create IP Restriction. Self-contained Naftiko
+    capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - IP Restrictions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-ip-restrictions
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — IP Restrictions business capability. Self-contained, no shared references.
+    resources:
+    - name: ip_restrictions
+      path: /ip_restrictions
+      operations:
+      - name: createiprestriction
+        method: POST
+        description: Ngrok Create IP Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listiprestrictions
+        method: GET
+        description: Ngrok List IP Restrictions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ip_restrictions-id
+      path: /ip_restrictions/{id}
+      operations:
+      - name: getiprestriction
+        method: GET
+        description: Ngrok Get IP Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateiprestriction
+        method: PATCH
+        description: Ngrok Update IP Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteiprestriction
+        method: DELETE
+        description: Ngrok Delete IP Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-ip-restrictions-rest
+    port: 8080
+    description: REST adapter for Ngrok API — IP Restrictions. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/ip-restrictions
+      name: ip-restrictions
+      description: REST surface for ip_restrictions.
+      operations:
+      - method: POST
+        name: createiprestriction
+        description: Ngrok Create IP Restriction
+        call: ngrok-ip-restrictions.createiprestriction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listiprestrictions
+        description: Ngrok List IP Restrictions
+        call: ngrok-ip-restrictions.listiprestrictions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ip-restrictions/{id}
+      name: ip-restrictions-id
+      description: REST surface for ip_restrictions-id.
+      operations:
+      - method: GET
+        name: getiprestriction
+        description: Ngrok Get IP Restriction
+        call: ngrok-ip-restrictions.getiprestriction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateiprestriction
+        description: Ngrok Update IP Restriction
+        call: ngrok-ip-restrictions.updateiprestriction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteiprestriction
+        description: Ngrok Delete IP Restriction
+        call: ngrok-ip-restrictions.deleteiprestriction
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-ip-restrictions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — IP Restrictions. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ngrok-create-ip-restriction
+      description: Ngrok Create IP Restriction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-ip-restrictions.createiprestriction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-ip-restrictions
+      description: Ngrok List IP Restrictions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-ip-restrictions.listiprestrictions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-ip-restriction
+      description: Ngrok Get IP Restriction
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-ip-restrictions.getiprestriction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-ip-restriction
+      description: Ngrok Update IP Restriction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-ip-restrictions.updateiprestriction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-ip-restriction
+      description: Ngrok Delete IP Restriction
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-ip-restrictions.deleteiprestriction
+      outputParameters:
+      - type: object
+        mapping: $.

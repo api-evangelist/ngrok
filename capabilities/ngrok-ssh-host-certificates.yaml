@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — SSH Host Certificates
+  description: 'Ngrok API — SSH Host Certificates. 5 operations. Lead operation: Ngrok Create SSH Host Certificate. Self-contained
+    Naftiko capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - SSH Host Certificates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-ssh-host-certificates
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — SSH Host Certificates business capability. Self-contained, no shared references.
+    resources:
+    - name: ssh_host_certificates
+      path: /ssh_host_certificates
+      operations:
+      - name: createsshhostcertificate
+        method: POST
+        description: Ngrok Create SSH Host Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listsshhostcertificates
+        method: GET
+        description: Ngrok List SSH Host Certificates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ssh_host_certificates-id
+      path: /ssh_host_certificates/{id}
+      operations:
+      - name: getsshhostcertificate
+        method: GET
+        description: Ngrok Get SSH Host Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesshhostcertificate
+        method: PATCH
+        description: Ngrok Update SSH Host Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletesshhostcertificate
+        method: DELETE
+        description: Ngrok Delete SSH Host Certificate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-ssh-host-certificates-rest
+    port: 8080
+    description: REST adapter for Ngrok API — SSH Host Certificates. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/ssh-host-certificates
+      name: ssh-host-certificates
+      description: REST surface for ssh_host_certificates.
+      operations:
+      - method: POST
+        name: createsshhostcertificate
+        description: Ngrok Create SSH Host Certificate
+        call: ngrok-ssh-host-certificates.createsshhostcertificate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listsshhostcertificates
+        description: Ngrok List SSH Host Certificates
+        call: ngrok-ssh-host-certificates.listsshhostcertificates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ssh-host-certificates/{id}
+      name: ssh-host-certificates-id
+      description: REST surface for ssh_host_certificates-id.
+      operations:
+      - method: GET
+        name: getsshhostcertificate
+        description: Ngrok Get SSH Host Certificate
+        call: ngrok-ssh-host-certificates.getsshhostcertificate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatesshhostcertificate
+        description: Ngrok Update SSH Host Certificate
+        call: ngrok-ssh-host-certificates.updatesshhostcertificate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesshhostcertificate
+        description: Ngrok Delete SSH Host Certificate
+        call: ngrok-ssh-host-certificates.deletesshhostcertificate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-ssh-host-certificates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — SSH Host Certificates. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: ngrok-create-ssh-host-certificate
+      description: Ngrok Create SSH Host Certificate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-ssh-host-certificates.createsshhostcertificate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-ssh-host-certificates
+      description: Ngrok List SSH Host Certificates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-ssh-host-certificates.listsshhostcertificates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-ssh-host-certificate
+      description: Ngrok Get SSH Host Certificate
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-ssh-host-certificates.getsshhostcertificate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-ssh-host-certificate
+      description: Ngrok Update SSH Host Certificate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-ssh-host-certificates.updatesshhostcertificate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-ssh-host-certificate
+      description: Ngrok Delete SSH Host Certificate
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-ssh-host-certificates.deletesshhostcertificate
+      outputParameters:
+      - type: object
+        mapping: $.

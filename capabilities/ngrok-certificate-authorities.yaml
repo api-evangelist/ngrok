@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Certificate Authorities
+  description: 'Ngrok API — Certificate Authorities. 5 operations. Lead operation: Ngrok Create Certificate Authority. Self-contained
+    Naftiko capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Certificate Authorities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-certificate-authorities
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Certificate Authorities business capability. Self-contained, no shared references.
+    resources:
+    - name: certificate_authorities
+      path: /certificate_authorities
+      operations:
+      - name: createcertificateauthority
+        method: POST
+        description: Ngrok Create Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listcertificateauthorities
+        method: GET
+        description: Ngrok List Certificate Authorities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: certificate_authorities-id
+      path: /certificate_authorities/{id}
+      operations:
+      - name: getcertificateauthority
+        method: GET
+        description: Ngrok Get Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecertificateauthority
+        method: PATCH
+        description: Ngrok Update Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecertificateauthority
+        method: DELETE
+        description: Ngrok Delete Certificate Authority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-certificate-authorities-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Certificate Authorities. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/certificate-authorities
+      name: certificate-authorities
+      description: REST surface for certificate_authorities.
+      operations:
+      - method: POST
+        name: createcertificateauthority
+        description: Ngrok Create Certificate Authority
+        call: ngrok-certificate-authorities.createcertificateauthority
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listcertificateauthorities
+        description: Ngrok List Certificate Authorities
+        call: ngrok-certificate-authorities.listcertificateauthorities
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/certificate-authorities/{id}
+      name: certificate-authorities-id
+      description: REST surface for certificate_authorities-id.
+      operations:
+      - method: GET
+        name: getcertificateauthority
+        description: Ngrok Get Certificate Authority
+        call: ngrok-certificate-authorities.getcertificateauthority
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecertificateauthority
+        description: Ngrok Update Certificate Authority
+        call: ngrok-certificate-authorities.updatecertificateauthority
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecertificateauthority
+        description: Ngrok Delete Certificate Authority
+        call: ngrok-certificate-authorities.deletecertificateauthority
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-certificate-authorities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Certificate Authorities. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: ngrok-create-certificate-authority
+      description: Ngrok Create Certificate Authority
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-certificate-authorities.createcertificateauthority
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-certificate-authorities
+      description: Ngrok List Certificate Authorities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-certificate-authorities.listcertificateauthorities
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-certificate-authority
+      description: Ngrok Get Certificate Authority
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-certificate-authorities.getcertificateauthority
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-certificate-authority
+      description: Ngrok Update Certificate Authority
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-certificate-authorities.updatecertificateauthority
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-certificate-authority
+      description: Ngrok Delete Certificate Authority
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-certificate-authorities.deletecertificateauthority
+      outputParameters:
+      - type: object
+        mapping: $.

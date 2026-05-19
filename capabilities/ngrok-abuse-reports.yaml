@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Abuse Reports
+  description: 'Ngrok API — Abuse Reports. 2 operations. Lead operation: Ngrok Create Abuse Report. Self-contained Naftiko
+    capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Abuse Reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-abuse-reports
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Abuse Reports business capability. Self-contained, no shared references.
+    resources:
+    - name: abuse_reports
+      path: /abuse_reports
+      operations:
+      - name: createabusereport
+        method: POST
+        description: Ngrok Create Abuse Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: abuse_reports-id
+      path: /abuse_reports/{id}
+      operations:
+      - name: getabusereport
+        method: GET
+        description: Ngrok Get Abuse Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-abuse-reports-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Abuse Reports. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/abuse-reports
+      name: abuse-reports
+      description: REST surface for abuse_reports.
+      operations:
+      - method: POST
+        name: createabusereport
+        description: Ngrok Create Abuse Report
+        call: ngrok-abuse-reports.createabusereport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/abuse-reports/{id}
+      name: abuse-reports-id
+      description: REST surface for abuse_reports-id.
+      operations:
+      - method: GET
+        name: getabusereport
+        description: Ngrok Get Abuse Report
+        call: ngrok-abuse-reports.getabusereport
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-abuse-reports-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Abuse Reports. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: ngrok-create-abuse-report
+      description: Ngrok Create Abuse Report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-abuse-reports.createabusereport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-abuse-report
+      description: Ngrok Get Abuse Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-abuse-reports.getabusereport
+      outputParameters:
+      - type: object
+        mapping: $.

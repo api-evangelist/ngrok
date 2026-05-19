@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Event Destinations
+  description: 'Ngrok API — Event Destinations. 5 operations. Lead operation: Ngrok Create Event Destination. Self-contained
+    Naftiko capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Event Destinations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-event-destinations
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Event Destinations business capability. Self-contained, no shared references.
+    resources:
+    - name: event_destinations
+      path: /event_destinations
+      operations:
+      - name: createeventdestination
+        method: POST
+        description: Ngrok Create Event Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listeventdestinations
+        method: GET
+        description: Ngrok List Event Destinations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event_destinations-id
+      path: /event_destinations/{id}
+      operations:
+      - name: geteventdestination
+        method: GET
+        description: Ngrok Get Event Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateeventdestination
+        method: PATCH
+        description: Ngrok Update Event Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteeventdestination
+        method: DELETE
+        description: Ngrok Delete Event Destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-event-destinations-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Event Destinations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/event-destinations
+      name: event-destinations
+      description: REST surface for event_destinations.
+      operations:
+      - method: POST
+        name: createeventdestination
+        description: Ngrok Create Event Destination
+        call: ngrok-event-destinations.createeventdestination
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listeventdestinations
+        description: Ngrok List Event Destinations
+        call: ngrok-event-destinations.listeventdestinations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/event-destinations/{id}
+      name: event-destinations-id
+      description: REST surface for event_destinations-id.
+      operations:
+      - method: GET
+        name: geteventdestination
+        description: Ngrok Get Event Destination
+        call: ngrok-event-destinations.geteventdestination
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateeventdestination
+        description: Ngrok Update Event Destination
+        call: ngrok-event-destinations.updateeventdestination
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteeventdestination
+        description: Ngrok Delete Event Destination
+        call: ngrok-event-destinations.deleteeventdestination
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-event-destinations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Event Destinations. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ngrok-create-event-destination
+      description: Ngrok Create Event Destination
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-event-destinations.createeventdestination
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-event-destinations
+      description: Ngrok List Event Destinations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-event-destinations.listeventdestinations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-event-destination
+      description: Ngrok Get Event Destination
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-event-destinations.geteventdestination
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-event-destination
+      description: Ngrok Update Event Destination
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-event-destinations.updateeventdestination
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-event-destination
+      description: Ngrok Delete Event Destination
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-event-destinations.deleteeventdestination
+      outputParameters:
+      - type: object
+        mapping: $.

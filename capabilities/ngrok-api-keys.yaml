@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — API Keys
+  description: 'Ngrok API — API Keys. 5 operations. Lead operation: Ngrok Create API Key. Self-contained Naftiko capability
+    covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - API Keys
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-api-keys
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — API Keys business capability. Self-contained, no shared references.
+    resources:
+    - name: api_keys
+      path: /api_keys
+      operations:
+      - name: createapikey
+        method: POST
+        description: Ngrok Create API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listapikeys
+        method: GET
+        description: Ngrok List API Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api_keys-id
+      path: /api_keys/{id}
+      operations:
+      - name: getapikey
+        method: GET
+        description: Ngrok Get API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateapikey
+        method: PATCH
+        description: Ngrok Update API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteapikey
+        method: DELETE
+        description: Ngrok Delete API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-api-keys-rest
+    port: 8080
+    description: REST adapter for Ngrok API — API Keys. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/api-keys
+      name: api-keys
+      description: REST surface for api_keys.
+      operations:
+      - method: POST
+        name: createapikey
+        description: Ngrok Create API Key
+        call: ngrok-api-keys.createapikey
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listapikeys
+        description: Ngrok List API Keys
+        call: ngrok-api-keys.listapikeys
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api-keys/{id}
+      name: api-keys-id
+      description: REST surface for api_keys-id.
+      operations:
+      - method: GET
+        name: getapikey
+        description: Ngrok Get API Key
+        call: ngrok-api-keys.getapikey
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateapikey
+        description: Ngrok Update API Key
+        call: ngrok-api-keys.updateapikey
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteapikey
+        description: Ngrok Delete API Key
+        call: ngrok-api-keys.deleteapikey
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-api-keys-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — API Keys. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: ngrok-create-api-key
+      description: Ngrok Create API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-api-keys.createapikey
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-api-keys
+      description: Ngrok List API Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-api-keys.listapikeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-api-key
+      description: Ngrok Get API Key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-api-keys.getapikey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-api-key
+      description: Ngrok Update API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-api-keys.updateapikey
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-api-key
+      description: Ngrok Delete API Key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-api-keys.deleteapikey
+      outputParameters:
+      - type: object
+        mapping: $.

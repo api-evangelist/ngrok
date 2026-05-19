@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ngrok API — Reserved Addresses
+  description: 'Ngrok API — Reserved Addresses. 5 operations. Lead operation: Ngrok Create Reserved Address. Self-contained
+    Naftiko capability covering one Ngrok business surface.'
+  tags:
+  - Ngrok
+  - Reserved Addresses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NGROK_API_KEY: NGROK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ngrok-reserved-addresses
+    baseUri: https://api.ngrok.com
+    description: Ngrok API — Reserved Addresses business capability. Self-contained, no shared references.
+    resources:
+    - name: reserved_addrs
+      path: /reserved_addrs
+      operations:
+      - name: createreservedaddr
+        method: POST
+        description: Ngrok Create Reserved Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listreservedaddrs
+        method: GET
+        description: Ngrok List Reserved Addresses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reserved_addrs-id
+      path: /reserved_addrs/{id}
+      operations:
+      - name: getreservedaddr
+        method: GET
+        description: Ngrok Get Reserved Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatereservedaddr
+        method: PATCH
+        description: Ngrok Update Reserved Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletereservedaddr
+        method: DELETE
+        description: Ngrok Delete Reserved Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.NGROK_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ngrok-reserved-addresses-rest
+    port: 8080
+    description: REST adapter for Ngrok API — Reserved Addresses. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/reserved-addrs
+      name: reserved-addrs
+      description: REST surface for reserved_addrs.
+      operations:
+      - method: POST
+        name: createreservedaddr
+        description: Ngrok Create Reserved Address
+        call: ngrok-reserved-addresses.createreservedaddr
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listreservedaddrs
+        description: Ngrok List Reserved Addresses
+        call: ngrok-reserved-addresses.listreservedaddrs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reserved-addrs/{id}
+      name: reserved-addrs-id
+      description: REST surface for reserved_addrs-id.
+      operations:
+      - method: GET
+        name: getreservedaddr
+        description: Ngrok Get Reserved Address
+        call: ngrok-reserved-addresses.getreservedaddr
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatereservedaddr
+        description: Ngrok Update Reserved Address
+        call: ngrok-reserved-addresses.updatereservedaddr
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletereservedaddr
+        description: Ngrok Delete Reserved Address
+        call: ngrok-reserved-addresses.deletereservedaddr
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ngrok-reserved-addresses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ngrok API — Reserved Addresses. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: ngrok-create-reserved-address
+      description: Ngrok Create Reserved Address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ngrok-reserved-addresses.createreservedaddr
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-list-reserved-addresses
+      description: Ngrok List Reserved Addresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-reserved-addresses.listreservedaddrs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-get-reserved-address
+      description: Ngrok Get Reserved Address
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ngrok-reserved-addresses.getreservedaddr
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-update-reserved-address
+      description: Ngrok Update Reserved Address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ngrok-reserved-addresses.updatereservedaddr
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ngrok-delete-reserved-address
+      description: Ngrok Delete Reserved Address
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ngrok-reserved-addresses.deletereservedaddr
+      outputParameters:
+      - type: object
+        mapping: $.
