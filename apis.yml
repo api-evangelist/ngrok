@@ -25,7 +25,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/ngrok/refs/heads/main/apis.yml
 created: '2025-01-08'
-modified: '2026-04-28'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
   - aid: ngrok:ngrok
@@ -128,6 +128,9 @@ common:
     url: https://x.com/ngrokHQ
   - type: Integrations
     url: https://ngrok.com/docs/integrations
+  - name: Agent Skills
+    url: https://github.com/ngrok/agent-skills
+    type: AgentSkill
 integrations:
   - name: light
   - name: dark
