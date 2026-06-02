@@ -21,7 +21,7 @@ tags:
 - Tunnels
 url: https://raw.githubusercontent.com/api-evangelist/ngrok/refs/heads/main/apis.yml
 created: '2025-01-08'
-modified: '2026-05-19'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
 - aid: ngrok:ngrok
