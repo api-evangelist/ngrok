@@ -5,7 +5,7 @@
       "source": "https://ngrok.com/blog/rss.xml",
       "feed_url": "https://ngrok.com/blog/rss.xml",
       "title": "",
-      "saved": 0,
+      "saved": 1,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 54,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 55,
+  "fetched": "2026-06-27T12:03:07Z"
 }

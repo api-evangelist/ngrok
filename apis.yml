@@ -103,16 +103,16 @@ common:
     url: https://status.ngrok.com
   - type: GitHubOrganization
     url: https://github.com/ngrok
-  - type: SDK
+  - type: SDKs
     url: https://github.com/ngrok/ngrok-go
     title: Go SDK
-  - type: SDK
+  - type: SDKs
     url: https://github.com/ngrok/ngrok-rust
     title: Rust SDK
-  - type: SDK
+  - type: SDKs
     url: https://github.com/ngrok/ngrok-javascript
     title: JavaScript SDK
-  - type: SDK
+  - type: SDKs
     url: https://github.com/ngrok/ngrok-python
     title: Python SDK
   - type: Terraform
@@ -127,8 +127,8 @@ common:
     url: https://ngrok.com/docs/integrations
   - name: Agent Skills
     url: https://github.com/ngrok/agent-skills
-    type: AgentSkill
-  - type: LLMsTxt
+    type: AgentSkills
+  - type: LlmsText
     url: https://ngrok.com/llms.txt
 integrations:
   - name: light
