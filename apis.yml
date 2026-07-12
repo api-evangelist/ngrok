@@ -81,6 +81,14 @@ apis:
         url: https://github.com/ngrok/ngrok-openapi
         title: ngrok-openapi
 common:
+  - type: TrustCenter
+    url: security/ngrok-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/ngrok-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/ngrok-domain-security.yml
+  - type: Authentication
+    url: authentication/ngrok-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/ngrok
   - type: Website

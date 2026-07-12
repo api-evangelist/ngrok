@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ngrok-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard
+    or via the API Keys endpoints.
+  sources:
+  - openapi/ngrok-api-openapi.yml
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Pass the API key in the Authorization header prefixed with 'Bearer '.
+  sources:
+  - openapi/ngrok-api-openapi.yml
