@@ -81,6 +81,8 @@ apis:
         url: https://github.com/ngrok/ngrok-openapi
         title: ngrok-openapi
 common:
+  - type: AgenticAccess
+    url: agentic-access/ngrok-agentic-access.yml
   - type: TrustCenter
     url: security/ngrok-trust-center.yml
   - type: VulnerabilityDisclosure
