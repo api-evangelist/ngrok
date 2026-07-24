@@ -1,0 +1,198 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports Agent Ingresses API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Agent Ingresses
+  description: Agent Ingresses are the addresses ngrok agents connect to.
+paths:
+  /agent_ingresses:
+    post:
+      operationId: createAgentIngress
+      summary: Ngrok Create Agent Ingress
+      description: Create a new Agent Ingress.
+      tags:
+      - Agent Ingresses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                domain:
+                  type: string
+                  description: The domain that the agent ingress will listen on.
+                certificate_management_policy:
+                  type: object
+                  properties:
+                    authority:
+                      type: string
+                    private_key_type:
+                      type: string
+      responses:
+        '201':
+          description: Agent ingress created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentIngress'
+    get:
+      operationId: listAgentIngresses
+      summary: Ngrok List Agent Ingresses
+      description: List all Agent Ingresses.
+      tags:
+      - Agent Ingresses
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of agent ingresses.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentIngressList'
+  /agent_ingresses/{id}:
+    get:
+      operationId: getAgentIngress
+      summary: Ngrok Get Agent Ingress
+      description: Get the details of an Agent Ingress by ID.
+      tags:
+      - Agent Ingresses
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Agent ingress details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentIngress'
+    patch:
+      operationId: updateAgentIngress
+      summary: Ngrok Update Agent Ingress
+      description: Update attributes of an Agent Ingress by ID.
+      tags:
+      - Agent Ingresses
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: Agent ingress updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentIngress'
+    delete:
+      operationId: deleteAgentIngress
+      summary: Ngrok Delete Agent Ingress
+      description: Delete an Agent Ingress by ID.
+      tags:
+      - Agent Ingresses
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Agent ingress deleted.
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  schemas:
+    AgentIngressList:
+      type: object
+      properties:
+        ingresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentIngress'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    AgentIngress:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        domain:
+          type: string
+        ns_targets:
+          type: array
+          items:
+            type: string
+        region_domains:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        certificate_management_policy:
+          type: object
+        certificate_management_status:
+          type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

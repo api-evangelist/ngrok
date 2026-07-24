@@ -1,0 +1,181 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports Reserved Addresses API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Reserved Addresses
+  description: Reserved Addresses are static TCP addresses for TCP tunnels.
+paths:
+  /reserved_addrs:
+    post:
+      operationId: createReservedAddr
+      summary: Ngrok Create Reserved Address
+      description: Create a new reserved address.
+      tags:
+      - Reserved Addresses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                region:
+                  type: string
+                  description: Reserve an address in a specific geographic region.
+      responses:
+        '201':
+          description: Reserved address created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedAddr'
+    get:
+      operationId: listReservedAddrs
+      summary: Ngrok List Reserved Addresses
+      description: List all reserved addresses on this account.
+      tags:
+      - Reserved Addresses
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of reserved addresses.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedAddrList'
+  /reserved_addrs/{id}:
+    get:
+      operationId: getReservedAddr
+      summary: Ngrok Get Reserved Address
+      description: Get the details of a reserved address by ID.
+      tags:
+      - Reserved Addresses
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Reserved address details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedAddr'
+    patch:
+      operationId: updateReservedAddr
+      summary: Ngrok Update Reserved Address
+      description: Update attributes of a reserved address by ID.
+      tags:
+      - Reserved Addresses
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: Reserved address updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservedAddr'
+    delete:
+      operationId: deleteReservedAddr
+      summary: Ngrok Delete Reserved Address
+      description: Delete a reserved address by ID.
+      tags:
+      - Reserved Addresses
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Reserved address deleted.
+components:
+  schemas:
+    ReservedAddr:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        addr:
+          type: string
+        region:
+          type: string
+    ReservedAddrList:
+      type: object
+      properties:
+        reserved_addrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReservedAddr'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

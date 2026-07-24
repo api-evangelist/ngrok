@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Abuse Reports
+  description: Abuse Reports allow you to submit reports of abusive endpoints.
+paths:
+  /abuse_reports:
+    post:
+      operationId: createAbuseReport
+      summary: Ngrok Create Abuse Report
+      description: Creates a new abuse report which will be reviewed by our system and abuse response team.
+      tags:
+      - Abuse Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                urls:
+                  type: array
+                  items:
+                    type: string
+                  description: A list of URLs associated with the abuse report.
+                metadata:
+                  type: string
+                  description: Arbitrary user-defined metadata.
+      responses:
+        '201':
+          description: Abuse report created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AbuseReport'
+  /abuse_reports/{id}:
+    get:
+      operationId: getAbuseReport
+      summary: Ngrok Get Abuse Report
+      description: Get the detailed status of an abuse report by ID.
+      tags:
+      - Abuse Reports
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Abuse report details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AbuseReport'
+components:
+  schemas:
+    AbuseReport:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        urls:
+          type: array
+          items:
+            type: string
+        metadata:
+          type: string
+        status:
+          type: string
+        hostnames:
+          type: array
+          items:
+            type: object
+            properties:
+              hostname:
+                type: string
+              status:
+                type: string
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

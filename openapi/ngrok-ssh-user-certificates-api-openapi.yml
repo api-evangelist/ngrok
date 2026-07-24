@@ -1,0 +1,225 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports SSH User Certificates API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: SSH User Certificates
+  description: SSH User Certificates authenticate users to ngrok SSH tunnel servers.
+paths:
+  /ssh_user_certificates:
+    post:
+      operationId: createSshUserCertificate
+      summary: Ngrok Create SSH User Certificate
+      description: Create a new SSH User Certificate.
+      tags:
+      - SSH User Certificates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ssh_certificate_authority_id
+              - public_key
+              properties:
+                ssh_certificate_authority_id:
+                  type: string
+                public_key:
+                  type: string
+                principals:
+                  type: array
+                  items:
+                    type: string
+                critical_options:
+                  type: object
+                  additionalProperties:
+                    type: string
+                extensions:
+                  type: object
+                  additionalProperties:
+                    type: string
+                valid_after:
+                  type: string
+                  format: date-time
+                valid_until:
+                  type: string
+                  format: date-time
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '201':
+          description: SSH user certificate created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshUserCertificate'
+    get:
+      operationId: listSshUserCertificates
+      summary: Ngrok List SSH User Certificates
+      description: List all SSH User Certificates on this account.
+      tags:
+      - SSH User Certificates
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of SSH user certificates.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshUserCertificateList'
+  /ssh_user_certificates/{id}:
+    get:
+      operationId: getSshUserCertificate
+      summary: Ngrok Get SSH User Certificate
+      description: Get the details of an SSH User Certificate by ID.
+      tags:
+      - SSH User Certificates
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: SSH user certificate details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshUserCertificate'
+    patch:
+      operationId: updateSshUserCertificate
+      summary: Ngrok Update SSH User Certificate
+      description: Update an SSH User Certificate by ID.
+      tags:
+      - SSH User Certificates
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: SSH user certificate updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SshUserCertificate'
+    delete:
+      operationId: deleteSshUserCertificate
+      summary: Ngrok Delete SSH User Certificate
+      description: Delete an SSH User Certificate by ID.
+      tags:
+      - SSH User Certificates
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: SSH user certificate deleted.
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  schemas:
+    SshUserCertificate:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        public_key:
+          type: string
+        key_type:
+          type: string
+        ssh_certificate_authority_id:
+          type: string
+        principals:
+          type: array
+          items:
+            type: string
+        critical_options:
+          type: object
+          additionalProperties:
+            type: string
+        extensions:
+          type: object
+          additionalProperties:
+            type: string
+        valid_after:
+          type: string
+          format: date-time
+        valid_until:
+          type: string
+          format: date-time
+        certificate:
+          type: string
+    SshUserCertificateList:
+      type: object
+      properties:
+        ssh_user_certificates:
+          type: array
+          items:
+            $ref: '#/components/schemas/SshUserCertificate'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports IP Restrictions API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: IP Restrictions
+  description: IP Restrictions apply IP Policies to specific ngrok resources.
+paths:
+  /ip_restrictions:
+    post:
+      operationId: createIpRestriction
+      summary: Ngrok Create IP Restriction
+      description: Create a new IP restriction.
+      tags:
+      - IP Restrictions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - type
+              - ip_policy_ids
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                enforced:
+                  type: boolean
+                type:
+                  type: string
+                  description: The type of IP restriction (dashboard, api, agent, endpoints).
+                ip_policy_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of IP policy IDs to enforce.
+      responses:
+        '201':
+          description: IP restriction created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpRestriction'
+    get:
+      operationId: listIpRestrictions
+      summary: Ngrok List IP Restrictions
+      description: List all IP restrictions on this account.
+      tags:
+      - IP Restrictions
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of IP restrictions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpRestrictionList'
+  /ip_restrictions/{id}:
+    get:
+      operationId: getIpRestriction
+      summary: Ngrok Get IP Restriction
+      description: Get the details of an IP restriction by ID.
+      tags:
+      - IP Restrictions
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: IP restriction details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpRestriction'
+    patch:
+      operationId: updateIpRestriction
+      summary: Ngrok Update IP Restriction
+      description: Update attributes of an IP restriction by ID.
+      tags:
+      - IP Restrictions
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                enforced:
+                  type: boolean
+                ip_policy_ids:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: IP restriction updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpRestriction'
+    delete:
+      operationId: deleteIpRestriction
+      summary: Ngrok Delete IP Restriction
+      description: Delete an IP restriction by ID.
+      tags:
+      - IP Restrictions
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: IP restriction deleted.
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  schemas:
+    IpRestrictionList:
+      type: object
+      properties:
+        ip_restrictions:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpRestriction'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+    IpRestriction:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        enforced:
+          type: boolean
+        type:
+          type: string
+        ip_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ref'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

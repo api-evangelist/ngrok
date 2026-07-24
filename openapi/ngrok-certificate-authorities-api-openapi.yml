@@ -1,0 +1,197 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports Certificate Authorities API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Certificate Authorities
+  description: Certificate Authorities are x509 certificates used for mutual TLS authentication.
+paths:
+  /certificate_authorities:
+    post:
+      operationId: createCertificateAuthority
+      summary: Ngrok Create Certificate Authority
+      description: Upload a new Certificate Authority.
+      tags:
+      - Certificate Authorities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ca_pem
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                ca_pem:
+                  type: string
+                  description: The PEM-encoded CA certificate.
+      responses:
+        '201':
+          description: Certificate authority created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateAuthority'
+    get:
+      operationId: listCertificateAuthorities
+      summary: Ngrok List Certificate Authorities
+      description: List all Certificate Authorities on this account.
+      tags:
+      - Certificate Authorities
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of certificate authorities.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateAuthorityList'
+  /certificate_authorities/{id}:
+    get:
+      operationId: getCertificateAuthority
+      summary: Ngrok Get Certificate Authority
+      description: Get the details of a Certificate Authority by ID.
+      tags:
+      - Certificate Authorities
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Certificate authority details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateAuthority'
+    patch:
+      operationId: updateCertificateAuthority
+      summary: Ngrok Update Certificate Authority
+      description: Update attributes of a Certificate Authority by ID.
+      tags:
+      - Certificate Authorities
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: Certificate authority updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateAuthority'
+    delete:
+      operationId: deleteCertificateAuthority
+      summary: Ngrok Delete Certificate Authority
+      description: Delete a Certificate Authority by ID.
+      tags:
+      - Certificate Authorities
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Certificate authority deleted.
+components:
+  schemas:
+    CertificateAuthority:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        ca_pem:
+          type: string
+        subject_common_name:
+          type: string
+        not_before:
+          type: string
+          format: date-time
+        not_after:
+          type: string
+          format: date-time
+        key_usages:
+          type: array
+          items:
+            type: string
+        extended_key_usages:
+          type: array
+          items:
+            type: string
+    CertificateAuthorityList:
+      type: object
+      properties:
+        certificate_authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/CertificateAuthority'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

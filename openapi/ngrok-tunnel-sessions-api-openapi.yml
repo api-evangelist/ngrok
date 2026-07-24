@@ -1,0 +1,177 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports Tunnel Sessions API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Tunnel Sessions
+  description: Tunnel Sessions represent running ngrok agent connections.
+paths:
+  /tunnel_sessions:
+    get:
+      operationId: listTunnelSessions
+      summary: Ngrok List Tunnel Sessions
+      description: List all online tunnel sessions running on this account.
+      tags:
+      - Tunnel Sessions
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of tunnel sessions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelSessionList'
+  /tunnel_sessions/{id}:
+    get:
+      operationId: getTunnelSession
+      summary: Ngrok Get Tunnel Session
+      description: Get the details of a tunnel session by ID.
+      tags:
+      - Tunnel Sessions
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Tunnel session details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelSession'
+  /tunnel_sessions/{id}/restart:
+    post:
+      operationId: restartTunnelSession
+      summary: Ngrok Restart Tunnel Session
+      description: Issues a command to the ngrok agent to restart a tunnel session.
+      tags:
+      - Tunnel Sessions
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Tunnel session restart issued.
+  /tunnel_sessions/{id}/stop:
+    post:
+      operationId: stopTunnelSession
+      summary: Ngrok Stop Tunnel Session
+      description: Issues a command to the ngrok agent to stop a tunnel session.
+      tags:
+      - Tunnel Sessions
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Tunnel session stop issued.
+  /tunnel_sessions/{id}/update:
+    post:
+      operationId: updateTunnelSessionAgent
+      summary: Ngrok Update Tunnel Session Agent
+      description: Issues a command to the ngrok agent to update itself to the latest version.
+      tags:
+      - Tunnel Sessions
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                version:
+                  type: string
+                  description: The version to update the agent to.
+      responses:
+        '204':
+          description: Tunnel session update issued.
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  schemas:
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+    TunnelSession:
+      type: object
+      properties:
+        agent_version:
+          type: string
+        credential:
+          $ref: '#/components/schemas/Ref'
+        id:
+          type: string
+        ip:
+          type: string
+        metadata:
+          type: string
+        os:
+          type: string
+        region:
+          type: string
+        started_at:
+          type: string
+          format: date-time
+        transport:
+          type: string
+        uri:
+          type: string
+    TunnelSessionList:
+      type: object
+      properties:
+        tunnel_sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TunnelSession'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

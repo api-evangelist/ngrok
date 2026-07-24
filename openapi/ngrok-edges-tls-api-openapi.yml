@@ -1,0 +1,226 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports Edges TLS API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Edges TLS
+  description: TLS Edges define TLS endpoints with TLS termination and mutual TLS.
+paths:
+  /edges/tls:
+    post:
+      operationId: createTlsEdge
+      summary: Ngrok Create TLS Edge
+      description: Create a TLS Edge.
+      tags:
+      - Edges TLS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                hostports:
+                  type: array
+                  items:
+                    type: string
+                backend:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    backend_id:
+                      type: string
+                ip_restriction:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    ip_policy_ids:
+                      type: array
+                      items:
+                        type: string
+                mutual_tls:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    certificate_authority_ids:
+                      type: array
+                      items:
+                        type: string
+                tls_termination:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    min_version:
+                      type: string
+      responses:
+        '201':
+          description: TLS edge created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsEdge'
+    get:
+      operationId: listTlsEdges
+      summary: Ngrok List TLS Edges
+      description: List all TLS Edges on this account.
+      tags:
+      - Edges TLS
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of TLS edges.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsEdgeList'
+  /edges/tls/{id}:
+    get:
+      operationId: getTlsEdge
+      summary: Ngrok Get TLS Edge
+      description: Get a TLS Edge by ID.
+      tags:
+      - Edges TLS
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: TLS edge details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsEdge'
+    patch:
+      operationId: updateTlsEdge
+      summary: Ngrok Update TLS Edge
+      description: Update a TLS Edge by ID.
+      tags:
+      - Edges TLS
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                hostports:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: TLS edge updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TlsEdge'
+    delete:
+      operationId: deleteTlsEdge
+      summary: Ngrok Delete TLS Edge
+      description: Delete a TLS Edge by ID.
+      tags:
+      - Edges TLS
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: TLS edge deleted.
+components:
+  schemas:
+    TlsEdgeList:
+      type: object
+      properties:
+        tls_edges:
+          type: array
+          items:
+            $ref: '#/components/schemas/TlsEdge'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    TlsEdge:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        uri:
+          type: string
+        hostports:
+          type: array
+          items:
+            type: string
+        backend:
+          type: object
+        ip_restriction:
+          type: object
+        mutual_tls:
+          type: object
+        tls_termination:
+          type: object
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

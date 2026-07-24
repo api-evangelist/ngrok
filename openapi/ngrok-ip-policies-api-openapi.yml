@@ -1,0 +1,174 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports IP Policies API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: IP Policies
+  description: IP Policies contain rules to allow or deny traffic from IP ranges.
+paths:
+  /ip_policies:
+    post:
+      operationId: createIpPolicy
+      summary: Ngrok Create IP Policy
+      description: Create a new IP policy.
+      tags:
+      - IP Policies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '201':
+          description: IP policy created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicy'
+    get:
+      operationId: listIpPolicies
+      summary: Ngrok List IP Policies
+      description: List all IP policies on this account.
+      tags:
+      - IP Policies
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of IP policies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyList'
+  /ip_policies/{id}:
+    get:
+      operationId: getIpPolicy
+      summary: Ngrok Get IP Policy
+      description: Get the details of an IP policy by ID.
+      tags:
+      - IP Policies
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: IP policy details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicy'
+    patch:
+      operationId: updateIpPolicy
+      summary: Ngrok Update IP Policy
+      description: Update attributes of an IP policy by ID.
+      tags:
+      - IP Policies
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+      responses:
+        '200':
+          description: IP policy updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicy'
+    delete:
+      operationId: deleteIpPolicy
+      summary: Ngrok Delete IP Policy
+      description: Delete an IP policy by ID.
+      tags:
+      - IP Policies
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: IP policy deleted.
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  schemas:
+    IpPolicy:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+    IpPolicyList:
+      type: object
+      properties:
+        ip_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPolicy'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

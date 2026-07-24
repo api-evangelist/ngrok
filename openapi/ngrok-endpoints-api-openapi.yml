@@ -1,0 +1,231 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports Endpoints API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Endpoints
+  description: Endpoints represent the public URLs of active tunnels and edges.
+paths:
+  /endpoints:
+    post:
+      operationId: createEndpoint
+      summary: Ngrok Create Endpoint
+      description: Create a new endpoint.
+      tags:
+      - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL for this endpoint.
+                type:
+                  type: string
+                  description: Whether the endpoint is ephemeral or edge.
+                description:
+                  type: string
+                metadata:
+                  type: string
+                bindings:
+                  type: array
+                  items:
+                    type: string
+                traffic_policy:
+                  type: string
+                  description: The traffic policy attached to this endpoint.
+      responses:
+        '201':
+          description: Endpoint created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+    get:
+      operationId: listEndpoints
+      summary: Ngrok List Endpoints
+      description: List all active endpoints on the account.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of endpoints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointList'
+  /endpoints/{id}:
+    get:
+      operationId: getEndpoint
+      summary: Ngrok Get Endpoint
+      description: Get the details of an endpoint by ID.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Endpoint details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+    patch:
+      operationId: updateEndpoint
+      summary: Ngrok Update Endpoint
+      description: Update an endpoint by ID.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                description:
+                  type: string
+                metadata:
+                  type: string
+                bindings:
+                  type: array
+                  items:
+                    type: string
+                traffic_policy:
+                  type: string
+      responses:
+        '200':
+          description: Endpoint updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+    delete:
+      operationId: deleteEndpoint
+      summary: Ngrok Delete Endpoint
+      description: Delete an endpoint by ID.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Endpoint deleted.
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  schemas:
+    EndpointList:
+      type: object
+      properties:
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Endpoint'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    Endpoint:
+      type: object
+      properties:
+        id:
+          type: string
+        region:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        public_url:
+          type: string
+        proto:
+          type: string
+        url:
+          type: string
+        type:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+        domain:
+          $ref: '#/components/schemas/Ref'
+        tcp_addr:
+          $ref: '#/components/schemas/Ref'
+        tunnel:
+          $ref: '#/components/schemas/Ref'
+        edge:
+          $ref: '#/components/schemas/Ref'
+        bindings:
+          type: array
+          items:
+            type: string
+        traffic_policy:
+          type: string
+        uri:
+          type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

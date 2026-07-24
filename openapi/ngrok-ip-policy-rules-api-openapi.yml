@@ -1,0 +1,207 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports IP Policy Rules API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: IP Policy Rules
+  description: IP Policy Rules are CIDR-based allow/deny rules within an IP Policy.
+paths:
+  /ip_policy_rules:
+    post:
+      operationId: createIpPolicyRule
+      summary: Ngrok Create IP Policy Rule
+      description: Create a new IP policy rule attached to an IP policy.
+      tags:
+      - IP Policy Rules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cidr
+              - ip_policy_id
+              - action
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                cidr:
+                  type: string
+                  description: An IP address or CIDR range.
+                ip_policy_id:
+                  type: string
+                  description: ID of the IP policy this rule belongs to.
+                action:
+                  type: string
+                  enum:
+                  - allow
+                  - deny
+                  description: The action to take for this rule.
+      responses:
+        '201':
+          description: IP policy rule created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyRule'
+    get:
+      operationId: listIpPolicyRules
+      summary: Ngrok List IP Policy Rules
+      description: List all IP policy rules on this account.
+      tags:
+      - IP Policy Rules
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of IP policy rules.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyRuleList'
+  /ip_policy_rules/{id}:
+    get:
+      operationId: getIpPolicyRule
+      summary: Ngrok Get IP Policy Rule
+      description: Get the details of an IP policy rule by ID.
+      tags:
+      - IP Policy Rules
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: IP policy rule details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyRule'
+    patch:
+      operationId: updateIpPolicyRule
+      summary: Ngrok Update IP Policy Rule
+      description: Update attributes of an IP policy rule by ID.
+      tags:
+      - IP Policy Rules
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                cidr:
+                  type: string
+      responses:
+        '200':
+          description: IP policy rule updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IpPolicyRule'
+    delete:
+      operationId: deleteIpPolicyRule
+      summary: Ngrok Delete IP Policy Rule
+      description: Delete an IP policy rule by ID.
+      tags:
+      - IP Policy Rules
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: IP policy rule deleted.
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  schemas:
+    IpPolicyRule:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        cidr:
+          type: string
+        ip_policy:
+          $ref: '#/components/schemas/Ref'
+        action:
+          type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+    IpPolicyRuleList:
+      type: object
+      properties:
+        ip_policy_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPolicyRule'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.

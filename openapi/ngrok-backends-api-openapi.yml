@@ -1,0 +1,743 @@
+openapi: 3.1.0
+info:
+  title: Ngrok Abuse Reports Backends API
+  description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
+  version: 2.0.0
+  contact:
+    name: Ngrok
+    url: https://ngrok.com
+  license:
+    name: Proprietary
+    url: https://ngrok.com/tos
+servers:
+- url: https://api.ngrok.com
+  description: Ngrok API Production Server
+security:
+- bearerAuth: []
+- apiKeyAuth: []
+tags:
+- name: Backends
+  description: Backends define how traffic is handled, including tunnel group, weighted, failover, HTTP response, and static address backends.
+paths:
+  /backends/tunnel_group:
+    post:
+      operationId: createTunnelGroupBackend
+      summary: Ngrok Create Tunnel Group Backend
+      description: Create a new Tunnel Group backend.
+      tags:
+      - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                labels:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: Labels to watch for tunnels on this backend.
+      responses:
+        '201':
+          description: Tunnel group backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelGroupBackend'
+    get:
+      operationId: listTunnelGroupBackends
+      summary: Ngrok List Tunnel Group Backends
+      description: List all Tunnel Group backends on this account.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of tunnel group backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelGroupBackendList'
+  /backends/tunnel_group/{id}:
+    get:
+      operationId: getTunnelGroupBackend
+      summary: Ngrok Get Tunnel Group Backend
+      description: Get a Tunnel Group backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Tunnel group backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelGroupBackend'
+    patch:
+      operationId: updateTunnelGroupBackend
+      summary: Ngrok Update Tunnel Group Backend
+      description: Update a Tunnel Group backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                labels:
+                  type: object
+                  additionalProperties:
+                    type: string
+      responses:
+        '200':
+          description: Tunnel group backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TunnelGroupBackend'
+    delete:
+      operationId: deleteTunnelGroupBackend
+      summary: Ngrok Delete Tunnel Group Backend
+      description: Delete a Tunnel Group backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Tunnel group backend deleted.
+  /backends/weighted:
+    post:
+      operationId: createWeightedBackend
+      summary: Ngrok Create Weighted Backend
+      description: Create a new Weighted backend.
+      tags:
+      - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                backends:
+                  type: object
+                  additionalProperties:
+                    type: integer
+                  description: Map of backend ID to weight.
+      responses:
+        '201':
+          description: Weighted backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedBackend'
+    get:
+      operationId: listWeightedBackends
+      summary: Ngrok List Weighted Backends
+      description: List all Weighted backends on this account.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of weighted backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedBackendList'
+  /backends/weighted/{id}:
+    get:
+      operationId: getWeightedBackend
+      summary: Ngrok Get Weighted Backend
+      description: Get a Weighted backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Weighted backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedBackend'
+    patch:
+      operationId: updateWeightedBackend
+      summary: Ngrok Update Weighted Backend
+      description: Update a Weighted backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                backends:
+                  type: object
+                  additionalProperties:
+                    type: integer
+      responses:
+        '200':
+          description: Weighted backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightedBackend'
+    delete:
+      operationId: deleteWeightedBackend
+      summary: Ngrok Delete Weighted Backend
+      description: Delete a Weighted backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Weighted backend deleted.
+  /backends/failover:
+    post:
+      operationId: createFailoverBackend
+      summary: Ngrok Create Failover Backend
+      description: Create a new Failover backend.
+      tags:
+      - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                backends:
+                  type: array
+                  items:
+                    type: string
+                  description: The IDs of the backends in order of failover priority.
+      responses:
+        '201':
+          description: Failover backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailoverBackend'
+    get:
+      operationId: listFailoverBackends
+      summary: Ngrok List Failover Backends
+      description: List all Failover backends on this account.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of failover backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailoverBackendList'
+  /backends/failover/{id}:
+    get:
+      operationId: getFailoverBackend
+      summary: Ngrok Get Failover Backend
+      description: Get a Failover backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Failover backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailoverBackend'
+    patch:
+      operationId: updateFailoverBackend
+      summary: Ngrok Update Failover Backend
+      description: Update a Failover backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                backends:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Failover backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailoverBackend'
+    delete:
+      operationId: deleteFailoverBackend
+      summary: Ngrok Delete Failover Backend
+      description: Delete a Failover backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Failover backend deleted.
+  /backends/http_response:
+    post:
+      operationId: createHttpResponseBackend
+      summary: Ngrok Create HTTP Response Backend
+      description: Create a new HTTP Response backend that returns a static response.
+      tags:
+      - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                body:
+                  type: string
+                  description: The response body to return.
+                headers:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: Headers to include in the response.
+                status_code:
+                  type: integer
+                  description: The HTTP status code to return.
+      responses:
+        '201':
+          description: HTTP response backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBackend'
+    get:
+      operationId: listHttpResponseBackends
+      summary: Ngrok List HTTP Response Backends
+      description: List all HTTP Response backends on this account.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of HTTP response backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBackendList'
+  /backends/http_response/{id}:
+    get:
+      operationId: getHttpResponseBackend
+      summary: Ngrok Get HTTP Response Backend
+      description: Get an HTTP Response backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: HTTP response backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBackend'
+    patch:
+      operationId: updateHttpResponseBackend
+      summary: Ngrok Update HTTP Response Backend
+      description: Update an HTTP Response backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                body:
+                  type: string
+                headers:
+                  type: object
+                  additionalProperties:
+                    type: string
+                status_code:
+                  type: integer
+      responses:
+        '200':
+          description: HTTP response backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBackend'
+    delete:
+      operationId: deleteHttpResponseBackend
+      summary: Ngrok Delete HTTP Response Backend
+      description: Delete an HTTP Response backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: HTTP response backend deleted.
+  /backends/static_address:
+    post:
+      operationId: createStaticAddressBackend
+      summary: Ngrok Create Static Address Backend
+      description: Create a new Static Address backend.
+      tags:
+      - Backends
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                address:
+                  type: string
+                  description: The address to forward traffic to.
+                tls:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+      responses:
+        '201':
+          description: Static address backend created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticAddressBackend'
+    get:
+      operationId: listStaticAddressBackends
+      summary: Ngrok List Static Address Backends
+      description: List all Static Address backends on this account.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/BeforeId'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: List of static address backends.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticAddressBackendList'
+  /backends/static_address/{id}:
+    get:
+      operationId: getStaticAddressBackend
+      summary: Ngrok Get Static Address Backend
+      description: Get a Static Address backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Static address backend details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticAddressBackend'
+    patch:
+      operationId: updateStaticAddressBackend
+      summary: Ngrok Update Static Address Backend
+      description: Update a Static Address backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                metadata:
+                  type: string
+                address:
+                  type: string
+      responses:
+        '200':
+          description: Static address backend updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaticAddressBackend'
+    delete:
+      operationId: deleteStaticAddressBackend
+      summary: Ngrok Delete Static Address Backend
+      description: Delete a Static Address backend by ID.
+      tags:
+      - Backends
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Static address backend deleted.
+components:
+  schemas:
+    FailoverBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        backends:
+          type: array
+          items:
+            type: string
+    StaticAddressBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/StaticAddressBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    HttpResponseBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/HttpResponseBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    TunnelGroupBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/TunnelGroupBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    WeightedBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        backends:
+          type: object
+          additionalProperties:
+            type: integer
+    HttpResponseBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        body:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        status_code:
+          type: integer
+    WeightedBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeightedBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+    FailoverBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/FailoverBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    TunnelGroupBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        tunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ref'
+    StaticAddressBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        address:
+          type: string
+        tls:
+          type: object
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Use an ngrok API key as a Bearer token. Create API keys from the ngrok dashboard or via the API Keys endpoints.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Pass the API key in the Authorization header prefixed with 'Bearer '.
