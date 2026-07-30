@@ -6,9 +6,22 @@ description: >-
   edge ingress, and route traffic to AI providers without redeploying applications. ngrok provides a unique URL for each
   tunnel, traffic policy controls, and a comprehensive REST API for programmatic management of all resources.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ngrok.png
 tags:
   - AI Gateway
   - API Gateway
@@ -25,62 +38,1019 @@ created: '2025-01-08'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
-  - aid: ngrok:ngrok
-    name: ngrok API
-    description: >-
-      The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish, follows most REST
-      conventions, and listens only on port 443 to avoid accidental unencrypted requests. All API access requires an API
-      key. Resources include endpoints, tunnels, edges (HTTPS, TCP, TLS), backends, reserved domains and addresses, IP
-      policies and restrictions, TLS and SSH certificates, event subscriptions, API keys, and credentials.
-    humanURL: https://ngrok.com/docs/api
-    baseURL: https://api.ngrok.com
-    tags:
-      - API Gateway
-      - Compute
-      - Demonstration
-      - Gateways
-      - Platform
-      - Proxies
-      - Servers
-      - Testing
-      - Tunnels
-    properties:
-      - type: Documentation
-        url: https://ngrok.com/docs/api
-      - type: APIReference
-        url: https://ngrok.com/docs/api
-      - type: OpenAPI
-        url: openapi/ngrok-api-openapi.yml
-      - type: JSONLD
-        url: json-ld/ngrok-context.jsonld
-      - type: JSONSchema
-        url: json-schema/tunnel.json
-      - type: JSONSchema
-        url: json-schema/endpoint.json
-      - type: JSONSchema
-        url: json-schema/https-edge.json
-      - type: JSONSchema
-        url: json-schema/tcp-edge.json
-      - type: JSONSchema
-        url: json-schema/tls-edge.json
-      - type: JSONSchema
-        url: json-schema/reserved-domain.json
-      - type: JSONSchema
-        url: json-schema/reserved-addr.json
-      - type: JSONSchema
-        url: json-schema/api-key.json
-      - type: JSONSchema
-        url: json-schema/ip-policy.json
-      - type: JSONSchema
-        url: json-schema/tls-certificate.json
-      - type: JSONSchema
-        url: json-schema/event-subscription.json
-      - type: JSONSchema
-        url: json-schema/tunnel-session.json
-      - type: GitHubRepository
-        url: https://github.com/ngrok/ngrok-openapi
-        title: ngrok-openapi
+- aid: ngrok:ngrok-abuse-reports-api
+  name: ngrok Abuse Reports API
+  description: Abuse Reports allow you to submit reports of abusive endpoints.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Abuse Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-abuse-reports-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-agent-ingresses-api
+  name: ngrok Agent Ingresses API
+  description: Agent Ingresses are the addresses ngrok agents connect to.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Agent Ingresses
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-agent-ingresses-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-api-keys-api
+  name: ngrok API Keys API
+  description: API Keys are used to authenticate to the ngrok API.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-api-keys-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-backends-api
+  name: ngrok Backends API
+  description: >-
+    Backends define how traffic is handled, including tunnel group, weighted, failover, HTTP response,
+    and static address backends.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Backends
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-backends-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-certificate-authorities-api
+  name: ngrok Certificate Authorities API
+  description: Certificate Authorities are x509 certificates used for mutual TLS authentication.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Certificate Authorities
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-certificate-authorities-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-credentials-api
+  name: ngrok Credentials API
+  description: Tunnel Credentials are authtokens used to start ngrok tunnels.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-credentials-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-edges-https-api
+  name: ngrok Edges HTTPS API
+  description: HTTPS Edges define HTTPS endpoints with routes and modules.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Edges HTTPS
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-edges-https-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-edges-tcp-api
+  name: ngrok Edges TCP API
+  description: TCP Edges define TCP endpoints for non-HTTP protocols.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Edges TCP
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-edges-tcp-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-edges-tls-api
+  name: ngrok Edges TLS API
+  description: TLS Edges define TLS endpoints with TLS termination and mutual TLS.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Edges TLS
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-edges-tls-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-endpoints-api
+  name: ngrok Endpoints API
+  description: Endpoints represent the public URLs of active tunnels and edges.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Endpoints
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-endpoints-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-event-destinations-api
+  name: ngrok Event Destinations API
+  description: Event Destinations define where event data is sent.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Event Destinations
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-event-destinations-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-event-subscriptions-api
+  name: ngrok Event Subscriptions API
+  description: Event Subscriptions define which events trigger notifications.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Event Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-event-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-ip-policies-api
+  name: ngrok IP Policies API
+  description: IP Policies contain rules to allow or deny traffic from IP ranges.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - IP Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-ip-policies-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-ip-policy-rules-api
+  name: ngrok IP Policy Rules API
+  description: IP Policy Rules are CIDR-based allow/deny rules within an IP Policy.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - IP Policy Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-ip-policy-rules-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-ip-restrictions-api
+  name: ngrok IP Restrictions API
+  description: IP Restrictions apply IP Policies to specific ngrok resources.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - IP Restrictions
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-ip-restrictions-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-reserved-addresses-api
+  name: ngrok Reserved Addresses API
+  description: Reserved Addresses are static TCP addresses for TCP tunnels.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Reserved Addresses
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-reserved-addresses-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-reserved-domains-api
+  name: ngrok Reserved Domains API
+  description: Reserved Domains are custom hostnames for HTTP/HTTPS/TLS tunnels.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Reserved Domains
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-reserved-domains-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-ssh-certificate-authorities-api
+  name: ngrok SSH Certificate Authorities API
+  description: SSH Certificate Authorities manage keys for signing SSH certificates.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - SSH Certificate Authorities
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-ssh-certificate-authorities-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-ssh-credentials-api
+  name: ngrok SSH Credentials API
+  description: SSH Credentials are public keys for authenticating SSH tunnel sessions.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - SSH Credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-ssh-credentials-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-ssh-host-certificates-api
+  name: ngrok SSH Host Certificates API
+  description: SSH Host Certificates authenticate ngrok tunnel servers to clients.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - SSH Host Certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-ssh-host-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-ssh-user-certificates-api
+  name: ngrok SSH User Certificates API
+  description: SSH User Certificates authenticate users to ngrok SSH tunnel servers.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - SSH User Certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-ssh-user-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-tls-certificates-api
+  name: ngrok TLS Certificates API
+  description: TLS Certificates are x509 certificate/key pairs used to terminate TLS traffic.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - TLS Certificates
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-tls-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-tunnel-sessions-api
+  name: ngrok Tunnel Sessions API
+  description: Tunnel Sessions represent running ngrok agent connections.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Tunnel Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-tunnel-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
+- aid: ngrok:ngrok-tunnels-api
+  name: ngrok Tunnels API
+  description: Tunnels represent individual tunnels within a tunnel session.
+  humanURL: https://ngrok.com/docs/api
+  baseURL: https://api.ngrok.com
+  tags:
+  - Tunnels
+  properties:
+  - type: OpenAPI
+    url: openapi/ngrok-tunnels-api-openapi.yml
+  - type: Documentation
+    url: https://ngrok.com/docs/api
+  - type: APIReference
+    url: https://ngrok.com/docs/api
+  - type: JSONLD
+    url: json-ld/ngrok-context.jsonld
+  - type: JSONSchema
+    url: json-schema/tunnel.json
+  - type: JSONSchema
+    url: json-schema/endpoint.json
+  - type: JSONSchema
+    url: json-schema/https-edge.json
+  - type: JSONSchema
+    url: json-schema/tcp-edge.json
+  - type: JSONSchema
+    url: json-schema/tls-edge.json
+  - type: JSONSchema
+    url: json-schema/reserved-domain.json
+  - type: JSONSchema
+    url: json-schema/reserved-addr.json
+  - type: JSONSchema
+    url: json-schema/api-key.json
+  - type: JSONSchema
+    url: json-schema/ip-policy.json
+  - type: JSONSchema
+    url: json-schema/tls-certificate.json
+  - type: JSONSchema
+    url: json-schema/event-subscription.json
+  - type: JSONSchema
+    url: json-schema/tunnel-session.json
+  - type: GitHubRepository
+    url: https://github.com/ngrok/ngrok-openapi
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/ngrok/overview
   - type: AgenticAccess
     url: agentic-access/ngrok-agentic-access.yml
   - type: TrustCenter
