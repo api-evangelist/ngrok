@@ -1,0 +1,524 @@
+{
+  "info": {
+    "_postman_id": "f687762b-fcb8-4f3a-8c92-994354ed23bb",
+    "name": "Ngrok Abuse Reports Agent Ingresses API",
+    "description": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:19:48.000Z",
+    "updatedAt": "2026-07-28T02:19:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f687762b-fcb8-4f3a-8c92-994354ed23bb"
+  },
+  "item": [
+    {
+      "name": "agent_ingresses",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Ngrok Get Agent Ingress",
+              "id": "cacc9394-eea7-435e-b1e9-d4e958121c64",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/agent_ingresses/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agent_ingresses",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c1028fd5-70fb-478f-8703-b9b46fa93f43",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Get the details of an Agent Ingress by ID."
+              },
+              "response": [
+                {
+                  "id": "e18f4616-ee48-431d-855d-3cddd8e25148",
+                  "name": "Agent ingress details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agent_ingresses/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent_ingresses",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"ns_targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"region_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"certificate_management_policy\": {},\n  \"certificate_management_status\": {}\n}",
+                  "createdAt": "2026-07-28T02:19:49.000Z",
+                  "updatedAt": "2026-07-28T02:19:49.000Z",
+                  "uid": "35240-e18f4616-ee48-431d-855d-3cddd8e25148"
+                }
+              ],
+              "createdAt": "2026-07-28T02:19:49.000Z",
+              "updatedAt": "2026-07-28T02:19:49.000Z",
+              "uid": "35240-cacc9394-eea7-435e-b1e9-d4e958121c64"
+            },
+            {
+              "name": "Ngrok Update Agent Ingress",
+              "id": "b733d7b9-d0c3-4aed-8c9a-d7cf7730f576",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/agent_ingresses/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agent_ingresses",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a724db55-3a5a-4a4a-b318-0ae97221056d",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Update attributes of an Agent Ingress by ID."
+              },
+              "response": [
+                {
+                  "id": "4df14fe5-4b9a-4144-b220-aacca0d1b0f8",
+                  "name": "Agent ingress updated.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agent_ingresses/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent_ingresses",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"ns_targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"region_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"certificate_management_policy\": {},\n  \"certificate_management_status\": {}\n}",
+                  "createdAt": "2026-07-28T02:19:49.000Z",
+                  "updatedAt": "2026-07-28T02:19:49.000Z",
+                  "uid": "35240-4df14fe5-4b9a-4144-b220-aacca0d1b0f8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:19:49.000Z",
+              "updatedAt": "2026-07-28T02:19:49.000Z",
+              "uid": "35240-b733d7b9-d0c3-4aed-8c9a-d7cf7730f576"
+            },
+            {
+              "name": "Ngrok Delete Agent Ingress",
+              "id": "2a14433f-b8c4-4b82-90dd-a2fb1be75281",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/agent_ingresses/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agent_ingresses",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d6396d7c-70b9-409e-af40-71ffa79c08ac",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Delete an Agent Ingress by ID."
+              },
+              "response": [
+                {
+                  "id": "b08f5583-3408-4f06-bf31-4c61722d881b",
+                  "name": "Agent ingress deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agent_ingresses/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent_ingresses",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:19:49.000Z",
+                  "updatedAt": "2026-07-28T02:19:49.000Z",
+                  "uid": "35240-b08f5583-3408-4f06-bf31-4c61722d881b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:19:49.000Z",
+              "updatedAt": "2026-07-28T02:19:49.000Z",
+              "uid": "35240-2a14433f-b8c4-4b82-90dd-a2fb1be75281"
+            }
+          ],
+          "id": "63f509dc-f591-45ee-ac11-e5c7c8629434",
+          "createdAt": "2026-07-28T02:19:49.000Z",
+          "updatedAt": "2026-07-28T02:19:49.000Z",
+          "uid": "35240-63f509dc-f591-45ee-ac11-e5c7c8629434"
+        },
+        {
+          "name": "Ngrok Create Agent Ingress",
+          "id": "26029f07-e925-4daa-a5be-91705cc6d93f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"certificate_management_policy\": {\n    \"authority\": \"<string>\",\n    \"private_key_type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agent_ingresses",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "agent_ingresses"
+              ]
+            },
+            "description": "Create a new Agent Ingress."
+          },
+          "response": [
+            {
+              "id": "34f971b0-c98a-4119-8275-f0ff87e22ac5",
+              "name": "Agent ingress created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"certificate_management_policy\": {\n    \"authority\": \"<string>\",\n    \"private_key_type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/agent_ingresses",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agent_ingresses"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"ns_targets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"region_domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"certificate_management_policy\": {},\n  \"certificate_management_status\": {}\n}",
+              "createdAt": "2026-07-28T02:19:49.000Z",
+              "updatedAt": "2026-07-28T02:19:49.000Z",
+              "uid": "35240-34f971b0-c98a-4119-8275-f0ff87e22ac5"
+            }
+          ],
+          "createdAt": "2026-07-28T02:19:49.000Z",
+          "updatedAt": "2026-07-28T02:19:49.000Z",
+          "uid": "35240-26029f07-e925-4daa-a5be-91705cc6d93f"
+        },
+        {
+          "name": "Ngrok List Agent Ingresses",
+          "id": "55d5ca59-804b-48ff-a1f6-270beef2d342",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/agent_ingresses?before_id=<string>&limit=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "agent_ingresses"
+              ],
+              "query": [
+                {
+                  "description": "An ID to use for pagination. Results returned will be before this ID.",
+                  "key": "before_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. Maximum is 100.",
+                  "key": "limit",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "List all Agent Ingresses."
+          },
+          "response": [
+            {
+              "id": "7cd649bd-0a51-4c4f-a04f-09f248bff0c0",
+              "name": "List of agent ingresses.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/agent_ingresses?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agent_ingresses"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ingresses\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"ns_targets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"region_domains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<dateTime>\",\n      \"certificate_management_policy\": {},\n      \"certificate_management_status\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"ns_targets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"region_domains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<dateTime>\",\n      \"certificate_management_policy\": {},\n      \"certificate_management_status\": {}\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:19:49.000Z",
+              "updatedAt": "2026-07-28T02:19:49.000Z",
+              "uid": "35240-7cd649bd-0a51-4c4f-a04f-09f248bff0c0"
+            }
+          ],
+          "createdAt": "2026-07-28T02:19:49.000Z",
+          "updatedAt": "2026-07-28T02:19:49.000Z",
+          "uid": "35240-55d5ca59-804b-48ff-a1f6-270beef2d342"
+        }
+      ],
+      "id": "ff3abfb1-a3ab-4061-abc2-f9c78ebc24ce",
+      "createdAt": "2026-07-28T02:19:49.000Z",
+      "updatedAt": "2026-07-28T02:19:49.000Z",
+      "uid": "35240-ff3abfb1-a3ab-4061-abc2-f9c78ebc24ce"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ngrok.com"
+    }
+  ]
+}

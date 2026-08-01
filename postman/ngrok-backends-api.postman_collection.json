@@ -1,0 +1,2559 @@
+{
+  "info": {
+    "_postman_id": "fe4294e2-880c-4934-a59c-422159d48328",
+    "name": "Ngrok Abuse Reports Backends API",
+    "description": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:00.000Z",
+    "updatedAt": "2026-07-28T02:20:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fe4294e2-880c-4934-a59c-422159d48328"
+  },
+  "item": [
+    {
+      "name": "backends",
+      "item": [
+        {
+          "name": "tunnel_group",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Ngrok Get Tunnel Group Backend",
+                  "id": "515beaa8-b470-49c3-8f3e-23d9ebaedc1c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/tunnel_group/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "tunnel_group",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c782de8d-f7d7-42c3-b966-dcf4f13cdc07",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Get a Tunnel Group backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "ae413879-e2d1-4ed1-b082-473172395b69",
+                      "name": "Tunnel group backend details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/tunnel_group/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "tunnel_group",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"labels\": {\n    \"pariatur_f_\": \"<string>\",\n    \"autec\": \"<string>\"\n  },\n  \"tunnels\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-ae413879-e2d1-4ed1-b082-473172395b69"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-515beaa8-b470-49c3-8f3e-23d9ebaedc1c"
+                },
+                {
+                  "name": "Ngrok Update Tunnel Group Backend",
+                  "id": "e02fdc39-b8b3-4758-8e11-d547ad2b8eb3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"labels\": {\n    \"dolorea\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/tunnel_group/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "tunnel_group",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d4f3fe42-a761-4ff9-a19d-e77baf405dae",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Update a Tunnel Group backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "1138f94f-bd25-4cc1-a894-5832b2496b08",
+                      "name": "Tunnel group backend updated.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"labels\": {\n    \"dolorea\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/tunnel_group/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "tunnel_group",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"labels\": {\n    \"pariatur_f_\": \"<string>\",\n    \"autec\": \"<string>\"\n  },\n  \"tunnels\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-1138f94f-bd25-4cc1-a894-5832b2496b08"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-e02fdc39-b8b3-4758-8e11-d547ad2b8eb3"
+                },
+                {
+                  "name": "Ngrok Delete Tunnel Group Backend",
+                  "id": "091b16c6-c18c-4bae-95c5-13403277fc85",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/tunnel_group/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "tunnel_group",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "96141b47-1769-440e-af36-1ca90bb7b13d",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Delete a Tunnel Group backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "c5674f6a-d471-43ec-bdeb-8110c901941b",
+                      "name": "Tunnel group backend deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/tunnel_group/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "tunnel_group",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-c5674f6a-d471-43ec-bdeb-8110c901941b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-091b16c6-c18c-4bae-95c5-13403277fc85"
+                }
+              ],
+              "id": "0fe89001-7ceb-4f14-a98b-b8d1b34d4b2e",
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-0fe89001-7ceb-4f14-a98b-b8d1b34d4b2e"
+            },
+            {
+              "name": "Ngrok Create Tunnel Group Backend",
+              "id": "40d77bef-197f-4c51-95e4-cac36244749e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"labels\": {\n    \"ad8\": \"<string>\",\n    \"in_7_9\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/backends/tunnel_group",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "tunnel_group"
+                  ]
+                },
+                "description": "Create a new Tunnel Group backend."
+              },
+              "response": [
+                {
+                  "id": "1953b83c-ffe7-4cf5-b59b-6f9401f70d22",
+                  "name": "Tunnel group backend created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"labels\": {\n    \"ad8\": \"<string>\",\n    \"in_7_9\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/tunnel_group",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "tunnel_group"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"labels\": {\n    \"pariatur_f_\": \"<string>\",\n    \"autec\": \"<string>\"\n  },\n  \"tunnels\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-1953b83c-ffe7-4cf5-b59b-6f9401f70d22"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-40d77bef-197f-4c51-95e4-cac36244749e"
+            },
+            {
+              "name": "Ngrok List Tunnel Group Backends",
+              "id": "b8b42109-7a57-4fbd-81e0-4fd27d410958",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/backends/tunnel_group?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "tunnel_group"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List all Tunnel Group backends on this account."
+              },
+              "response": [
+                {
+                  "id": "66add24d-16c4-436a-8d81-140f5b016f06",
+                  "name": "List of tunnel group backends.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/tunnel_group?before_id=<string>&limit=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "tunnel_group"
+                      ],
+                      "query": [
+                        {
+                          "description": "An ID to use for pagination. Results returned will be before this ID.",
+                          "key": "before_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of results to return. Maximum is 100.",
+                          "key": "limit",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"backends\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"labels\": {\n        \"esse7\": \"<string>\",\n        \"quis_5c\": \"<string>\"\n      },\n      \"tunnels\": [\n        {\n          \"id\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"labels\": {\n        \"cillumdf\": \"<string>\",\n        \"ex6b7\": \"<string>\",\n        \"ut6\": \"<string>\"\n      },\n      \"tunnels\": [\n        {\n          \"id\": \"<string>\",\n          \"uri\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"uri\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-66add24d-16c4-436a-8d81-140f5b016f06"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-b8b42109-7a57-4fbd-81e0-4fd27d410958"
+            }
+          ],
+          "id": "2d2c3ecd-8ddf-416c-9f92-696ba8beb207",
+          "createdAt": "2026-07-28T02:20:00.000Z",
+          "updatedAt": "2026-07-28T02:20:00.000Z",
+          "uid": "35240-2d2c3ecd-8ddf-416c-9f92-696ba8beb207"
+        },
+        {
+          "name": "weighted",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Ngrok Get Weighted Backend",
+                  "id": "da7a16ac-c1af-469a-915e-b3eb15f4e3f6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/weighted/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "weighted",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6c42b1c7-d0b7-4200-950c-e6a8fc8e102f",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Get a Weighted backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "eba06002-d8be-46a4-bb0e-8cd043fed7c3",
+                      "name": "Weighted backend details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/weighted/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "weighted",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": {\n    \"cillum_2\": \"<integer>\",\n    \"uta\": \"<integer>\",\n    \"ad1_6\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-eba06002-d8be-46a4-bb0e-8cd043fed7c3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-da7a16ac-c1af-469a-915e-b3eb15f4e3f6"
+                },
+                {
+                  "name": "Ngrok Update Weighted Backend",
+                  "id": "a1ff825f-f665-4585-83a9-675f0d9b2082",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": {\n    \"ipsum_d0\": \"<integer>\",\n    \"ullamco47\": \"<integer>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/weighted/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "weighted",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fc586a4c-cc8b-4097-9663-3a07d4594f83",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Update a Weighted backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "c478a065-c978-4bb0-86a2-c00c63e117e1",
+                      "name": "Weighted backend updated.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": {\n    \"ipsum_d0\": \"<integer>\",\n    \"ullamco47\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/weighted/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "weighted",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": {\n    \"cillum_2\": \"<integer>\",\n    \"uta\": \"<integer>\",\n    \"ad1_6\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-c478a065-c978-4bb0-86a2-c00c63e117e1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-a1ff825f-f665-4585-83a9-675f0d9b2082"
+                },
+                {
+                  "name": "Ngrok Delete Weighted Backend",
+                  "id": "07f25d9a-8344-485c-bf7c-9c509671c0fb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/weighted/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "weighted",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a527915e-40b5-4ecd-9f47-50969cb749b3",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Delete a Weighted backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "fbd2721d-6078-4c1b-b96f-d8ada9af4afe",
+                      "name": "Weighted backend deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/weighted/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "weighted",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-fbd2721d-6078-4c1b-b96f-d8ada9af4afe"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-07f25d9a-8344-485c-bf7c-9c509671c0fb"
+                }
+              ],
+              "id": "83b616bd-7afd-436d-bfeb-b9e3121d66a4",
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-83b616bd-7afd-436d-bfeb-b9e3121d66a4"
+            },
+            {
+              "name": "Ngrok Create Weighted Backend",
+              "id": "e1243515-db58-4903-9061-302e3711fc8c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": {\n    \"consectetur85e\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/backends/weighted",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "weighted"
+                  ]
+                },
+                "description": "Create a new Weighted backend."
+              },
+              "response": [
+                {
+                  "id": "528c3bbc-93d3-4881-943d-12b297822b53",
+                  "name": "Weighted backend created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": {\n    \"consectetur85e\": \"<integer>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/weighted",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "weighted"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": {\n    \"cillum_2\": \"<integer>\",\n    \"uta\": \"<integer>\",\n    \"ad1_6\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-528c3bbc-93d3-4881-943d-12b297822b53"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-e1243515-db58-4903-9061-302e3711fc8c"
+            },
+            {
+              "name": "Ngrok List Weighted Backends",
+              "id": "392cb220-a62b-4180-90a0-fd75765a54a2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/backends/weighted?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "weighted"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List all Weighted backends on this account."
+              },
+              "response": [
+                {
+                  "id": "77d0fb72-8420-4cf9-9a5d-e62990b923b2",
+                  "name": "List of weighted backends.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/weighted?before_id=<string>&limit=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "weighted"
+                      ],
+                      "query": [
+                        {
+                          "description": "An ID to use for pagination. Results returned will be before this ID.",
+                          "key": "before_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of results to return. Maximum is 100.",
+                          "key": "limit",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"backends\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"backends\": {\n        \"anim8ee\": \"<integer>\",\n        \"eiusmodfb\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"backends\": {\n        \"id7e\": \"<integer>\"\n      }\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-77d0fb72-8420-4cf9-9a5d-e62990b923b2"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-392cb220-a62b-4180-90a0-fd75765a54a2"
+            }
+          ],
+          "id": "1842f130-9a43-4259-8fb0-65a85cf6ede3",
+          "createdAt": "2026-07-28T02:20:00.000Z",
+          "updatedAt": "2026-07-28T02:20:00.000Z",
+          "uid": "35240-1842f130-9a43-4259-8fb0-65a85cf6ede3"
+        },
+        {
+          "name": "failover",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Ngrok Get Failover Backend",
+                  "id": "782b5866-a35a-46ec-a2ec-d5aafe60265f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/failover/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "failover",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "897f9e43-ba9c-4461-9767-c2c7044e59ef",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Get a Failover backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "18a21edb-39dd-4267-9982-47472d8483b2",
+                      "name": "Failover backend details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/failover/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "failover",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-18a21edb-39dd-4267-9982-47472d8483b2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-782b5866-a35a-46ec-a2ec-d5aafe60265f"
+                },
+                {
+                  "name": "Ngrok Update Failover Backend",
+                  "id": "1e2e239e-3531-4efa-948e-3c44031d8807",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/failover/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "failover",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b025c67e-afef-49a7-a2db-308d67559437",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Update a Failover backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "67fcd1f1-c44e-45dc-a5a6-dfe84ebaba1a",
+                      "name": "Failover backend updated.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/failover/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "failover",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-67fcd1f1-c44e-45dc-a5a6-dfe84ebaba1a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-1e2e239e-3531-4efa-948e-3c44031d8807"
+                },
+                {
+                  "name": "Ngrok Delete Failover Backend",
+                  "id": "b829d445-770e-482d-8030-59527ab5c89c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/failover/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "failover",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3cc7d33e-67b1-400c-9d13-f5f90ed180ce",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Delete a Failover backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "5f829dcf-17ef-4924-a4dc-44b2e6fa1185",
+                      "name": "Failover backend deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/failover/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "failover",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-5f829dcf-17ef-4924-a4dc-44b2e6fa1185"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-b829d445-770e-482d-8030-59527ab5c89c"
+                }
+              ],
+              "id": "e8b7728d-64a4-4a17-a440-137f8eb087aa",
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-e8b7728d-64a4-4a17-a440-137f8eb087aa"
+            },
+            {
+              "name": "Ngrok Create Failover Backend",
+              "id": "6e32b1d3-af32-495d-ab4e-03677603a731",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/backends/failover",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "failover"
+                  ]
+                },
+                "description": "Create a new Failover backend."
+              },
+              "response": [
+                {
+                  "id": "ecead781-854b-4654-af97-26b9b3f1231d",
+                  "name": "Failover backend created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/failover",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "failover"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"backends\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-ecead781-854b-4654-af97-26b9b3f1231d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-6e32b1d3-af32-495d-ab4e-03677603a731"
+            },
+            {
+              "name": "Ngrok List Failover Backends",
+              "id": "33b9674e-fe79-450f-bc51-3e3419d5473e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/backends/failover?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "failover"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List all Failover backends on this account."
+              },
+              "response": [
+                {
+                  "id": "28f8ba0b-995a-4611-9e87-1179b1dec630",
+                  "name": "List of failover backends.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/failover?before_id=<string>&limit=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "failover"
+                      ],
+                      "query": [
+                        {
+                          "description": "An ID to use for pagination. Results returned will be before this ID.",
+                          "key": "before_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of results to return. Maximum is 100.",
+                          "key": "limit",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"backends\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"backends\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"backends\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-28f8ba0b-995a-4611-9e87-1179b1dec630"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-33b9674e-fe79-450f-bc51-3e3419d5473e"
+            }
+          ],
+          "id": "60b905ff-ff1b-47ac-b9a5-be1551a5ee15",
+          "createdAt": "2026-07-28T02:20:00.000Z",
+          "updatedAt": "2026-07-28T02:20:00.000Z",
+          "uid": "35240-60b905ff-ff1b-47ac-b9a5-be1551a5ee15"
+        },
+        {
+          "name": "http_response",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Ngrok Get HTTP Response Backend",
+                  "id": "055b02c1-5b3e-4702-b2e0-c177e0d067a3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/http_response/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "http_response",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "414dc543-2d47-40e9-9619-8923a0a93e30",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Get an HTTP Response backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "4759c7e2-1395-4da7-a930-6a7cb316e7df",
+                      "name": "HTTP response backend details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/http_response/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "http_response",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"body\": \"<string>\",\n  \"headers\": {\n    \"reprehenderit0\": \"<string>\",\n    \"reprehenderit_6ca\": \"<string>\",\n    \"eu_a\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-4759c7e2-1395-4da7-a930-6a7cb316e7df"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-055b02c1-5b3e-4702-b2e0-c177e0d067a3"
+                },
+                {
+                  "name": "Ngrok Update HTTP Response Backend",
+                  "id": "9fb4de34-3e95-4094-9e75-e004a7fef3f7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"body\": \"<string>\",\n  \"headers\": {\n    \"anim_1b\": \"<string>\",\n    \"et_2\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/http_response/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "http_response",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7b6eee58-553e-4c3d-8981-1d5e5075dfec",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Update an HTTP Response backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "2e052136-039a-460d-ad0a-5c701bdac51c",
+                      "name": "HTTP response backend updated.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"body\": \"<string>\",\n  \"headers\": {\n    \"anim_1b\": \"<string>\",\n    \"et_2\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/http_response/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "http_response",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"body\": \"<string>\",\n  \"headers\": {\n    \"reprehenderit0\": \"<string>\",\n    \"reprehenderit_6ca\": \"<string>\",\n    \"eu_a\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-2e052136-039a-460d-ad0a-5c701bdac51c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-9fb4de34-3e95-4094-9e75-e004a7fef3f7"
+                },
+                {
+                  "name": "Ngrok Delete HTTP Response Backend",
+                  "id": "f86894df-ccd0-4667-98fb-f607be9edf14",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/http_response/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "http_response",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d580b84d-1286-4aaf-ae71-092c5b683704",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Delete an HTTP Response backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "d9d9f182-528b-435b-a5cd-f8ea92a93733",
+                      "name": "HTTP response backend deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/http_response/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "http_response",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-d9d9f182-528b-435b-a5cd-f8ea92a93733"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-f86894df-ccd0-4667-98fb-f607be9edf14"
+                }
+              ],
+              "id": "30232a80-dfa9-4201-83c8-47cbda0aa0a5",
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-30232a80-dfa9-4201-83c8-47cbda0aa0a5"
+            },
+            {
+              "name": "Ngrok Create HTTP Response Backend",
+              "id": "9346ed17-a358-4722-913c-75025ee710c3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"body\": \"<string>\",\n  \"headers\": {\n    \"minim_01\": \"<string>\",\n    \"nullae95\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/backends/http_response",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "http_response"
+                  ]
+                },
+                "description": "Create a new HTTP Response backend that returns a static response."
+              },
+              "response": [
+                {
+                  "id": "6ad339a1-1d39-468c-a86f-d8c09276664b",
+                  "name": "HTTP response backend created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"body\": \"<string>\",\n  \"headers\": {\n    \"minim_01\": \"<string>\",\n    \"nullae95\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/http_response",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "http_response"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"body\": \"<string>\",\n  \"headers\": {\n    \"reprehenderit0\": \"<string>\",\n    \"reprehenderit_6ca\": \"<string>\",\n    \"eu_a\": \"<string>\"\n  },\n  \"status_code\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-6ad339a1-1d39-468c-a86f-d8c09276664b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-9346ed17-a358-4722-913c-75025ee710c3"
+            },
+            {
+              "name": "Ngrok List HTTP Response Backends",
+              "id": "818256ad-5507-42df-a1fe-95147dc71bbf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/backends/http_response?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "http_response"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List all HTTP Response backends on this account."
+              },
+              "response": [
+                {
+                  "id": "d1357a33-1ec8-4586-be69-d07903e392df",
+                  "name": "List of HTTP response backends.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/http_response?before_id=<string>&limit=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "http_response"
+                      ],
+                      "query": [
+                        {
+                          "description": "An ID to use for pagination. Results returned will be before this ID.",
+                          "key": "before_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of results to return. Maximum is 100.",
+                          "key": "limit",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"backends\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"body\": \"<string>\",\n      \"headers\": {\n        \"cillum_8\": \"<string>\"\n      },\n      \"status_code\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"body\": \"<string>\",\n      \"headers\": {\n        \"mollit6a2\": \"<string>\"\n      },\n      \"status_code\": \"<integer>\"\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-d1357a33-1ec8-4586-be69-d07903e392df"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-818256ad-5507-42df-a1fe-95147dc71bbf"
+            }
+          ],
+          "id": "578977c4-8582-477b-9119-d07588770fb2",
+          "createdAt": "2026-07-28T02:20:00.000Z",
+          "updatedAt": "2026-07-28T02:20:00.000Z",
+          "uid": "35240-578977c4-8582-477b-9119-d07588770fb2"
+        },
+        {
+          "name": "static_address",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Ngrok Get Static Address Backend",
+                  "id": "ff5d2f14-4b60-4df0-9474-31d5182505ec",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/static_address/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "static_address",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4c561c60-0257-4442-ad25-eb66c1410a57",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Get a Static Address backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "d6b176e1-a8c6-45f2-89b5-df3900e7d0c6",
+                      "name": "Static address backend details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/static_address/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "static_address",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"address\": \"<string>\",\n  \"tls\": {}\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-d6b176e1-a8c6-45f2-89b5-df3900e7d0c6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-ff5d2f14-4b60-4df0-9474-31d5182505ec"
+                },
+                {
+                  "name": "Ngrok Update Static Address Backend",
+                  "id": "49c5fbba-8be3-4fdb-ad2b-1358a7df86d6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"address\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/static_address/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "static_address",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1ee1b987-9c2a-4c02-8435-7db1a22c3682",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Update a Static Address backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "e620b0b5-cf83-4e92-9c94-541b6f7938e2",
+                      "name": "Static address backend updated.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"address\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/static_address/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "static_address",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"address\": \"<string>\",\n  \"tls\": {}\n}",
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-e620b0b5-cf83-4e92-9c94-541b6f7938e2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-49c5fbba-8be3-4fdb-ad2b-1358a7df86d6"
+                },
+                {
+                  "name": "Ngrok Delete Static Address Backend",
+                  "id": "b9c4a525-6035-4e70-992f-f0b79dcf91a8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/static_address/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "static_address",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e66c3e4f-4e9a-4082-a25f-c41983c69100",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Delete a Static Address backend by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "26e32b20-4bf7-4a17-bec1-172e9eba8847",
+                      "name": "Static address backend deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/backends/static_address/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "backends",
+                            "static_address",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:20:00.000Z",
+                      "updatedAt": "2026-07-28T02:20:00.000Z",
+                      "uid": "35240-26e32b20-4bf7-4a17-bec1-172e9eba8847"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-b9c4a525-6035-4e70-992f-f0b79dcf91a8"
+                }
+              ],
+              "id": "d0c188c6-1e4f-4d00-adec-25ebd1d2a613",
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-d0c188c6-1e4f-4d00-adec-25ebd1d2a613"
+            },
+            {
+              "name": "Ngrok Create Static Address Backend",
+              "id": "2742c727-52f6-45e5-b9b3-d436f51d5b44",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"address\": \"<string>\",\n  \"tls\": {\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/backends/static_address",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "static_address"
+                  ]
+                },
+                "description": "Create a new Static Address backend."
+              },
+              "response": [
+                {
+                  "id": "aa563514-138d-44ae-8043-b7136acc7ad8",
+                  "name": "Static address backend created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"address\": \"<string>\",\n  \"tls\": {\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/static_address",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "static_address"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"address\": \"<string>\",\n  \"tls\": {}\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-aa563514-138d-44ae-8043-b7136acc7ad8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-2742c727-52f6-45e5-b9b3-d436f51d5b44"
+            },
+            {
+              "name": "Ngrok List Static Address Backends",
+              "id": "f2fc196d-938e-477e-b812-809a7564d9a5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/backends/static_address?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "backends",
+                    "static_address"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List all Static Address backends on this account."
+              },
+              "response": [
+                {
+                  "id": "e1292b05-2c84-475e-8dbf-593c882e7dac",
+                  "name": "List of static address backends.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/backends/static_address?before_id=<string>&limit=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "backends",
+                        "static_address"
+                      ],
+                      "query": [
+                        {
+                          "description": "An ID to use for pagination. Results returned will be before this ID.",
+                          "key": "before_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of results to return. Maximum is 100.",
+                          "key": "limit",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"backends\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"address\": \"<string>\",\n      \"tls\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"address\": \"<string>\",\n      \"tls\": {}\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:00.000Z",
+                  "updatedAt": "2026-07-28T02:20:00.000Z",
+                  "uid": "35240-e1292b05-2c84-475e-8dbf-593c882e7dac"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:00.000Z",
+              "updatedAt": "2026-07-28T02:20:00.000Z",
+              "uid": "35240-f2fc196d-938e-477e-b812-809a7564d9a5"
+            }
+          ],
+          "id": "abd5bb9c-aaa3-41dc-beb5-80419f102689",
+          "createdAt": "2026-07-28T02:20:00.000Z",
+          "updatedAt": "2026-07-28T02:20:00.000Z",
+          "uid": "35240-abd5bb9c-aaa3-41dc-beb5-80419f102689"
+        }
+      ],
+      "id": "5009fb6c-621c-4e70-a58b-24541d9211b3",
+      "createdAt": "2026-07-28T02:20:00.000Z",
+      "updatedAt": "2026-07-28T02:20:00.000Z",
+      "uid": "35240-5009fb6c-621c-4e70-a58b-24541d9211b3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ngrok.com"
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "info": {
+    "_postman_id": "fbb095f5-9831-43f7-81cb-d5c24b62a7a3",
+    "name": "Ngrok Abuse Reports Edges TCP API",
+    "description": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:12.000Z",
+    "updatedAt": "2026-07-28T02:20:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fbb095f5-9831-43f7-81cb-d5c24b62a7a3"
+  },
+  "item": [
+    {
+      "name": "edges",
+      "item": [
+        {
+          "name": "tcp",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Ngrok Get TCP Edge",
+                  "id": "119b723b-d1c3-492f-bc1a-2964e685b645",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/tcp/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "tcp",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "474beaf0-878f-45d7-9b4c-a7453f06ec57",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Get a TCP Edge by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "0f8a34d5-ad41-4681-9ba6-3b136aded85a",
+                      "name": "TCP edge details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edges/tcp/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edges",
+                            "tcp",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"uri\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"backend\": {},\n  \"ip_restriction\": {}\n}",
+                      "createdAt": "2026-07-28T02:20:13.000Z",
+                      "updatedAt": "2026-07-28T02:20:13.000Z",
+                      "uid": "35240-0f8a34d5-ad41-4681-9ba6-3b136aded85a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:13.000Z",
+                  "updatedAt": "2026-07-28T02:20:13.000Z",
+                  "uid": "35240-119b723b-d1c3-492f-bc1a-2964e685b645"
+                },
+                {
+                  "name": "Ngrok Update TCP Edge",
+                  "id": "db78d41b-2412-4f87-98c4-9152a8708c8e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/tcp/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "tcp",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "29452988-1e80-4eb7-890c-70b2df98566c",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Update a TCP Edge by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "03f7339b-c904-42b9-b0c4-bba6c4bc7cd8",
+                      "name": "TCP edge updated.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/edges/tcp/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edges",
+                            "tcp",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"uri\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"backend\": {},\n  \"ip_restriction\": {}\n}",
+                      "createdAt": "2026-07-28T02:20:13.000Z",
+                      "updatedAt": "2026-07-28T02:20:13.000Z",
+                      "uid": "35240-03f7339b-c904-42b9-b0c4-bba6c4bc7cd8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:13.000Z",
+                  "updatedAt": "2026-07-28T02:20:13.000Z",
+                  "uid": "35240-db78d41b-2412-4f87-98c4-9152a8708c8e"
+                },
+                {
+                  "name": "Ngrok Delete TCP Edge",
+                  "id": "7aa02b4f-44d4-4da1-ac07-94d5b7634444",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/tcp/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "tcp",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "faf0daf6-e74c-4810-ab25-9693754b0845",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Delete a TCP Edge by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "b762b1d3-9f91-4497-84b6-85814ddcd5b0",
+                      "name": "TCP edge deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edges/tcp/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edges",
+                            "tcp",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:20:13.000Z",
+                      "updatedAt": "2026-07-28T02:20:13.000Z",
+                      "uid": "35240-b762b1d3-9f91-4497-84b6-85814ddcd5b0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:13.000Z",
+                  "updatedAt": "2026-07-28T02:20:13.000Z",
+                  "uid": "35240-7aa02b4f-44d4-4da1-ac07-94d5b7634444"
+                }
+              ],
+              "id": "545f5b35-fb0d-4798-b3ee-bbabb83da98a",
+              "createdAt": "2026-07-28T02:20:13.000Z",
+              "updatedAt": "2026-07-28T02:20:13.000Z",
+              "uid": "35240-545f5b35-fb0d-4798-b3ee-bbabb83da98a"
+            },
+            {
+              "name": "Ngrok Create TCP Edge",
+              "id": "61b5d933-4810-4cfb-87b8-1cffbc92dae2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"backend\": {\n    \"enabled\": \"<boolean>\",\n    \"backend_id\": \"<string>\"\n  },\n  \"ip_restriction\": {\n    \"enabled\": \"<boolean>\",\n    \"ip_policy_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/edges/tcp",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "edges",
+                    "tcp"
+                  ]
+                },
+                "description": "Create a TCP Edge."
+              },
+              "response": [
+                {
+                  "id": "c9e68809-72c8-443f-b903-c96813f758dd",
+                  "name": "TCP edge created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"backend\": {\n    \"enabled\": \"<boolean>\",\n    \"backend_id\": \"<string>\"\n  },\n  \"ip_restriction\": {\n    \"enabled\": \"<boolean>\",\n    \"ip_policy_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/tcp",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "tcp"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"uri\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"backend\": {},\n  \"ip_restriction\": {}\n}",
+                  "createdAt": "2026-07-28T02:20:13.000Z",
+                  "updatedAt": "2026-07-28T02:20:13.000Z",
+                  "uid": "35240-c9e68809-72c8-443f-b903-c96813f758dd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:13.000Z",
+              "updatedAt": "2026-07-28T02:20:13.000Z",
+              "uid": "35240-61b5d933-4810-4cfb-87b8-1cffbc92dae2"
+            },
+            {
+              "name": "Ngrok List TCP Edges",
+              "id": "68e4d1a6-55b8-4761-be4d-a051d0136488",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/edges/tcp?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "edges",
+                    "tcp"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List all TCP Edges on this account."
+              },
+              "response": [
+                {
+                  "id": "98c4d079-490b-4419-bc56-4ef57d9b39b5",
+                  "name": "List of TCP edges.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/tcp?before_id=<string>&limit=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "tcp"
+                      ],
+                      "query": [
+                        {
+                          "description": "An ID to use for pagination. Results returned will be before this ID.",
+                          "key": "before_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of results to return. Maximum is 100.",
+                          "key": "limit",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"tcp_edges\": [\n    {\n      \"id\": \"<string>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"uri\": \"<string>\",\n      \"hostports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"backend\": {},\n      \"ip_restriction\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"uri\": \"<string>\",\n      \"hostports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"backend\": {},\n      \"ip_restriction\": {}\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:13.000Z",
+                  "updatedAt": "2026-07-28T02:20:13.000Z",
+                  "uid": "35240-98c4d079-490b-4419-bc56-4ef57d9b39b5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:13.000Z",
+              "updatedAt": "2026-07-28T02:20:13.000Z",
+              "uid": "35240-68e4d1a6-55b8-4761-be4d-a051d0136488"
+            }
+          ],
+          "id": "44d81493-688b-4985-9ea1-8dd9a605b160",
+          "createdAt": "2026-07-28T02:20:13.000Z",
+          "updatedAt": "2026-07-28T02:20:13.000Z",
+          "uid": "35240-44d81493-688b-4985-9ea1-8dd9a605b160"
+        }
+      ],
+      "id": "274839d5-5f2a-4fa4-bf43-69ba3e22c1d4",
+      "createdAt": "2026-07-28T02:20:13.000Z",
+      "updatedAt": "2026-07-28T02:20:13.000Z",
+      "uid": "35240-274839d5-5f2a-4fa4-bf43-69ba3e22c1d4"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ngrok.com"
+    }
+  ]
+}

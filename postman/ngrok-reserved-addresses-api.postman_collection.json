@@ -1,0 +1,524 @@
+{
+  "info": {
+    "_postman_id": "5a44372b-cb41-4dcd-afe4-42800663e91a",
+    "name": "Ngrok Abuse Reports Reserved Addresses API",
+    "description": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:36.000Z",
+    "updatedAt": "2026-07-28T02:20:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5a44372b-cb41-4dcd-afe4-42800663e91a"
+  },
+  "item": [
+    {
+      "name": "reserved_addrs",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Ngrok Get Reserved Address",
+              "id": "81638e5b-a34c-457b-a6ab-45210cb5b314",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_addrs/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_addrs",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "727c7262-cf9f-4da9-bba9-fbbb3cbd124b",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Get the details of a reserved address by ID."
+              },
+              "response": [
+                {
+                  "id": "421bb26e-a37f-42ca-8e00-1600b1b37335",
+                  "name": "Reserved address details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reserved_addrs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reserved_addrs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"addr\": \"<string>\",\n  \"region\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:37.000Z",
+                  "updatedAt": "2026-07-28T02:20:37.000Z",
+                  "uid": "35240-421bb26e-a37f-42ca-8e00-1600b1b37335"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:37.000Z",
+              "updatedAt": "2026-07-28T02:20:37.000Z",
+              "uid": "35240-81638e5b-a34c-457b-a6ab-45210cb5b314"
+            },
+            {
+              "name": "Ngrok Update Reserved Address",
+              "id": "fecdc089-92cd-4d04-ac5d-f4177a879580",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_addrs/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_addrs",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9d080e96-cd72-47bb-9e58-7ef3ec91216e",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Update attributes of a reserved address by ID."
+              },
+              "response": [
+                {
+                  "id": "8d1e68ba-e4e7-41ad-87bf-0966e5956f59",
+                  "name": "Reserved address updated.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reserved_addrs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reserved_addrs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"addr\": \"<string>\",\n  \"region\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:37.000Z",
+                  "updatedAt": "2026-07-28T02:20:37.000Z",
+                  "uid": "35240-8d1e68ba-e4e7-41ad-87bf-0966e5956f59"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:37.000Z",
+              "updatedAt": "2026-07-28T02:20:37.000Z",
+              "uid": "35240-fecdc089-92cd-4d04-ac5d-f4177a879580"
+            },
+            {
+              "name": "Ngrok Delete Reserved Address",
+              "id": "31dc4dc5-cc4b-4430-b7e4-857223c7b143",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_addrs/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_addrs",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7311d5fe-6172-4498-830b-f5fb44683c49",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Delete a reserved address by ID."
+              },
+              "response": [
+                {
+                  "id": "1fba50f1-da74-4715-803b-20189a1c8093",
+                  "name": "Reserved address deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reserved_addrs/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reserved_addrs",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:20:37.000Z",
+                  "updatedAt": "2026-07-28T02:20:37.000Z",
+                  "uid": "35240-1fba50f1-da74-4715-803b-20189a1c8093"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:37.000Z",
+              "updatedAt": "2026-07-28T02:20:37.000Z",
+              "uid": "35240-31dc4dc5-cc4b-4430-b7e4-857223c7b143"
+            }
+          ],
+          "id": "d69a63db-0326-4a56-b471-72bf9e2bfb32",
+          "createdAt": "2026-07-28T02:20:36.000Z",
+          "updatedAt": "2026-07-28T02:20:36.000Z",
+          "uid": "35240-d69a63db-0326-4a56-b471-72bf9e2bfb32"
+        },
+        {
+          "name": "Ngrok Create Reserved Address",
+          "id": "6edef294-9556-4bb2-8ad8-c667eaca76b1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"region\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reserved_addrs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reserved_addrs"
+              ]
+            },
+            "description": "Create a new reserved address."
+          },
+          "response": [
+            {
+              "id": "314572ef-0c26-41e8-ac1d-44526cc5b3ad",
+              "name": "Reserved address created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"region\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_addrs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_addrs"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"addr\": \"<string>\",\n  \"region\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:20:37.000Z",
+              "updatedAt": "2026-07-28T02:20:37.000Z",
+              "uid": "35240-314572ef-0c26-41e8-ac1d-44526cc5b3ad"
+            }
+          ],
+          "createdAt": "2026-07-28T02:20:37.000Z",
+          "updatedAt": "2026-07-28T02:20:37.000Z",
+          "uid": "35240-6edef294-9556-4bb2-8ad8-c667eaca76b1"
+        },
+        {
+          "name": "Ngrok List Reserved Addresses",
+          "id": "b2043ef0-d77e-49e5-81a0-4a0cef2466d8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/reserved_addrs?before_id=<string>&limit=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reserved_addrs"
+              ],
+              "query": [
+                {
+                  "description": "An ID to use for pagination. Results returned will be before this ID.",
+                  "key": "before_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. Maximum is 100.",
+                  "key": "limit",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "List all reserved addresses on this account."
+          },
+          "response": [
+            {
+              "id": "4dbf08c4-b204-49fa-8a3c-8450adccf2a6",
+              "name": "List of reserved addresses.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_addrs?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_addrs"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"reserved_addrs\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"addr\": \"<string>\",\n      \"region\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"addr\": \"<string>\",\n      \"region\": \"<string>\"\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:20:37.000Z",
+              "updatedAt": "2026-07-28T02:20:37.000Z",
+              "uid": "35240-4dbf08c4-b204-49fa-8a3c-8450adccf2a6"
+            }
+          ],
+          "createdAt": "2026-07-28T02:20:37.000Z",
+          "updatedAt": "2026-07-28T02:20:37.000Z",
+          "uid": "35240-b2043ef0-d77e-49e5-81a0-4a0cef2466d8"
+        }
+      ],
+      "id": "aaa03f5c-cc88-4c10-a19c-34a575c62b83",
+      "createdAt": "2026-07-28T02:20:36.000Z",
+      "updatedAt": "2026-07-28T02:20:36.000Z",
+      "uid": "35240-aaa03f5c-cc88-4c10-a19c-34a575c62b83"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ngrok.com"
+    }
+  ]
+}

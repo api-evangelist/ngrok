@@ -1,0 +1,524 @@
+{
+  "info": {
+    "_postman_id": "5b20f893-77cc-4a33-93f4-ba654b3571dd",
+    "name": "Ngrok Abuse Reports Event Destinations API",
+    "description": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:31.000Z",
+    "updatedAt": "2026-07-28T02:20:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5b20f893-77cc-4a33-93f4-ba654b3571dd"
+  },
+  "item": [
+    {
+      "name": "event_destinations",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Ngrok Get Event Destination",
+              "id": "d765185c-ad5a-4cd1-bec6-d96990944e5a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_destinations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_destinations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "97c82efe-2ac0-4fd1-903c-233e70cd9b09",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Get the details of an Event Destination by ID."
+              },
+              "response": [
+                {
+                  "id": "f54e472a-7c80-4a83-b55a-338f39254370",
+                  "name": "Event destination details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {},\n  \"uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:31.000Z",
+                  "updatedAt": "2026-07-28T02:20:31.000Z",
+                  "uid": "35240-f54e472a-7c80-4a83-b55a-338f39254370"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:31.000Z",
+              "updatedAt": "2026-07-28T02:20:31.000Z",
+              "uid": "35240-d765185c-ad5a-4cd1-bec6-d96990944e5a"
+            },
+            {
+              "name": "Ngrok Update Event Destination",
+              "id": "a369b0b2-32fa-43cd-8030-50f47eab9c1f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_destinations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_destinations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "df5d6e53-4840-46d1-aa81-20ad40090704",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Update attributes of an Event Destination by ID."
+              },
+              "response": [
+                {
+                  "id": "7bba7514-68e8-4789-be7b-5b8cad0e779b",
+                  "name": "Event destination updated.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/event_destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {},\n  \"uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:31.000Z",
+                  "updatedAt": "2026-07-28T02:20:31.000Z",
+                  "uid": "35240-7bba7514-68e8-4789-be7b-5b8cad0e779b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:31.000Z",
+              "updatedAt": "2026-07-28T02:20:31.000Z",
+              "uid": "35240-a369b0b2-32fa-43cd-8030-50f47eab9c1f"
+            },
+            {
+              "name": "Ngrok Delete Event Destination",
+              "id": "e9b4ae1b-4a8e-4d2c-83bf-e6324d59c4a1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/event_destinations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_destinations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2f599293-dc83-4f0d-b39f-fd84fd2396e9",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Delete an Event Destination by ID."
+              },
+              "response": [
+                {
+                  "id": "71b67ecf-f010-4e13-b70d-8191b12f55b1",
+                  "name": "Event destination deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:20:31.000Z",
+                  "updatedAt": "2026-07-28T02:20:31.000Z",
+                  "uid": "35240-71b67ecf-f010-4e13-b70d-8191b12f55b1"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:31.000Z",
+              "updatedAt": "2026-07-28T02:20:31.000Z",
+              "uid": "35240-e9b4ae1b-4a8e-4d2c-83bf-e6324d59c4a1"
+            }
+          ],
+          "id": "93cadbbe-5d1c-41b7-abf5-f82f0befe703",
+          "createdAt": "2026-07-28T02:20:31.000Z",
+          "updatedAt": "2026-07-28T02:20:31.000Z",
+          "uid": "35240-93cadbbe-5d1c-41b7-abf5-f82f0befe703"
+        },
+        {
+          "name": "Ngrok Create Event Destination",
+          "id": "21528002-a731-49dd-a9a6-a84ed2a2ffb2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {\n    \"firehose\": {},\n    \"kinesis\": {},\n    \"cloudwatch_logs\": {},\n    \"datadog\": {},\n    \"azure_logs_ingestion\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/event_destinations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "event_destinations"
+              ]
+            },
+            "description": "Create a new Event Destination."
+          },
+          "response": [
+            {
+              "id": "b4a0db27-f076-49b1-bd49-9e4918657580",
+              "name": "Event destination created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {\n    \"firehose\": {},\n    \"kinesis\": {},\n    \"cloudwatch_logs\": {},\n    \"datadog\": {},\n    \"azure_logs_ingestion\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_destinations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_destinations"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {},\n  \"uri\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:20:31.000Z",
+              "updatedAt": "2026-07-28T02:20:31.000Z",
+              "uid": "35240-b4a0db27-f076-49b1-bd49-9e4918657580"
+            }
+          ],
+          "createdAt": "2026-07-28T02:20:31.000Z",
+          "updatedAt": "2026-07-28T02:20:31.000Z",
+          "uid": "35240-21528002-a731-49dd-a9a6-a84ed2a2ffb2"
+        },
+        {
+          "name": "Ngrok List Event Destinations",
+          "id": "aa3e2a8f-badb-4075-a75e-83750c6555d2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/event_destinations?before_id=<string>&limit=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "event_destinations"
+              ],
+              "query": [
+                {
+                  "description": "An ID to use for pagination. Results returned will be before this ID.",
+                  "key": "before_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. Maximum is 100.",
+                  "key": "limit",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "List all Event Destinations on this account."
+          },
+          "response": [
+            {
+              "id": "c8ac9b6e-9461-406a-b274-6ff5664050c0",
+              "name": "List of event destinations.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_destinations?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_destinations"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"event_destinations\": [\n    {\n      \"id\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"format\": \"<string>\",\n      \"target\": {},\n      \"uri\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"format\": \"<string>\",\n      \"target\": {},\n      \"uri\": \"<string>\"\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:20:31.000Z",
+              "updatedAt": "2026-07-28T02:20:31.000Z",
+              "uid": "35240-c8ac9b6e-9461-406a-b274-6ff5664050c0"
+            }
+          ],
+          "createdAt": "2026-07-28T02:20:31.000Z",
+          "updatedAt": "2026-07-28T02:20:31.000Z",
+          "uid": "35240-aa3e2a8f-badb-4075-a75e-83750c6555d2"
+        }
+      ],
+      "id": "26039eec-019a-478c-bf52-6221add35236",
+      "createdAt": "2026-07-28T02:20:31.000Z",
+      "updatedAt": "2026-07-28T02:20:31.000Z",
+      "uid": "35240-26039eec-019a-478c-bf52-6221add35236"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ngrok.com"
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "info": {
+    "_postman_id": "6c6c6ae6-333a-4a3d-aedc-bafb71a15db0",
+    "name": "Ngrok Abuse Reports Edges HTTPS API",
+    "description": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:03.000Z",
+    "updatedAt": "2026-07-28T02:20:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6c6c6ae6-333a-4a3d-aedc-bafb71a15db0"
+  },
+  "item": [
+    {
+      "name": "edges",
+      "item": [
+        {
+          "name": "https",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Ngrok Get HTTPS Edge",
+                  "id": "cff97818-6be3-49f3-948c-26ce31ed90b9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/https/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "https",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "db5e7b16-8b5c-400d-b534-141eed66a57c",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Get an HTTPS Edge by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "b0ad93ba-8d7e-4e7f-a302-a0e2a36e8c3c",
+                      "name": "HTTPS edge details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edges/https/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edges",
+                            "https",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"uri\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:20:04.000Z",
+                      "updatedAt": "2026-07-28T02:20:04.000Z",
+                      "uid": "35240-b0ad93ba-8d7e-4e7f-a302-a0e2a36e8c3c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:04.000Z",
+                  "updatedAt": "2026-07-28T02:20:04.000Z",
+                  "uid": "35240-cff97818-6be3-49f3-948c-26ce31ed90b9"
+                },
+                {
+                  "name": "Ngrok Update HTTPS Edge",
+                  "id": "6abd3689-1088-486b-a5e6-4d12a5f07720",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/https/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "https",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6ab262ff-0217-40aa-abb6-908f82824085",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Update an HTTPS Edge by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "a4fcfbe0-e20d-44bc-ad8c-633cbb8132c4",
+                      "name": "HTTPS edge updated.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/edges/https/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edges",
+                            "https",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"uri\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T02:20:04.000Z",
+                      "updatedAt": "2026-07-28T02:20:04.000Z",
+                      "uid": "35240-a4fcfbe0-e20d-44bc-ad8c-633cbb8132c4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:04.000Z",
+                  "updatedAt": "2026-07-28T02:20:04.000Z",
+                  "uid": "35240-6abd3689-1088-486b-a5e6-4d12a5f07720"
+                },
+                {
+                  "name": "Ngrok Delete HTTPS Edge",
+                  "id": "40b68b5c-6cd3-4a0c-a338-f76b9f61cf0c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/https/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "https",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4602a073-5833-40a1-9b0e-a0178ac540e3",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique identifier for the resource."
+                        }
+                      ]
+                    },
+                    "description": "Delete an HTTPS Edge by ID."
+                  },
+                  "response": [
+                    {
+                      "id": "501c432b-e776-4b4d-88c4-b45c9a015cb9",
+                      "name": "HTTPS edge deleted.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edges/https/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edges",
+                            "https",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:20:04.000Z",
+                      "updatedAt": "2026-07-28T02:20:04.000Z",
+                      "uid": "35240-501c432b-e776-4b4d-88c4-b45c9a015cb9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:20:04.000Z",
+                  "updatedAt": "2026-07-28T02:20:04.000Z",
+                  "uid": "35240-40b68b5c-6cd3-4a0c-a338-f76b9f61cf0c"
+                }
+              ],
+              "id": "34b5a5b5-6c0c-4d9a-91ad-e28b09fe0b9f",
+              "createdAt": "2026-07-28T02:20:04.000Z",
+              "updatedAt": "2026-07-28T02:20:04.000Z",
+              "uid": "35240-34b5a5b5-6c0c-4d9a-91ad-e28b09fe0b9f"
+            },
+            {
+              "name": "Ngrok Create HTTPS Edge",
+              "id": "8df9cfdc-b4af-483b-823b-6347f7236ac5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/edges/https",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "edges",
+                    "https"
+                  ]
+                },
+                "description": "Create an HTTPS Edge."
+              },
+              "response": [
+                {
+                  "id": "98eea604-3559-4b9c-874f-91312bc2b2ad",
+                  "name": "HTTPS edge created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/https",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "https"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"uri\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:20:04.000Z",
+                  "updatedAt": "2026-07-28T02:20:04.000Z",
+                  "uid": "35240-98eea604-3559-4b9c-874f-91312bc2b2ad"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:04.000Z",
+              "updatedAt": "2026-07-28T02:20:04.000Z",
+              "uid": "35240-8df9cfdc-b4af-483b-823b-6347f7236ac5"
+            },
+            {
+              "name": "Ngrok List HTTPS Edges",
+              "id": "fd658664-6712-483b-9ec0-ac02cafcc5e2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/edges/https?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "edges",
+                    "https"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List all HTTPS Edges on this account."
+              },
+              "response": [
+                {
+                  "id": "dd65c24c-9605-4412-bfe8-b7a25956fbf3",
+                  "name": "List of HTTPS edges.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/edges/https?before_id=<string>&limit=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edges",
+                        "https"
+                      ],
+                      "query": [
+                        {
+                          "description": "An ID to use for pagination. Results returned will be before this ID.",
+                          "key": "before_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of results to return. Maximum is 100.",
+                          "key": "limit",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"https_edges\": [\n    {\n      \"id\": \"<string>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"uri\": \"<string>\",\n      \"hostports\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"uri\": \"<string>\",\n      \"hostports\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:04.000Z",
+                  "updatedAt": "2026-07-28T02:20:04.000Z",
+                  "uid": "35240-dd65c24c-9605-4412-bfe8-b7a25956fbf3"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:04.000Z",
+              "updatedAt": "2026-07-28T02:20:04.000Z",
+              "uid": "35240-fd658664-6712-483b-9ec0-ac02cafcc5e2"
+            }
+          ],
+          "id": "12d4ff44-cfc8-4b6e-be9f-45495614c3fc",
+          "createdAt": "2026-07-28T02:20:04.000Z",
+          "updatedAt": "2026-07-28T02:20:04.000Z",
+          "uid": "35240-12d4ff44-cfc8-4b6e-be9f-45495614c3fc"
+        }
+      ],
+      "id": "2381fbb7-5679-4a14-b01e-7a3337e2abab",
+      "createdAt": "2026-07-28T02:20:04.000Z",
+      "updatedAt": "2026-07-28T02:20:04.000Z",
+      "uid": "35240-2381fbb7-5679-4a14-b01e-7a3337e2abab"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ngrok.com"
+    }
+  ]
+}

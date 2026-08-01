@@ -1,0 +1,524 @@
+{
+  "info": {
+    "_postman_id": "9683d2f0-e48f-4b3b-ab00-05867b9caefd",
+    "name": "Ngrok Abuse Reports API Keys API",
+    "description": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:19:51.000Z",
+    "updatedAt": "2026-07-28T02:19:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9683d2f0-e48f-4b3b-ab00-05867b9caefd"
+  },
+  "item": [
+    {
+      "name": "api_keys",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Ngrok Get API Key",
+              "id": "4029f980-f911-43a1-a20a-595cd2634394",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api_keys/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api_keys",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "292613fa-f6c9-455b-97e7-e883af8e9a25",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Get the details of an API key by ID."
+              },
+              "response": [
+                {
+                  "id": "e3ad40ef-f328-4c45-83ba-84bda0533978",
+                  "name": "API key details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api_keys/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api_keys",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"token\": \"<string>\",\n  \"owner_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:19:51.000Z",
+                  "updatedAt": "2026-07-28T02:19:51.000Z",
+                  "uid": "35240-e3ad40ef-f328-4c45-83ba-84bda0533978"
+                }
+              ],
+              "createdAt": "2026-07-28T02:19:51.000Z",
+              "updatedAt": "2026-07-28T02:19:51.000Z",
+              "uid": "35240-4029f980-f911-43a1-a20a-595cd2634394"
+            },
+            {
+              "name": "Ngrok Update API Key",
+              "id": "d02a899c-c9ae-4f35-8799-80c35e87ad1c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api_keys/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api_keys",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e38d7768-95af-46c1-808c-9fbecee7ca4d",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Update attributes of an API key by ID."
+              },
+              "response": [
+                {
+                  "id": "d57ef667-7cfc-4ec9-9a15-d15189ffc45f",
+                  "name": "API key updated.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api_keys/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api_keys",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"token\": \"<string>\",\n  \"owner_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:19:51.000Z",
+                  "updatedAt": "2026-07-28T02:19:51.000Z",
+                  "uid": "35240-d57ef667-7cfc-4ec9-9a15-d15189ffc45f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:19:51.000Z",
+              "updatedAt": "2026-07-28T02:19:51.000Z",
+              "uid": "35240-d02a899c-c9ae-4f35-8799-80c35e87ad1c"
+            },
+            {
+              "name": "Ngrok Delete API Key",
+              "id": "e675b607-73f0-4e46-971a-2fefb7ef6177",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api_keys/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api_keys",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ae51a7a6-63c8-4b06-ac3f-a8b7be9b782a",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Delete an API key by ID."
+              },
+              "response": [
+                {
+                  "id": "ea36e418-8b25-4794-b480-a9aeb1036e78",
+                  "name": "API key deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api_keys/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api_keys",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:19:51.000Z",
+                  "updatedAt": "2026-07-28T02:19:51.000Z",
+                  "uid": "35240-ea36e418-8b25-4794-b480-a9aeb1036e78"
+                }
+              ],
+              "createdAt": "2026-07-28T02:19:51.000Z",
+              "updatedAt": "2026-07-28T02:19:51.000Z",
+              "uid": "35240-e675b607-73f0-4e46-971a-2fefb7ef6177"
+            }
+          ],
+          "id": "0dd6fee5-73f3-462e-b02d-a4e237221e6e",
+          "createdAt": "2026-07-28T02:19:51.000Z",
+          "updatedAt": "2026-07-28T02:19:51.000Z",
+          "uid": "35240-0dd6fee5-73f3-462e-b02d-a4e237221e6e"
+        },
+        {
+          "name": "Ngrok Create API Key",
+          "id": "f74fd056-475f-4a2c-af5f-c71de477d8e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"owner_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api_keys",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api_keys"
+              ]
+            },
+            "description": "Create a new API key."
+          },
+          "response": [
+            {
+              "id": "0ed9f43b-6f1c-4906-aed9-d51d8b89a89c",
+              "name": "API key created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"owner_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api_keys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api_keys"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"token\": \"<string>\",\n  \"owner_id\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:19:51.000Z",
+              "updatedAt": "2026-07-28T02:19:51.000Z",
+              "uid": "35240-0ed9f43b-6f1c-4906-aed9-d51d8b89a89c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:19:51.000Z",
+          "updatedAt": "2026-07-28T02:19:51.000Z",
+          "uid": "35240-f74fd056-475f-4a2c-af5f-c71de477d8e5"
+        },
+        {
+          "name": "Ngrok List API Keys",
+          "id": "0de95b35-9b6b-4f82-aa74-17f8af30f0b4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api_keys?before_id=<string>&limit=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api_keys"
+              ],
+              "query": [
+                {
+                  "description": "An ID to use for pagination. Results returned will be before this ID.",
+                  "key": "before_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. Maximum is 100.",
+                  "key": "limit",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "List all API keys on this account."
+          },
+          "response": [
+            {
+              "id": "4de7c689-3a09-49ea-ad07-c32eda879c98",
+              "name": "List of API keys.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api_keys?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api_keys"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"keys\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"token\": \"<string>\",\n      \"owner_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"token\": \"<string>\",\n      \"owner_id\": \"<string>\"\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:19:51.000Z",
+              "updatedAt": "2026-07-28T02:19:51.000Z",
+              "uid": "35240-4de7c689-3a09-49ea-ad07-c32eda879c98"
+            }
+          ],
+          "createdAt": "2026-07-28T02:19:51.000Z",
+          "updatedAt": "2026-07-28T02:19:51.000Z",
+          "uid": "35240-0de95b35-9b6b-4f82-aa74-17f8af30f0b4"
+        }
+      ],
+      "id": "fdf9b294-9802-490c-b3cd-1ce817e1c9fd",
+      "createdAt": "2026-07-28T02:19:51.000Z",
+      "updatedAt": "2026-07-28T02:19:51.000Z",
+      "uid": "35240-fdf9b294-9802-490c-b3cd-1ce817e1c9fd"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ngrok.com"
+    }
+  ]
+}

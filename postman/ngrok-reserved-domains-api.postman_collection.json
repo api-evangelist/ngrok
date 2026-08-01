@@ -1,0 +1,524 @@
+{
+  "info": {
+    "_postman_id": "0e92564d-11b8-45eb-a259-3bd633e3fd13",
+    "name": "Ngrok Abuse Reports Reserved Domains API",
+    "description": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:37.000Z",
+    "updatedAt": "2026-07-28T02:20:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0e92564d-11b8-45eb-a259-3bd633e3fd13"
+  },
+  "item": [
+    {
+      "name": "reserved_domains",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Ngrok Get Reserved Domain",
+              "id": "39b66f19-aef5-4bdd-9f55-b0953c96a468",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_domains/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_domains",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "698298ff-9821-4e21-9b48-260a72df6516",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Get the details of a reserved domain by ID."
+              },
+              "response": [
+                {
+                  "id": "4346fdce-66a7-48f2-9826-f9ee6f105bb0",
+                  "name": "Reserved domain details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reserved_domains/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reserved_domains",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"region\": \"<string>\",\n  \"cname_target\": \"<string>\",\n  \"certificate\": {\n    \"id\": \"<string>\",\n    \"uri\": \"<string>\"\n  },\n  \"certificate_management_policy\": {},\n  \"certificate_management_status\": {},\n  \"acme_challenge_cname_target\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:38.000Z",
+                  "updatedAt": "2026-07-28T02:20:38.000Z",
+                  "uid": "35240-4346fdce-66a7-48f2-9826-f9ee6f105bb0"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:38.000Z",
+              "updatedAt": "2026-07-28T02:20:38.000Z",
+              "uid": "35240-39b66f19-aef5-4bdd-9f55-b0953c96a468"
+            },
+            {
+              "name": "Ngrok Update Reserved Domain",
+              "id": "dd6035fd-e8b4-456b-84e6-1735a1b6b577",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"certificate_id\": \"<string>\",\n  \"certificate_management_policy\": {\n    \"authority\": \"<string>\",\n    \"private_key_type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_domains/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_domains",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8606efc1-f101-49af-b1aa-6530378dd56c",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Update attributes of a reserved domain by ID."
+              },
+              "response": [
+                {
+                  "id": "f6824506-04f3-4de7-ae3c-1da46f81931d",
+                  "name": "Reserved domain updated.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"certificate_id\": \"<string>\",\n  \"certificate_management_policy\": {\n    \"authority\": \"<string>\",\n    \"private_key_type\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reserved_domains/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reserved_domains",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"region\": \"<string>\",\n  \"cname_target\": \"<string>\",\n  \"certificate\": {\n    \"id\": \"<string>\",\n    \"uri\": \"<string>\"\n  },\n  \"certificate_management_policy\": {},\n  \"certificate_management_status\": {},\n  \"acme_challenge_cname_target\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:20:38.000Z",
+                  "updatedAt": "2026-07-28T02:20:38.000Z",
+                  "uid": "35240-f6824506-04f3-4de7-ae3c-1da46f81931d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:38.000Z",
+              "updatedAt": "2026-07-28T02:20:38.000Z",
+              "uid": "35240-dd6035fd-e8b4-456b-84e6-1735a1b6b577"
+            },
+            {
+              "name": "Ngrok Delete Reserved Domain",
+              "id": "a97f8125-ec4b-4fe9-991d-c967f41c924e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_domains/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_domains",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6a4c896e-14c7-4f0c-bee6-10be29e74ea4",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "description": "Delete a reserved domain by ID."
+              },
+              "response": [
+                {
+                  "id": "f1c4d3a0-e05a-4cc1-94e2-f150f60c687e",
+                  "name": "Reserved domain deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reserved_domains/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reserved_domains",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:20:38.000Z",
+                  "updatedAt": "2026-07-28T02:20:38.000Z",
+                  "uid": "35240-f1c4d3a0-e05a-4cc1-94e2-f150f60c687e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:20:38.000Z",
+              "updatedAt": "2026-07-28T02:20:38.000Z",
+              "uid": "35240-a97f8125-ec4b-4fe9-991d-c967f41c924e"
+            }
+          ],
+          "id": "9130bd34-f5ce-4d63-b9ff-441ff3a961b5",
+          "createdAt": "2026-07-28T02:20:38.000Z",
+          "updatedAt": "2026-07-28T02:20:38.000Z",
+          "uid": "35240-9130bd34-f5ce-4d63-b9ff-441ff3a961b5"
+        },
+        {
+          "name": "Ngrok Create Reserved Domain",
+          "id": "cadb00c6-3528-4c0f-928d-78b05f3597d4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"domain\": \"<string>\",\n  \"region\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"certificate_id\": \"<string>\",\n  \"certificate_management_policy\": {\n    \"authority\": \"<string>\",\n    \"private_key_type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reserved_domains",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reserved_domains"
+              ]
+            },
+            "description": "Create a new reserved domain."
+          },
+          "response": [
+            {
+              "id": "32c74fe0-8f71-40e8-ab34-75a208ee189a",
+              "name": "Reserved domain created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain\": \"<string>\",\n  \"region\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"certificate_id\": \"<string>\",\n  \"certificate_management_policy\": {\n    \"authority\": \"<string>\",\n    \"private_key_type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_domains",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_domains"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"region\": \"<string>\",\n  \"cname_target\": \"<string>\",\n  \"certificate\": {\n    \"id\": \"<string>\",\n    \"uri\": \"<string>\"\n  },\n  \"certificate_management_policy\": {},\n  \"certificate_management_status\": {},\n  \"acme_challenge_cname_target\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:20:38.000Z",
+              "updatedAt": "2026-07-28T02:20:38.000Z",
+              "uid": "35240-32c74fe0-8f71-40e8-ab34-75a208ee189a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:20:38.000Z",
+          "updatedAt": "2026-07-28T02:20:38.000Z",
+          "uid": "35240-cadb00c6-3528-4c0f-928d-78b05f3597d4"
+        },
+        {
+          "name": "Ngrok List Reserved Domains",
+          "id": "1dc5d6a0-5fbb-4d99-bb6d-26913d4a54fc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/reserved_domains?before_id=<string>&limit=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reserved_domains"
+              ],
+              "query": [
+                {
+                  "description": "An ID to use for pagination. Results returned will be before this ID.",
+                  "key": "before_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. Maximum is 100.",
+                  "key": "limit",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "List all reserved domains on this account."
+          },
+          "response": [
+            {
+              "id": "10f88721-096a-47a4-857f-1e10fa260179",
+              "name": "List of reserved domains.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reserved_domains?before_id=<string>&limit=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reserved_domains"
+                  ],
+                  "query": [
+                    {
+                      "description": "An ID to use for pagination. Results returned will be before this ID.",
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Maximum is 100.",
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"reserved_domains\": [\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"region\": \"<string>\",\n      \"cname_target\": \"<string>\",\n      \"certificate\": {\n        \"id\": \"<string>\",\n        \"uri\": \"<string>\"\n      },\n      \"certificate_management_policy\": {},\n      \"certificate_management_status\": {},\n      \"acme_challenge_cname_target\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"uri\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"metadata\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"region\": \"<string>\",\n      \"cname_target\": \"<string>\",\n      \"certificate\": {\n        \"id\": \"<string>\",\n        \"uri\": \"<string>\"\n      },\n      \"certificate_management_policy\": {},\n      \"certificate_management_status\": {},\n      \"acme_challenge_cname_target\": \"<string>\"\n    }\n  ],\n  \"uri\": \"<string>\",\n  \"next_page_uri\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:20:38.000Z",
+              "updatedAt": "2026-07-28T02:20:38.000Z",
+              "uid": "35240-10f88721-096a-47a4-857f-1e10fa260179"
+            }
+          ],
+          "createdAt": "2026-07-28T02:20:38.000Z",
+          "updatedAt": "2026-07-28T02:20:38.000Z",
+          "uid": "35240-1dc5d6a0-5fbb-4d99-bb6d-26913d4a54fc"
+        }
+      ],
+      "id": "00b53a77-e168-4fa1-a1ce-f55511d2366b",
+      "createdAt": "2026-07-28T02:20:38.000Z",
+      "updatedAt": "2026-07-28T02:20:38.000Z",
+      "uid": "35240-00b53a77-e168-4fa1-a1ce-f55511d2366b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ngrok.com"
+    }
+  ]
+}
