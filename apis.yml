@@ -1049,6 +1049,13 @@ apis:
   - type: GitHubRepository
     url: https://github.com/ngrok/ngrok-openapi
 common:
+  - type: IssueTracker
+    url: https://github.com/ngrok/ngrok-openapi/issues
+  - type: CodeOfConduct
+    url: https://github.com/ngrok/.github/blob/main/CODE_OF_CONDUCT.md
+  - type: License
+    name: MIT
+    url: https://github.com/ngrok/ngrok-openapi/blob/main/LICENSE
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/ngrok/overview
   - type: AgenticAccess
