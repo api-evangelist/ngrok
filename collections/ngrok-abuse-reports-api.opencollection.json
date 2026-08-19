@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ngrok Abuse Reports API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Abuse Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ngrok Create Abuse Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/abuse_reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new abuse report which will be reviewed by our system and abuse response team."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get Abuse Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/abuse_reports/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get the detailed status of an abuse report by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

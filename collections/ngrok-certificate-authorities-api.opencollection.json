@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ngrok Abuse Reports Certificate Authorities API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Certificate Authorities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ngrok List Certificate Authorities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/certificate_authorities",
+            "params": [
+              {
+                "name": "before_id",
+                "value": "",
+                "type": "query",
+                "description": "An ID to use for pagination. Results returned will be before this ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Maximum is 100."
+              }
+            ]
+          },
+          "docs": "List all Certificate Authorities on this account."
+        },
+        {
+          "info": {
+            "name": "Ngrok Create Certificate Authority",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/certificate_authorities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload a new Certificate Authority."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get Certificate Authority",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/certificate_authorities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get the details of a Certificate Authority by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Update Certificate Authority",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.ngrok.com/certificate_authorities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update attributes of a Certificate Authority by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Delete Certificate Authority",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.ngrok.com/certificate_authorities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Delete a Certificate Authority by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ngrok Abuse Reports Tunnel Sessions API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tunnel Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ngrok List Tunnel Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/tunnel_sessions",
+            "params": [
+              {
+                "name": "before_id",
+                "value": "",
+                "type": "query",
+                "description": "An ID to use for pagination. Results returned will be before this ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Maximum is 100."
+              }
+            ]
+          },
+          "docs": "List all online tunnel sessions running on this account."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get Tunnel Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/tunnel_sessions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get the details of a tunnel session by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Restart Tunnel Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/tunnel_sessions/:id/restart",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Issues a command to the ngrok agent to restart a tunnel session."
+        },
+        {
+          "info": {
+            "name": "Ngrok Stop Tunnel Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/tunnel_sessions/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Issues a command to the ngrok agent to stop a tunnel session."
+        },
+        {
+          "info": {
+            "name": "Ngrok Update Tunnel Session Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/tunnel_sessions/:id/update",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Issues a command to the ngrok agent to update itself to the latest version."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

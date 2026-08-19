@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "2994e700-c009-480b-ad85-332f4fa694e5",
+      "name": "Event Subscriptions",
+      "description": {
+        "content": "Event Subscriptions define which events trigger notifications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cdf7677-b199-48eb-b954-2b97d5a86202",
+          "name": "Ngrok Create Event Subscription",
+          "request": {
+            "name": "Ngrok Create Event Subscription",
+            "description": {
+              "content": "Create an Event Subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"sources\": [\n    {\n      \"type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\"\n    }\n  ],\n  \"destination_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52c974bd-ed3d-4cbf-ac90-2925680e0af5",
+              "name": "Event subscription created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"sources\": [\n    {\n      \"type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\"\n    }\n  ],\n  \"destination_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1972-07-31T12:45:59.732Z\",\n  \"metadata\": \"string\",\n  \"description\": \"string\",\n  \"sources\": [\n    {\n      \"type\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"type\": \"string\",\n      \"uri\": \"string\"\n    }\n  ],\n  \"destinations\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcf54626-2328-41c4-b41e-1aab4d3240aa",
+          "name": "Ngrok List Event Subscriptions",
+          "request": {
+            "name": "Ngrok List Event Subscriptions",
+            "description": {
+              "content": "List all Event Subscriptions on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6d63631-d8bd-42eb-b081-182235198aae",
+              "name": "List of event subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_subscriptions\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1952-06-08T11:14:35.293Z\",\n      \"metadata\": \"string\",\n      \"description\": \"string\",\n      \"sources\": [\n        {\n          \"type\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"destinations\": [\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1980-10-14T18:38:33.697Z\",\n      \"metadata\": \"string\",\n      \"description\": \"string\",\n      \"sources\": [\n        {\n          \"type\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"destinations\": [\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a15658a5-8c96-453c-8b8d-d9807108a51e",
+          "name": "Ngrok Get Event Subscription",
+          "request": {
+            "name": "Ngrok Get Event Subscription",
+            "description": {
+              "content": "Get an Event Subscription by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3011948-6ad1-4890-afe7-7a94ead08960",
+              "name": "Event subscription details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1972-07-31T12:45:59.732Z\",\n  \"metadata\": \"string\",\n  \"description\": \"string\",\n  \"sources\": [\n    {\n      \"type\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"type\": \"string\",\n      \"uri\": \"string\"\n    }\n  ],\n  \"destinations\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f67a0086-9b32-400e-aa8c-5ae230a5cac9",
+          "name": "Ngrok Update Event Subscription",
+          "request": {
+            "name": "Ngrok Update Event Subscription",
+            "description": {
+              "content": "Update an Event Subscription by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"sources\": [\n    {\n      \"type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\"\n    }\n  ],\n  \"destination_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf9dd90a-e0dd-4fa7-a816-552f5f591976",
+              "name": "Event subscription updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"sources\": [\n    {\n      \"type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\"\n    }\n  ],\n  \"destination_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1972-07-31T12:45:59.732Z\",\n  \"metadata\": \"string\",\n  \"description\": \"string\",\n  \"sources\": [\n    {\n      \"type\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"type\": \"string\",\n      \"uri\": \"string\"\n    }\n  ],\n  \"destinations\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a5b0f60-255f-49e2-81ce-f5c148afec2c",
+          "name": "Ngrok Delete Event Subscription",
+          "request": {
+            "name": "Ngrok Delete Event Subscription",
+            "description": {
+              "content": "Delete an Event Subscription by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dab507c7-ad43-49e0-b8db-e62e0337ae9c",
+              "name": "Event subscription deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c1225ba4-65c0-4532-96e7-077b6f260c9e",
+    "name": "Ngrok Abuse Reports Event Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "1696fb25-fc58-4cfe-ae9e-a43a8fecce62",
+      "name": "TLS Certificates",
+      "description": {
+        "content": "TLS Certificates are x509 certificate/key pairs used to terminate TLS traffic.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5762a5f-6f5e-4a26-a571-01e86a5bd768",
+          "name": "Ngrok Create TLS Certificate",
+          "request": {
+            "name": "Ngrok Create TLS Certificate",
+            "description": {
+              "content": "Upload a new TLS certificate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tls_certificates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"certificate_pem\": \"<string>\",\n  \"private_key_pem\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "217625fd-81b7-4ef8-a623-e8af229f2bb8",
+              "name": "TLS certificate created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tls_certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"certificate_pem\": \"<string>\",\n  \"private_key_pem\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"2008-07-18T22:21:37.021Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"certificate_pem\": \"string\",\n  \"subject_common_name\": \"string\",\n  \"subject_alternative_names\": {\n    \"dns_names\": [\n      \"string\",\n      \"string\"\n    ],\n    \"ips\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"not_before\": \"1978-06-26T22:18:17.153Z\",\n  \"not_after\": \"1962-02-06T00:02:59.367Z\",\n  \"key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"extended_key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"private_key_type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9159ba40-5d1c-4c1c-8ff9-28f56306f1b7",
+          "name": "Ngrok List TLS Certificates",
+          "request": {
+            "name": "Ngrok List TLS Certificates",
+            "description": {
+              "content": "List all TLS certificates on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tls_certificates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e67ced73-2eea-420f-8e35-ef25f99ccbfd",
+              "name": "List of TLS certificates.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tls_certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tls_certificates\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1958-10-03T13:01:59.393Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"certificate_pem\": \"string\",\n      \"subject_common_name\": \"string\",\n      \"subject_alternative_names\": {\n        \"dns_names\": [\n          \"string\",\n          \"string\"\n        ],\n        \"ips\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"not_before\": \"1951-04-17T09:05:34.479Z\",\n      \"not_after\": \"1951-11-29T10:32:00.683Z\",\n      \"key_usages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extended_key_usages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"private_key_type\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1948-04-24T01:18:46.054Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"certificate_pem\": \"string\",\n      \"subject_common_name\": \"string\",\n      \"subject_alternative_names\": {\n        \"dns_names\": [\n          \"string\",\n          \"string\"\n        ],\n        \"ips\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"not_before\": \"1989-05-14T06:48:20.026Z\",\n      \"not_after\": \"1995-01-18T09:33:59.546Z\",\n      \"key_usages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extended_key_usages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"private_key_type\": \"string\"\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecf7875e-2866-40a9-bd7b-8e5cc5b9f759",
+          "name": "Ngrok Get TLS Certificate",
+          "request": {
+            "name": "Ngrok Get TLS Certificate",
+            "description": {
+              "content": "Get the details of a TLS certificate by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tls_certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f72c3a20-e6fd-4cc6-838b-6c04031184f9",
+              "name": "TLS certificate details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tls_certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"2008-07-18T22:21:37.021Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"certificate_pem\": \"string\",\n  \"subject_common_name\": \"string\",\n  \"subject_alternative_names\": {\n    \"dns_names\": [\n      \"string\",\n      \"string\"\n    ],\n    \"ips\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"not_before\": \"1978-06-26T22:18:17.153Z\",\n  \"not_after\": \"1962-02-06T00:02:59.367Z\",\n  \"key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"extended_key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"private_key_type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b52c2348-4294-4a47-abc0-0081f061da5f",
+          "name": "Ngrok Update TLS Certificate",
+          "request": {
+            "name": "Ngrok Update TLS Certificate",
+            "description": {
+              "content": "Update attributes of a TLS certificate by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tls_certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2689dcb-6ff2-48a1-93e7-7c564b410a75",
+              "name": "TLS certificate updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tls_certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"2008-07-18T22:21:37.021Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"certificate_pem\": \"string\",\n  \"subject_common_name\": \"string\",\n  \"subject_alternative_names\": {\n    \"dns_names\": [\n      \"string\",\n      \"string\"\n    ],\n    \"ips\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"not_before\": \"1978-06-26T22:18:17.153Z\",\n  \"not_after\": \"1962-02-06T00:02:59.367Z\",\n  \"key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"extended_key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"private_key_type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "762b5ddb-8adf-4a76-909e-2d2aa031c811",
+          "name": "Ngrok Delete TLS Certificate",
+          "request": {
+            "name": "Ngrok Delete TLS Certificate",
+            "description": {
+              "content": "Delete a TLS certificate by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tls_certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43900a80-a152-44c0-9420-132c05ff7c10",
+              "name": "TLS certificate deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tls_certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "160782f5-d644-475d-96f4-5fbecb8675bf",
+    "name": "Ngrok Abuse Reports TLS Certificates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

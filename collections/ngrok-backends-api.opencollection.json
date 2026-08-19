@@ -1,0 +1,529 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ngrok Abuse Reports Backends API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Backends",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ngrok List Tunnel Group Backends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/tunnel_group",
+            "params": [
+              {
+                "name": "before_id",
+                "value": "",
+                "type": "query",
+                "description": "An ID to use for pagination. Results returned will be before this ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Maximum is 100."
+              }
+            ]
+          },
+          "docs": "List all Tunnel Group backends on this account."
+        },
+        {
+          "info": {
+            "name": "Ngrok Create Tunnel Group Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/backends/tunnel_group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Tunnel Group backend."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get Tunnel Group Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/tunnel_group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get a Tunnel Group backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Update Tunnel Group Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.ngrok.com/backends/tunnel_group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Tunnel Group backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Delete Tunnel Group Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.ngrok.com/backends/tunnel_group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Delete a Tunnel Group backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok List Weighted Backends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/weighted",
+            "params": [
+              {
+                "name": "before_id",
+                "value": "",
+                "type": "query",
+                "description": "An ID to use for pagination. Results returned will be before this ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Maximum is 100."
+              }
+            ]
+          },
+          "docs": "List all Weighted backends on this account."
+        },
+        {
+          "info": {
+            "name": "Ngrok Create Weighted Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/backends/weighted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Weighted backend."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get Weighted Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/weighted/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get a Weighted backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Update Weighted Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.ngrok.com/backends/weighted/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Weighted backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Delete Weighted Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.ngrok.com/backends/weighted/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Delete a Weighted backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok List Failover Backends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/failover",
+            "params": [
+              {
+                "name": "before_id",
+                "value": "",
+                "type": "query",
+                "description": "An ID to use for pagination. Results returned will be before this ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Maximum is 100."
+              }
+            ]
+          },
+          "docs": "List all Failover backends on this account."
+        },
+        {
+          "info": {
+            "name": "Ngrok Create Failover Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/backends/failover",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Failover backend."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get Failover Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/failover/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get a Failover backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Update Failover Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.ngrok.com/backends/failover/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Failover backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Delete Failover Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.ngrok.com/backends/failover/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Delete a Failover backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok List HTTP Response Backends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/http_response",
+            "params": [
+              {
+                "name": "before_id",
+                "value": "",
+                "type": "query",
+                "description": "An ID to use for pagination. Results returned will be before this ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Maximum is 100."
+              }
+            ]
+          },
+          "docs": "List all HTTP Response backends on this account."
+        },
+        {
+          "info": {
+            "name": "Ngrok Create HTTP Response Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/backends/http_response",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new HTTP Response backend that returns a static response."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get HTTP Response Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/http_response/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get an HTTP Response backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Update HTTP Response Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.ngrok.com/backends/http_response/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an HTTP Response backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Delete HTTP Response Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.ngrok.com/backends/http_response/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Delete an HTTP Response backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok List Static Address Backends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/static_address",
+            "params": [
+              {
+                "name": "before_id",
+                "value": "",
+                "type": "query",
+                "description": "An ID to use for pagination. Results returned will be before this ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Maximum is 100."
+              }
+            ]
+          },
+          "docs": "List all Static Address backends on this account."
+        },
+        {
+          "info": {
+            "name": "Ngrok Create Static Address Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/backends/static_address",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Static Address backend."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get Static Address Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/backends/static_address/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get a Static Address backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Update Static Address Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.ngrok.com/backends/static_address/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Static Address backend by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Delete Static Address Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.ngrok.com/backends/static_address/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Delete a Static Address backend by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "92d02e23-aa05-4894-9eda-dc0d5a688ae1",
+      "name": "IP Restrictions",
+      "description": {
+        "content": "IP Restrictions apply IP Policies to specific ngrok resources.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09a320f4-9bc9-40a8-9413-59496b0601d0",
+          "name": "Ngrok Create IP Restriction",
+          "request": {
+            "name": "Ngrok Create IP Restriction",
+            "description": {
+              "content": "Create a new IP restriction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_restrictions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"ip_policy_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"enforced\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c03ac06-36fa-4888-8d3e-c07ab4e514f6",
+              "name": "IP restriction created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_restrictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"ip_policy_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"enforced\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"2004-06-11T14:53:36.962Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"enforced\": false,\n  \"type\": \"string\",\n  \"ip_policies\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5583d7e3-0cdc-40ac-a4f7-09cb14c79174",
+          "name": "Ngrok List IP Restrictions",
+          "request": {
+            "name": "Ngrok List IP Restrictions",
+            "description": {
+              "content": "List all IP restrictions on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_restrictions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d647239-60a6-49e6-b773-89640f72e674",
+              "name": "List of IP restrictions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_restrictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ip_restrictions\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"2003-01-16T17:16:27.454Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"enforced\": false,\n      \"type\": \"string\",\n      \"ip_policies\": [\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1986-07-07T19:11:53.531Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"enforced\": false,\n      \"type\": \"string\",\n      \"ip_policies\": [\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d47a64eb-4822-4a62-8d48-93368079b339",
+          "name": "Ngrok Get IP Restriction",
+          "request": {
+            "name": "Ngrok Get IP Restriction",
+            "description": {
+              "content": "Get the details of an IP restriction by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_restrictions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e13e1a3-3cdc-4952-bd71-acbd7517c19a",
+              "name": "IP restriction details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_restrictions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"2004-06-11T14:53:36.962Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"enforced\": false,\n  \"type\": \"string\",\n  \"ip_policies\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e06a310-18aa-4bdd-9ccf-0f30bd78906c",
+          "name": "Ngrok Update IP Restriction",
+          "request": {
+            "name": "Ngrok Update IP Restriction",
+            "description": {
+              "content": "Update attributes of an IP restriction by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_restrictions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"enforced\": \"<boolean>\",\n  \"ip_policy_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd673032-36a6-47a4-9eb6-773d2cb538ae",
+              "name": "IP restriction updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_restrictions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"enforced\": \"<boolean>\",\n  \"ip_policy_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"2004-06-11T14:53:36.962Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"enforced\": false,\n  \"type\": \"string\",\n  \"ip_policies\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c271cae7-d13c-4326-89a6-0bd568a7cf63",
+          "name": "Ngrok Delete IP Restriction",
+          "request": {
+            "name": "Ngrok Delete IP Restriction",
+            "description": {
+              "content": "Delete an IP restriction by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_restrictions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "519fc1e3-870d-4c1e-bd23-1a3dfccebcfb",
+              "name": "IP restriction deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_restrictions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e410eb8c-21f3-43bb-a839-29bc4d0b7461",
+    "name": "Ngrok Abuse Reports IP Restrictions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

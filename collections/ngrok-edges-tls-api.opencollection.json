@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ngrok Abuse Reports Edges TLS API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Edges TLS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ngrok List TLS Edges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/edges/tls",
+            "params": [
+              {
+                "name": "before_id",
+                "value": "",
+                "type": "query",
+                "description": "An ID to use for pagination. Results returned will be before this ID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Maximum is 100."
+              }
+            ]
+          },
+          "docs": "List all TLS Edges on this account."
+        },
+        {
+          "info": {
+            "name": "Ngrok Create TLS Edge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ngrok.com/edges/tls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a TLS Edge."
+        },
+        {
+          "info": {
+            "name": "Ngrok Get TLS Edge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ngrok.com/edges/tls/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get a TLS Edge by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Update TLS Edge",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.ngrok.com/edges/tls/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a TLS Edge by ID."
+        },
+        {
+          "info": {
+            "name": "Ngrok Delete TLS Edge",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.ngrok.com/edges/tls/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Delete a TLS Edge by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

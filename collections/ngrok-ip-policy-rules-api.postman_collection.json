@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "5253d03c-2108-4cb4-927b-ae3aab96c922",
+      "name": "IP Policy Rules",
+      "description": {
+        "content": "IP Policy Rules are CIDR-based allow/deny rules within an IP Policy.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07c3a9cc-f6fc-4a82-8864-3ba8482b45ae",
+          "name": "Ngrok Create IP Policy Rule",
+          "request": {
+            "name": "Ngrok Create IP Policy Rule",
+            "description": {
+              "content": "Create a new IP policy rule attached to an IP policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_policy_rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cidr\": \"<string>\",\n  \"ip_policy_id\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae54457a-fd88-44d2-afe2-5f99f8ee4ef6",
+              "name": "IP policy rule created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_policy_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cidr\": \"<string>\",\n  \"ip_policy_id\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1960-10-09T20:09:40.706Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"cidr\": \"string\",\n  \"ip_policy\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"action\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c692539-5ee3-4fd9-a957-39db7d2ba639",
+          "name": "Ngrok List IP Policy Rules",
+          "request": {
+            "name": "Ngrok List IP Policy Rules",
+            "description": {
+              "content": "List all IP policy rules on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_policy_rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba22ca5c-e235-4c56-952c-ddac949d4477",
+              "name": "List of IP policy rules.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_policy_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ip_policy_rules\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"2024-12-24T05:44:44.145Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"cidr\": \"string\",\n      \"ip_policy\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"action\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1973-11-16T23:31:30.742Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"cidr\": \"string\",\n      \"ip_policy\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"action\": \"string\"\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a20696c0-89ca-4256-9529-a43eb5a954e7",
+          "name": "Ngrok Get IP Policy Rule",
+          "request": {
+            "name": "Ngrok Get IP Policy Rule",
+            "description": {
+              "content": "Get the details of an IP policy rule by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_policy_rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5f7ddd4-b0ef-4420-a193-2bdd1541f401",
+              "name": "IP policy rule details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_policy_rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1960-10-09T20:09:40.706Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"cidr\": \"string\",\n  \"ip_policy\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"action\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "643adf6d-08f9-4154-81e2-c6c009db466b",
+          "name": "Ngrok Update IP Policy Rule",
+          "request": {
+            "name": "Ngrok Update IP Policy Rule",
+            "description": {
+              "content": "Update attributes of an IP policy rule by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_policy_rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"cidr\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d58e8259-695b-4d8a-9b68-e513d638802a",
+              "name": "IP policy rule updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_policy_rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"cidr\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1960-10-09T20:09:40.706Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"cidr\": \"string\",\n  \"ip_policy\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"action\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d36b819-ed95-4946-a8df-158742c3f6f5",
+          "name": "Ngrok Delete IP Policy Rule",
+          "request": {
+            "name": "Ngrok Delete IP Policy Rule",
+            "description": {
+              "content": "Delete an IP policy rule by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ip_policy_rules",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a91276a5-0bce-400c-aa85-53a29b23337b",
+              "name": "IP policy rule deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ip_policy_rules",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3e1a1187-75c1-4d2d-994b-9f528da3ae77",
+    "name": "Ngrok Abuse Reports IP Policy Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

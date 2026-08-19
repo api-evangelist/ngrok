@@ -1,0 +1,524 @@
+{
+  "item": [
+    {
+      "id": "b4a41aab-1716-484e-b293-3c806ba4d97a",
+      "name": "Tunnel Sessions",
+      "description": {
+        "content": "Tunnel Sessions represent running ngrok agent connections.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46d7b082-c346-4c91-adbc-76b64f92380b",
+          "name": "Ngrok List Tunnel Sessions",
+          "request": {
+            "name": "Ngrok List Tunnel Sessions",
+            "description": {
+              "content": "List all online tunnel sessions running on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tunnel_sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b3d4b86-4b99-4f46-b8a1-8df8f6d032d8",
+              "name": "List of tunnel sessions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tunnel_sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tunnel_sessions\": [\n    {\n      \"agent_version\": \"string\",\n      \"credential\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"id\": \"string\",\n      \"ip\": \"string\",\n      \"metadata\": \"string\",\n      \"os\": \"string\",\n      \"region\": \"string\",\n      \"started_at\": \"2004-06-07T20:05:18.770Z\",\n      \"transport\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"agent_version\": \"string\",\n      \"credential\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"id\": \"string\",\n      \"ip\": \"string\",\n      \"metadata\": \"string\",\n      \"os\": \"string\",\n      \"region\": \"string\",\n      \"started_at\": \"2021-07-11T08:20:44.511Z\",\n      \"transport\": \"string\",\n      \"uri\": \"string\"\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43d7bbd4-5257-4d3b-b9a5-8afef9cc44fd",
+          "name": "Ngrok Get Tunnel Session",
+          "request": {
+            "name": "Ngrok Get Tunnel Session",
+            "description": {
+              "content": "Get the details of a tunnel session by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tunnel_sessions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2ac6c8d-402e-4978-9630-ae786fc3088a",
+              "name": "Tunnel session details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tunnel_sessions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"agent_version\": \"string\",\n  \"credential\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"id\": \"string\",\n  \"ip\": \"string\",\n  \"metadata\": \"string\",\n  \"os\": \"string\",\n  \"region\": \"string\",\n  \"started_at\": \"2006-10-17T23:02:03.772Z\",\n  \"transport\": \"string\",\n  \"uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "635da8a8-b93f-4029-a62b-d5eaf7484d1e",
+          "name": "Ngrok Restart Tunnel Session",
+          "request": {
+            "name": "Ngrok Restart Tunnel Session",
+            "description": {
+              "content": "Issues a command to the ngrok agent to restart a tunnel session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tunnel_sessions",
+                ":id",
+                "restart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a089f0b-36b0-45c9-88a6-9a1b82129c0c",
+              "name": "Tunnel session restart issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tunnel_sessions",
+                    ":id",
+                    "restart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54115089-232f-4fb5-8516-924f7b3baef3",
+          "name": "Ngrok Stop Tunnel Session",
+          "request": {
+            "name": "Ngrok Stop Tunnel Session",
+            "description": {
+              "content": "Issues a command to the ngrok agent to stop a tunnel session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tunnel_sessions",
+                ":id",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "990389b3-4be1-46de-833f-df63bc901d83",
+              "name": "Tunnel session stop issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tunnel_sessions",
+                    ":id",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a74ee2c-064a-402a-97e4-1e1d62c82fb1",
+          "name": "Ngrok Update Tunnel Session Agent",
+          "request": {
+            "name": "Ngrok Update Tunnel Session Agent",
+            "description": {
+              "content": "Issues a command to the ngrok agent to update itself to the latest version.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tunnel_sessions",
+                ":id",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbd300f9-5ad8-4856-a6b9-5349b0cac8ce",
+              "name": "Tunnel session update issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tunnel_sessions",
+                    ":id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e918e41b-c05e-4934-88a5-46964bbfacb0",
+    "name": "Ngrok Abuse Reports Tunnel Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

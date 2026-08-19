@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "f7998c6b-6df7-4d33-9ef6-59c90b99d05f",
+      "name": "Endpoints",
+      "description": {
+        "content": "Endpoints represent the public URLs of active tunnels and edges.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "598da476-7b9a-4631-8a77-2923deeca7bd",
+          "name": "Ngrok Create Endpoint",
+          "request": {
+            "name": "Ngrok Create Endpoint",
+            "description": {
+              "content": "Create a new endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "endpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"bindings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"traffic_policy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bc1c1ca-8332-4c23-8807-ce6afe982082",
+              "name": "Endpoint created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"bindings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"traffic_policy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"region\": \"string\",\n  \"created_at\": \"1946-10-11T06:41:22.831Z\",\n  \"updated_at\": \"2010-08-29T01:21:44.819Z\",\n  \"public_url\": \"string\",\n  \"proto\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"domain\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"tcp_addr\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"tunnel\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"edge\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"bindings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"traffic_policy\": \"string\",\n  \"uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee698bf3-1128-438c-bd20-3d0a58e6f048",
+          "name": "Ngrok List Endpoints",
+          "request": {
+            "name": "Ngrok List Endpoints",
+            "description": {
+              "content": "List all active endpoints on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "endpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d781116-b3da-4caa-8540-54c822cc70cf",
+              "name": "List of endpoints.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"endpoints\": [\n    {\n      \"id\": \"string\",\n      \"region\": \"string\",\n      \"created_at\": \"2009-12-14T02:57:33.555Z\",\n      \"updated_at\": \"1966-07-30T21:15:45.091Z\",\n      \"public_url\": \"string\",\n      \"proto\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"domain\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"tcp_addr\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"tunnel\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"edge\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"bindings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"traffic_policy\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"region\": \"string\",\n      \"created_at\": \"1989-04-26T12:56:48.656Z\",\n      \"updated_at\": \"1952-12-12T13:57:03.694Z\",\n      \"public_url\": \"string\",\n      \"proto\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"domain\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"tcp_addr\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"tunnel\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"edge\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"bindings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"traffic_policy\": \"string\",\n      \"uri\": \"string\"\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7098dfbc-7a69-45a7-b0fb-65af2885568b",
+          "name": "Ngrok Get Endpoint",
+          "request": {
+            "name": "Ngrok Get Endpoint",
+            "description": {
+              "content": "Get the details of an endpoint by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "endpoints",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02aa9a09-235b-4ff4-8a24-f4ab44201164",
+              "name": "Endpoint details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "endpoints",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"region\": \"string\",\n  \"created_at\": \"1946-10-11T06:41:22.831Z\",\n  \"updated_at\": \"2010-08-29T01:21:44.819Z\",\n  \"public_url\": \"string\",\n  \"proto\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"domain\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"tcp_addr\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"tunnel\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"edge\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"bindings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"traffic_policy\": \"string\",\n  \"uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f81808e-9eed-48e2-a32b-7854f83cf8fe",
+          "name": "Ngrok Update Endpoint",
+          "request": {
+            "name": "Ngrok Update Endpoint",
+            "description": {
+              "content": "Update an endpoint by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "endpoints",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"bindings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"traffic_policy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30e40563-d119-407f-ae44-2e737debc59a",
+              "name": "Endpoint updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "endpoints",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"bindings\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"traffic_policy\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"region\": \"string\",\n  \"created_at\": \"1946-10-11T06:41:22.831Z\",\n  \"updated_at\": \"2010-08-29T01:21:44.819Z\",\n  \"public_url\": \"string\",\n  \"proto\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"domain\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"tcp_addr\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"tunnel\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"edge\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"bindings\": [\n    \"string\",\n    \"string\"\n  ],\n  \"traffic_policy\": \"string\",\n  \"uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "041c077c-3cff-4ca5-8dfd-4db8831bc57e",
+          "name": "Ngrok Delete Endpoint",
+          "request": {
+            "name": "Ngrok Delete Endpoint",
+            "description": {
+              "content": "Delete an endpoint by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "endpoints",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e9c7216-e0e3-4827-9920-fc2621e3a6af",
+              "name": "Endpoint deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "endpoints",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "38bce4b4-71cf-4701-923a-1df77514f929",
+    "name": "Ngrok Abuse Reports Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

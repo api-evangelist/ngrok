@@ -1,0 +1,236 @@
+{
+  "item": [
+    {
+      "id": "0c81a02e-670d-4f26-b3c2-10865c63f6e6",
+      "name": "Abuse Reports",
+      "description": {
+        "content": "Abuse Reports allow you to submit reports of abusive endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69c72d9c-edfd-491d-ba2c-89c0778de70b",
+          "name": "Ngrok Create Abuse Report",
+          "request": {
+            "name": "Ngrok Create Abuse Report",
+            "description": {
+              "content": "Creates a new abuse report which will be reviewed by our system and abuse response team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "abuse_reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "841df1eb-45da-437c-b180-19e87f2206b3",
+              "name": "Abuse report created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "abuse_reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"2005-06-09T22:56:20.986Z\",\n  \"urls\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata\": \"string\",\n  \"status\": \"string\",\n  \"hostnames\": [\n    {\n      \"hostname\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"hostname\": \"string\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "333b2a7d-1ce8-4227-98fa-f5511f9d7c9a",
+          "name": "Ngrok Get Abuse Report",
+          "request": {
+            "name": "Ngrok Get Abuse Report",
+            "description": {
+              "content": "Get the detailed status of an abuse report by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "abuse_reports",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa497694-e300-4c48-977e-a9c20b3a29a3",
+              "name": "Abuse report details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "abuse_reports",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"2005-06-09T22:56:20.986Z\",\n  \"urls\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata\": \"string\",\n  \"status\": \"string\",\n  \"hostnames\": [\n    {\n      \"hostname\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"hostname\": \"string\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "60abebe7-4c06-4867-9618-f100faab9250",
+    "name": "Ngrok Abuse Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,549 @@
+{
+  "item": [
+    {
+      "id": "4401560a-a2c4-4566-bb9d-b6e06762c2d2",
+      "name": "Edges TLS",
+      "description": {
+        "content": "TLS Edges define TLS endpoints with TLS termination and mutual TLS.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "098cd0fe-bada-4ac9-90b0-ba3d880d2535",
+          "name": "Ngrok Create TLS Edge",
+          "request": {
+            "name": "Ngrok Create TLS Edge",
+            "description": {
+              "content": "Create a TLS Edge.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edges",
+                "tls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"backend\": {\n    \"enabled\": \"<boolean>\",\n    \"backend_id\": \"<string>\"\n  },\n  \"ip_restriction\": {\n    \"enabled\": \"<boolean>\",\n    \"ip_policy_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"mutual_tls\": {\n    \"enabled\": \"<boolean>\",\n    \"certificate_authority_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"tls_termination\": {\n    \"enabled\": \"<boolean>\",\n    \"min_version\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9eb7a39-32b9-4c53-874c-5f7fe4d1a38f",
+              "name": "TLS edge created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edges",
+                    "tls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"backend\": {\n    \"enabled\": \"<boolean>\",\n    \"backend_id\": \"<string>\"\n  },\n  \"ip_restriction\": {\n    \"enabled\": \"<boolean>\",\n    \"ip_policy_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"mutual_tls\": {\n    \"enabled\": \"<boolean>\",\n    \"certificate_authority_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"tls_termination\": {\n    \"enabled\": \"<boolean>\",\n    \"min_version\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"created_at\": \"1978-02-23T19:02:34.925Z\",\n  \"uri\": \"string\",\n  \"hostports\": [\n    \"string\",\n    \"string\"\n  ],\n  \"backend\": {},\n  \"ip_restriction\": {},\n  \"mutual_tls\": {},\n  \"tls_termination\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64c343fe-9c8d-47b7-a606-b0486397a0cd",
+          "name": "Ngrok List TLS Edges",
+          "request": {
+            "name": "Ngrok List TLS Edges",
+            "description": {
+              "content": "List all TLS Edges on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edges",
+                "tls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88825044-10f7-4704-b63b-3ad66985b2d9",
+              "name": "List of TLS edges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edges",
+                    "tls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tls_edges\": [\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"created_at\": \"1950-01-01T18:53:15.989Z\",\n      \"uri\": \"string\",\n      \"hostports\": [\n        \"string\",\n        \"string\"\n      ],\n      \"backend\": {},\n      \"ip_restriction\": {},\n      \"mutual_tls\": {},\n      \"tls_termination\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"created_at\": \"1974-04-24T20:42:29.368Z\",\n      \"uri\": \"string\",\n      \"hostports\": [\n        \"string\",\n        \"string\"\n      ],\n      \"backend\": {},\n      \"ip_restriction\": {},\n      \"mutual_tls\": {},\n      \"tls_termination\": {}\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91ee344f-e5e9-42e9-9a2c-63086083419c",
+          "name": "Ngrok Get TLS Edge",
+          "request": {
+            "name": "Ngrok Get TLS Edge",
+            "description": {
+              "content": "Get a TLS Edge by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edges",
+                "tls",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1d2817b-497c-40a9-8346-bfd594285e46",
+              "name": "TLS edge details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edges",
+                    "tls",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"created_at\": \"1978-02-23T19:02:34.925Z\",\n  \"uri\": \"string\",\n  \"hostports\": [\n    \"string\",\n    \"string\"\n  ],\n  \"backend\": {},\n  \"ip_restriction\": {},\n  \"mutual_tls\": {},\n  \"tls_termination\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "087984b4-58be-4495-9a1d-4e0608c01aea",
+          "name": "Ngrok Update TLS Edge",
+          "request": {
+            "name": "Ngrok Update TLS Edge",
+            "description": {
+              "content": "Update a TLS Edge by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edges",
+                "tls",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "336e6049-53c1-4b86-bc7f-165c1250d602",
+              "name": "TLS edge updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edges",
+                    "tls",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"hostports\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"created_at\": \"1978-02-23T19:02:34.925Z\",\n  \"uri\": \"string\",\n  \"hostports\": [\n    \"string\",\n    \"string\"\n  ],\n  \"backend\": {},\n  \"ip_restriction\": {},\n  \"mutual_tls\": {},\n  \"tls_termination\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f339e04f-c008-469d-b990-fd930f10d9d5",
+          "name": "Ngrok Delete TLS Edge",
+          "request": {
+            "name": "Ngrok Delete TLS Edge",
+            "description": {
+              "content": "Delete a TLS Edge by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edges",
+                "tls",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e5db711-3bd4-4029-b54f-d0f7e6709b38",
+              "name": "TLS edge deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edges",
+                    "tls",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ab473f75-3fcc-4bc3-9a55-9bedbcbb779d",
+    "name": "Ngrok Abuse Reports Edges TLS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "bee1db90-bec2-44db-a917-12b70c307e3f",
+      "name": "Event Destinations",
+      "description": {
+        "content": "Event Destinations define where event data is sent.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2cd45b9a-1d2c-40f7-b007-bb8c9fa141f2",
+          "name": "Ngrok Create Event Destination",
+          "request": {
+            "name": "Ngrok Create Event Destination",
+            "description": {
+              "content": "Create a new Event Destination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {\n    \"firehose\": \"<object>\",\n    \"kinesis\": \"<object>\",\n    \"cloudwatch_logs\": \"<object>\",\n    \"datadog\": \"<object>\",\n    \"azure_logs_ingestion\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c4c8b2b2-0598-4eb5-a830-1a074bf141be",
+              "name": "Event destination created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": {\n    \"firehose\": \"<object>\",\n    \"kinesis\": \"<object>\",\n    \"cloudwatch_logs\": \"<object>\",\n    \"datadog\": \"<object>\",\n    \"azure_logs_ingestion\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"metadata\": \"string\",\n  \"created_at\": \"2007-02-26T21:29:48.195Z\",\n  \"description\": \"string\",\n  \"format\": \"string\",\n  \"target\": {},\n  \"uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7473ae1b-037f-464e-93f3-b709abedb701",
+          "name": "Ngrok List Event Destinations",
+          "request": {
+            "name": "Ngrok List Event Destinations",
+            "description": {
+              "content": "List all Event Destinations on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "877d5283-557c-4490-b637-e7f4bc1b4697",
+              "name": "List of event destinations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_destinations\": [\n    {\n      \"id\": \"string\",\n      \"metadata\": \"string\",\n      \"created_at\": \"1973-08-05T22:35:44.441Z\",\n      \"description\": \"string\",\n      \"format\": \"string\",\n      \"target\": {},\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"metadata\": \"string\",\n      \"created_at\": \"1951-08-23T14:18:23.074Z\",\n      \"description\": \"string\",\n      \"format\": \"string\",\n      \"target\": {},\n      \"uri\": \"string\"\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02cb2f5f-501f-4a0b-b6c1-5bcda404853d",
+          "name": "Ngrok Get Event Destination",
+          "request": {
+            "name": "Ngrok Get Event Destination",
+            "description": {
+              "content": "Get the details of an Event Destination by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_destinations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0449fbc6-afc4-4650-b041-e0a02b810da3",
+              "name": "Event destination details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_destinations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"metadata\": \"string\",\n  \"created_at\": \"2007-02-26T21:29:48.195Z\",\n  \"description\": \"string\",\n  \"format\": \"string\",\n  \"target\": {},\n  \"uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e8081aa-a3a0-4517-ba4e-d57226375e34",
+          "name": "Ngrok Update Event Destination",
+          "request": {
+            "name": "Ngrok Update Event Destination",
+            "description": {
+              "content": "Update attributes of an Event Destination by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_destinations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68cafb3e-a26f-441c-a09c-1b5a897490c3",
+              "name": "Event destination updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_destinations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"format\": \"<string>\",\n  \"target\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"metadata\": \"string\",\n  \"created_at\": \"2007-02-26T21:29:48.195Z\",\n  \"description\": \"string\",\n  \"format\": \"string\",\n  \"target\": {},\n  \"uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82ac606b-0415-4097-bf00-d3a90ab0e537",
+          "name": "Ngrok Delete Event Destination",
+          "request": {
+            "name": "Ngrok Delete Event Destination",
+            "description": {
+              "content": "Delete an Event Destination by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event_destinations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e3827d9-7ac1-40a8-a7ae-e16fd89ce986",
+              "name": "Event destination deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event_destinations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d92a027-bc10-4971-87e2-a7b9f5d6f8e6",
+    "name": "Ngrok Abuse Reports Event Destinations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

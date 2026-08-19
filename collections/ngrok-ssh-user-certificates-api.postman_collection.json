@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "17d6352c-5e3b-4d33-a82f-23842db80a02",
+      "name": "SSH User Certificates",
+      "description": {
+        "content": "SSH User Certificates authenticate users to ngrok SSH tunnel servers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6f90a54-03e9-4c8e-b3b8-7c8a3e93a17c",
+          "name": "Ngrok Create SSH User Certificate",
+          "request": {
+            "name": "Ngrok Create SSH User Certificate",
+            "description": {
+              "content": "Create a new SSH User Certificate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssh_user_certificates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ssh_certificate_authority_id\": \"<string>\",\n  \"public_key\": \"<string>\",\n  \"principals\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"critical_options\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"extensions\": {\n    \"key_0\": \"<string>\"\n  },\n  \"valid_after\": \"<dateTime>\",\n  \"valid_until\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1bd33a9-7bc1-45ac-8ee8-afd5efc6960e",
+              "name": "SSH user certificate created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssh_user_certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ssh_certificate_authority_id\": \"<string>\",\n  \"public_key\": \"<string>\",\n  \"principals\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"critical_options\": {\n    \"key_0\": \"<string>\"\n  },\n  \"extensions\": {\n    \"key_0\": \"<string>\"\n  },\n  \"valid_after\": \"<dateTime>\",\n  \"valid_until\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1950-05-12T19:43:12.940Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"public_key\": \"string\",\n  \"key_type\": \"string\",\n  \"ssh_certificate_authority_id\": \"string\",\n  \"principals\": [\n    \"string\",\n    \"string\"\n  ],\n  \"critical_options\": {\n    \"key_0\": \"string\"\n  },\n  \"extensions\": {\n    \"key_0\": \"string\"\n  },\n  \"valid_after\": \"1978-07-19T02:41:58.687Z\",\n  \"valid_until\": \"2024-08-03T02:54:54.783Z\",\n  \"certificate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf843328-67f1-4b53-9206-160939f41494",
+          "name": "Ngrok List SSH User Certificates",
+          "request": {
+            "name": "Ngrok List SSH User Certificates",
+            "description": {
+              "content": "List all SSH User Certificates on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssh_user_certificates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06bc511f-e338-40a2-8f95-f4237d11672a",
+              "name": "List of SSH user certificates.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssh_user_certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ssh_user_certificates\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1948-12-24T22:33:00.800Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"public_key\": \"string\",\n      \"key_type\": \"string\",\n      \"ssh_certificate_authority_id\": \"string\",\n      \"principals\": [\n        \"string\",\n        \"string\"\n      ],\n      \"critical_options\": {\n        \"key_0\": \"string\"\n      },\n      \"extensions\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"valid_after\": \"1998-12-16T09:46:56.767Z\",\n      \"valid_until\": \"1986-05-03T20:12:47.019Z\",\n      \"certificate\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1990-12-05T21:41:02.229Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"public_key\": \"string\",\n      \"key_type\": \"string\",\n      \"ssh_certificate_authority_id\": \"string\",\n      \"principals\": [\n        \"string\",\n        \"string\"\n      ],\n      \"critical_options\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"extensions\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"valid_after\": \"2017-08-11T21:05:14.665Z\",\n      \"valid_until\": \"1994-07-24T11:47:07.767Z\",\n      \"certificate\": \"string\"\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24c99343-72f7-4b62-94bf-158130de7637",
+          "name": "Ngrok Get SSH User Certificate",
+          "request": {
+            "name": "Ngrok Get SSH User Certificate",
+            "description": {
+              "content": "Get the details of an SSH User Certificate by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssh_user_certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "646c8344-8f44-4d0a-b357-b0378849b52c",
+              "name": "SSH user certificate details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssh_user_certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1950-05-12T19:43:12.940Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"public_key\": \"string\",\n  \"key_type\": \"string\",\n  \"ssh_certificate_authority_id\": \"string\",\n  \"principals\": [\n    \"string\",\n    \"string\"\n  ],\n  \"critical_options\": {\n    \"key_0\": \"string\"\n  },\n  \"extensions\": {\n    \"key_0\": \"string\"\n  },\n  \"valid_after\": \"1978-07-19T02:41:58.687Z\",\n  \"valid_until\": \"2024-08-03T02:54:54.783Z\",\n  \"certificate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bc17798-b2f4-4d3e-858b-91759a5d05d1",
+          "name": "Ngrok Update SSH User Certificate",
+          "request": {
+            "name": "Ngrok Update SSH User Certificate",
+            "description": {
+              "content": "Update an SSH User Certificate by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssh_user_certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66f55875-452c-44c7-92df-9c1d59e1f6fc",
+              "name": "SSH user certificate updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssh_user_certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1950-05-12T19:43:12.940Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"public_key\": \"string\",\n  \"key_type\": \"string\",\n  \"ssh_certificate_authority_id\": \"string\",\n  \"principals\": [\n    \"string\",\n    \"string\"\n  ],\n  \"critical_options\": {\n    \"key_0\": \"string\"\n  },\n  \"extensions\": {\n    \"key_0\": \"string\"\n  },\n  \"valid_after\": \"1978-07-19T02:41:58.687Z\",\n  \"valid_until\": \"2024-08-03T02:54:54.783Z\",\n  \"certificate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75cb1821-44a3-4372-b78e-a7f6318777eb",
+          "name": "Ngrok Delete SSH User Certificate",
+          "request": {
+            "name": "Ngrok Delete SSH User Certificate",
+            "description": {
+              "content": "Delete an SSH User Certificate by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ssh_user_certificates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1c9322d-5006-4a5c-bf41-c4fd731b8ee2",
+              "name": "SSH user certificate deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ssh_user_certificates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e0615fd7-3024-4067-99d3-308fb3d8223f",
+    "name": "Ngrok Abuse Reports SSH User Certificates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

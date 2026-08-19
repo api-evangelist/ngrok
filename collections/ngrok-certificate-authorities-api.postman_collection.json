@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "eeddb22e-c8f2-497c-855d-53c2a8a114c0",
+      "name": "Certificate Authorities",
+      "description": {
+        "content": "Certificate Authorities are x509 certificates used for mutual TLS authentication.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d51c7fe-c144-44e2-9c2e-a8a2a231ddc7",
+          "name": "Ngrok Create Certificate Authority",
+          "request": {
+            "name": "Ngrok Create Certificate Authority",
+            "description": {
+              "content": "Upload a new Certificate Authority.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificate_authorities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ca_pem\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cdd40793-110b-43ba-9cb0-dc2e659bc98e",
+              "name": "Certificate authority created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificate_authorities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ca_pem\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1980-08-15T08:03:53.873Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"ca_pem\": \"string\",\n  \"subject_common_name\": \"string\",\n  \"not_before\": \"2021-06-20T04:04:06.227Z\",\n  \"not_after\": \"1976-08-11T05:07:26.088Z\",\n  \"key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"extended_key_usages\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96ff6e5e-15fc-4cf7-a0d1-bc0cdbe7c406",
+          "name": "Ngrok List Certificate Authorities",
+          "request": {
+            "name": "Ngrok List Certificate Authorities",
+            "description": {
+              "content": "List all Certificate Authorities on this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificate_authorities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c78b2db-d5ba-43eb-bade-447eb8de214d",
+              "name": "List of certificate authorities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificate_authorities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"certificate_authorities\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1958-06-09T11:43:22.878Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"ca_pem\": \"string\",\n      \"subject_common_name\": \"string\",\n      \"not_before\": \"1951-08-08T08:41:42.072Z\",\n      \"not_after\": \"2010-12-24T01:41:41.376Z\",\n      \"key_usages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extended_key_usages\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\",\n      \"created_at\": \"1970-02-25T05:17:40.463Z\",\n      \"description\": \"string\",\n      \"metadata\": \"string\",\n      \"ca_pem\": \"string\",\n      \"subject_common_name\": \"string\",\n      \"not_before\": \"1988-04-06T23:14:31.785Z\",\n      \"not_after\": \"1948-01-03T13:04:32.026Z\",\n      \"key_usages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extended_key_usages\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9c0e2a3-e87c-49c8-9bc1-3aff106a2b56",
+          "name": "Ngrok Get Certificate Authority",
+          "request": {
+            "name": "Ngrok Get Certificate Authority",
+            "description": {
+              "content": "Get the details of a Certificate Authority by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificate_authorities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ac78f84-4b44-4cd1-b547-a0a84c50b0d7",
+              "name": "Certificate authority details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificate_authorities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1980-08-15T08:03:53.873Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"ca_pem\": \"string\",\n  \"subject_common_name\": \"string\",\n  \"not_before\": \"2021-06-20T04:04:06.227Z\",\n  \"not_after\": \"1976-08-11T05:07:26.088Z\",\n  \"key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"extended_key_usages\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74a38ada-386a-4576-9d4a-d627b02fe8fd",
+          "name": "Ngrok Update Certificate Authority",
+          "request": {
+            "name": "Ngrok Update Certificate Authority",
+            "description": {
+              "content": "Update attributes of a Certificate Authority by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificate_authorities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8551abc9-00a4-4411-9a8a-f6bc93b5bfea",
+              "name": "Certificate authority updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificate_authorities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"string\",\n  \"created_at\": \"1980-08-15T08:03:53.873Z\",\n  \"description\": \"string\",\n  \"metadata\": \"string\",\n  \"ca_pem\": \"string\",\n  \"subject_common_name\": \"string\",\n  \"not_before\": \"2021-06-20T04:04:06.227Z\",\n  \"not_after\": \"1976-08-11T05:07:26.088Z\",\n  \"key_usages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"extended_key_usages\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c342efe4-57a0-46ce-a8b4-e506f336d1da",
+          "name": "Ngrok Delete Certificate Authority",
+          "request": {
+            "name": "Ngrok Delete Certificate Authority",
+            "description": {
+              "content": "Delete a Certificate Authority by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "certificate_authorities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34237b67-6aac-4d7b-a275-b5cd76a10d88",
+              "name": "Certificate authority deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "certificate_authorities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "23c0e73c-908e-462a-be52-b1a559650ef1",
+    "name": "Ngrok Abuse Reports Certificate Authorities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}

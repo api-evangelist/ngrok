@@ -1,0 +1,237 @@
+{
+  "item": [
+    {
+      "id": "a6f31fa3-6686-4933-a0ad-75c77f7b2dd5",
+      "name": "Tunnels",
+      "description": {
+        "content": "Tunnels represent individual tunnels within a tunnel session.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11bc4a9c-6120-4680-a168-dd85c35a27ca",
+          "name": "Ngrok List Tunnels",
+          "request": {
+            "name": "Ngrok List Tunnels",
+            "description": {
+              "content": "List all online tunnels currently running on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tunnels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_id",
+                  "value": "<string>",
+                  "description": "An ID to use for pagination. Results returned will be before this ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return. Maximum is 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c26d31d3-cf84-40c2-b08d-75aeafb5925e",
+              "name": "List of tunnels.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tunnels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tunnels\": [\n    {\n      \"id\": \"string\",\n      \"public_url\": \"string\",\n      \"started_at\": \"1961-10-01T01:50:32.897Z\",\n      \"metadata\": \"string\",\n      \"proto\": \"string\",\n      \"region\": \"string\",\n      \"tunnel_session\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"endpoint\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"backends\": [\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"forwards_to\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"public_url\": \"string\",\n      \"started_at\": \"1983-03-13T07:18:16.544Z\",\n      \"metadata\": \"string\",\n      \"proto\": \"string\",\n      \"region\": \"string\",\n      \"tunnel_session\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"endpoint\": {\n        \"id\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"backends\": [\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"uri\": \"string\"\n        }\n      ],\n      \"forwards_to\": \"string\",\n      \"uri\": \"string\"\n    }\n  ],\n  \"uri\": \"string\",\n  \"next_page_uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "766a8726-65df-4280-a223-53a70176b389",
+          "name": "Ngrok Get Tunnel",
+          "request": {
+            "name": "Ngrok Get Tunnel",
+            "description": {
+              "content": "Get the details of a tunnel by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tunnels",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78cf237f-c2ca-4b3d-a6ef-8ca693ee1ecf",
+              "name": "Tunnel details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tunnels",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"public_url\": \"string\",\n  \"started_at\": \"1961-10-11T18:48:46.586Z\",\n  \"metadata\": \"string\",\n  \"proto\": \"string\",\n  \"region\": \"string\",\n  \"tunnel_session\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"endpoint\": {\n    \"id\": \"string\",\n    \"uri\": \"string\"\n  },\n  \"labels\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"backends\": [\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uri\": \"string\"\n    }\n  ],\n  \"forwards_to\": \"string\",\n  \"uri\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ngrok.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8ddfc214-70b0-4e55-968c-6e93651ce7e6",
+    "name": "Ngrok Abuse Reports Tunnels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.\n\nContact Support:\n Name: Ngrok",
+      "type": "text/plain"
+    }
+  }
+}
