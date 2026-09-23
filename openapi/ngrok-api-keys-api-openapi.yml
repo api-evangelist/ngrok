@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Ngrok Abuse Reports API Keys API
+  title: Ngrok API Keys API
   description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
   version: 2.0.0
   contact:
@@ -117,6 +117,28 @@ paths:
         '204':
           description: API key deleted.
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
   schemas:
     ApiKeyList:
       type: object
@@ -148,28 +170,6 @@ components:
           description: Only present in create response.
         owner_id:
           type: string
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: A unique identifier for the resource.
-    BeforeId:
-      name: before_id
-      in: query
-      required: false
-      schema:
-        type: string
-      description: An ID to use for pagination. Results returned will be before this ID.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
   securitySchemes:
     bearerAuth:
       type: http

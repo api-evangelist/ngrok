@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Ngrok Abuse Reports Backends API
+  title: Ngrok Backends API
   description: The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish. It follows most of the conventions of a REST API but diverges slightly when the REST model does not fit well. The API listens only on port 443 to help avoid any accidental unencrypted requests. All API access requires an API key.
   version: 2.0.0
   contact:
@@ -565,17 +565,6 @@ components:
           type: array
           items:
             type: string
-    StaticAddressBackendList:
-      type: object
-      properties:
-        backends:
-          type: array
-          items:
-            $ref: '#/components/schemas/StaticAddressBackend'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     HttpResponseBackendList:
       type: object
       properties:
@@ -587,6 +576,15 @@ components:
           type: string
         next_page_uri:
           type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
     TunnelGroupBackendList:
       type: object
       properties:
@@ -598,24 +596,17 @@ components:
           type: string
         next_page_uri:
           type: string
-    WeightedBackend:
+    WeightedBackendList:
       type: object
       properties:
-        id:
-          type: string
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeightedBackend'
         uri:
           type: string
-        created_at:
+        next_page_uri:
           type: string
-          format: date-time
-        description:
-          type: string
-        metadata:
-          type: string
-        backends:
-          type: object
-          additionalProperties:
-            type: integer
     HttpResponseBackend:
       type: object
       properties:
@@ -638,26 +629,6 @@ components:
             type: string
         status_code:
           type: integer
-    WeightedBackendList:
-      type: object
-      properties:
-        backends:
-          type: array
-          items:
-            $ref: '#/components/schemas/WeightedBackend'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
     FailoverBackendList:
       type: object
       properties:
@@ -665,6 +636,35 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FailoverBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    StaticAddressBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        address:
+          type: string
+        tls:
+          type: object
+    StaticAddressBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/StaticAddressBackend'
         uri:
           type: string
         next_page_uri:
@@ -691,7 +691,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ref'
-    StaticAddressBackend:
+    WeightedBackend:
       type: object
       properties:
         id:
@@ -705,11 +705,18 @@ components:
           type: string
         metadata:
           type: string
-        address:
-          type: string
-        tls:
+        backends:
           type: object
+          additionalProperties:
+            type: integer
   parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
     Id:
       name: id
       in: path
@@ -724,13 +731,6 @@ components:
       schema:
         type: string
       description: An ID to use for pagination. Results returned will be before this ID.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
   securitySchemes:
     bearerAuth:
       type: http
