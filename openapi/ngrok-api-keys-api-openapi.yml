@@ -118,13 +118,6 @@ paths:
           description: API key deleted.
 components:
   parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
     Id:
       name: id
       in: path
@@ -139,18 +132,14 @@ components:
       schema:
         type: string
       description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
   schemas:
-    ApiKeyList:
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApiKey'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     ApiKey:
       type: object
       properties:
@@ -169,6 +158,17 @@ components:
           type: string
           description: Only present in create response.
         owner_id:
+          type: string
+    ApiKeyList:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiKey'
+        uri:
+          type: string
+        next_page_uri:
           type: string
   securitySchemes:
     bearerAuth:

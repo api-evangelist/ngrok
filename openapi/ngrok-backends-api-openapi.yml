@@ -547,35 +547,6 @@ paths:
           description: Static address backend deleted.
 components:
   schemas:
-    FailoverBackend:
-      type: object
-      properties:
-        id:
-          type: string
-        uri:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        description:
-          type: string
-        metadata:
-          type: string
-        backends:
-          type: array
-          items:
-            type: string
-    HttpResponseBackendList:
-      type: object
-      properties:
-        backends:
-          type: array
-          items:
-            $ref: '#/components/schemas/HttpResponseBackend'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     Ref:
       type: object
       properties:
@@ -585,90 +556,6 @@ components:
         uri:
           type: string
           description: A URI for locating a resource.
-    TunnelGroupBackendList:
-      type: object
-      properties:
-        backends:
-          type: array
-          items:
-            $ref: '#/components/schemas/TunnelGroupBackend'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
-    WeightedBackendList:
-      type: object
-      properties:
-        backends:
-          type: array
-          items:
-            $ref: '#/components/schemas/WeightedBackend'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
-    HttpResponseBackend:
-      type: object
-      properties:
-        id:
-          type: string
-        uri:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        description:
-          type: string
-        metadata:
-          type: string
-        body:
-          type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-        status_code:
-          type: integer
-    FailoverBackendList:
-      type: object
-      properties:
-        backends:
-          type: array
-          items:
-            $ref: '#/components/schemas/FailoverBackend'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
-    StaticAddressBackend:
-      type: object
-      properties:
-        id:
-          type: string
-        uri:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        description:
-          type: string
-        metadata:
-          type: string
-        address:
-          type: string
-        tls:
-          type: object
-    StaticAddressBackendList:
-      type: object
-      properties:
-        backends:
-          type: array
-          items:
-            $ref: '#/components/schemas/StaticAddressBackend'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     TunnelGroupBackend:
       type: object
       properties:
@@ -691,6 +578,68 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ref'
+    HttpResponseBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/HttpResponseBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    StaticAddressBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        address:
+          type: string
+        tls:
+          type: object
+    HttpResponseBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        body:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        status_code:
+          type: integer
+    WeightedBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeightedBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
     WeightedBackend:
       type: object
       properties:
@@ -709,14 +658,58 @@ components:
           type: object
           additionalProperties:
             type: integer
+    StaticAddressBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/StaticAddressBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    FailoverBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/FailoverBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    FailoverBackend:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        backends:
+          type: array
+          items:
+            type: string
+    TunnelGroupBackendList:
+      type: object
+      properties:
+        backends:
+          type: array
+          items:
+            $ref: '#/components/schemas/TunnelGroupBackend'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
   parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
     Id:
       name: id
       in: path
@@ -731,6 +724,13 @@ components:
       schema:
         type: string
       description: An ID to use for pagination. Results returned will be before this ID.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
   securitySchemes:
     bearerAuth:
       type: http
