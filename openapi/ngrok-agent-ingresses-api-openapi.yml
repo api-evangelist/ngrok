@@ -125,17 +125,6 @@ paths:
           description: Agent ingress deleted.
 components:
   schemas:
-    AgentIngressList:
-      type: object
-      properties:
-        ingresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/AgentIngress'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     AgentIngress:
       type: object
       properties:
@@ -164,6 +153,17 @@ components:
           type: object
         certificate_management_status:
           type: object
+    AgentIngressList:
+      type: object
+      properties:
+        ingresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentIngress'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
   parameters:
     Id:
       name: id

@@ -137,17 +137,6 @@ components:
         type: string
       description: The maximum number of results to return. Maximum is 100.
   schemas:
-    IpPolicyList:
-      type: object
-      properties:
-        ip_policies:
-          type: array
-          items:
-            $ref: '#/components/schemas/IpPolicy'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     IpPolicy:
       type: object
       properties:
@@ -161,6 +150,17 @@ components:
         description:
           type: string
         metadata:
+          type: string
+    IpPolicyList:
+      type: object
+      properties:
+        ip_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPolicy'
+        uri:
+          type: string
+        next_page_uri:
           type: string
   securitySchemes:
     bearerAuth:

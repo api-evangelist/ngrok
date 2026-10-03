@@ -124,17 +124,6 @@ paths:
           description: TLS certificate deleted.
 components:
   schemas:
-    TlsCertificateList:
-      type: object
-      properties:
-        tls_certificates:
-          type: array
-          items:
-            $ref: '#/components/schemas/TlsCertificate'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     TlsCertificate:
       type: object
       properties:
@@ -179,6 +168,17 @@ components:
           items:
             type: string
         private_key_type:
+          type: string
+    TlsCertificateList:
+      type: object
+      properties:
+        tls_certificates:
+          type: array
+          items:
+            $ref: '#/components/schemas/TlsCertificate'
+        uri:
+          type: string
+        next_page_uri:
           type: string
   parameters:
     Id:

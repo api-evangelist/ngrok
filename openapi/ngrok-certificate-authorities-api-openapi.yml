@@ -142,17 +142,6 @@ components:
         type: string
       description: The maximum number of results to return. Maximum is 100.
   schemas:
-    CertificateAuthorityList:
-      type: object
-      properties:
-        certificate_authorities:
-          type: array
-          items:
-            $ref: '#/components/schemas/CertificateAuthority'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     CertificateAuthority:
       type: object
       properties:
@@ -185,6 +174,17 @@ components:
           type: array
           items:
             type: string
+    CertificateAuthorityList:
+      type: object
+      properties:
+        certificate_authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/CertificateAuthority'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

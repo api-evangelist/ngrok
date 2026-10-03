@@ -99,15 +99,6 @@ paths:
           description: Tunnel session update issued.
 components:
   schemas:
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
     TunnelSessionList:
       type: object
       properties:
@@ -119,6 +110,15 @@ components:
           type: string
         next_page_uri:
           type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
     TunnelSession:
       type: object
       properties:

@@ -136,15 +136,6 @@ paths:
           description: Endpoint deleted.
 components:
   schemas:
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
     Endpoint:
       type: object
       properties:
@@ -186,6 +177,15 @@ components:
           type: string
         uri:
           type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
     EndpointList:
       type: object
       properties:

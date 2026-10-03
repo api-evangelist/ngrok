@@ -132,47 +132,6 @@ paths:
         '204':
           description: IP policy rule deleted.
 components:
-  schemas:
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
-    IpPolicyRuleList:
-      type: object
-      properties:
-        ip_policy_rules:
-          type: array
-          items:
-            $ref: '#/components/schemas/IpPolicyRule'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
-    IpPolicyRule:
-      type: object
-      properties:
-        id:
-          type: string
-        uri:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        description:
-          type: string
-        metadata:
-          type: string
-        cidr:
-          type: string
-        ip_policy:
-          $ref: '#/components/schemas/Ref'
-        action:
-          type: string
   parameters:
     Id:
       name: id
@@ -195,6 +154,47 @@ components:
       schema:
         type: string
       description: The maximum number of results to return. Maximum is 100.
+  schemas:
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+    IpPolicyRule:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        cidr:
+          type: string
+        ip_policy:
+          $ref: '#/components/schemas/Ref'
+        action:
+          type: string
+    IpPolicyRuleList:
+      type: object
+      properties:
+        ip_policy_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPolicyRule'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

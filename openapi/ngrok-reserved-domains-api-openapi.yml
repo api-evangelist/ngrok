@@ -153,15 +153,6 @@ components:
           type: string
         next_page_uri:
           type: string
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
     ReservedDomain:
       type: object
       properties:
@@ -190,6 +181,15 @@ components:
           type: object
         acme_challenge_cname_target:
           type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
   parameters:
     Id:
       name: id

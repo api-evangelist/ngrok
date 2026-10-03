@@ -54,26 +54,6 @@ paths:
                 $ref: '#/components/schemas/Tunnel'
 components:
   schemas:
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
-    TunnelList:
-      type: object
-      properties:
-        tunnels:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tunnel'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     Tunnel:
       type: object
       properties:
@@ -105,6 +85,26 @@ components:
         forwards_to:
           type: string
         uri:
+          type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+    TunnelList:
+      type: object
+      properties:
+        tunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tunnel'
+        uri:
+          type: string
+        next_page_uri:
           type: string
   parameters:
     Id:

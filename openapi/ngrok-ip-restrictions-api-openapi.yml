@@ -134,15 +134,6 @@ paths:
           description: IP restriction deleted.
 components:
   schemas:
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
     IpRestrictionList:
       type: object
       properties:
@@ -154,6 +145,15 @@ components:
           type: string
         next_page_uri:
           type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
     IpRestriction:
       type: object
       properties:

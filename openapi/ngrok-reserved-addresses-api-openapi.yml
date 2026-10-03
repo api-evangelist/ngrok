@@ -117,6 +117,36 @@ paths:
         '204':
           description: Reserved address deleted.
 components:
+  schemas:
+    ReservedAddrList:
+      type: object
+      properties:
+        reserved_addrs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReservedAddr'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    ReservedAddr:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        metadata:
+          type: string
+        addr:
+          type: string
+        region:
+          type: string
   parameters:
     Id:
       name: id
@@ -139,36 +169,6 @@ components:
       schema:
         type: string
       description: The maximum number of results to return. Maximum is 100.
-  schemas:
-    ReservedAddr:
-      type: object
-      properties:
-        id:
-          type: string
-        uri:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        description:
-          type: string
-        metadata:
-          type: string
-        addr:
-          type: string
-        region:
-          type: string
-    ReservedAddrList:
-      type: object
-      properties:
-        reserved_addrs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReservedAddr'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http
