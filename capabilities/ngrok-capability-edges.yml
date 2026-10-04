@@ -1,0 +1,53 @@
+slug: ngrok
+provider: ngrok
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: SSH Certificate Authorities
+  spec_file: ngrok-ssh-certificate-authorities-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: POST /ssh_certificate_authorities createSshCertificateAuthority 'Ngrok Create SSH Certificate
+    Authority'
+  reason: Creating and managing SSH certificate authorities is credential/PKI trust-anchor administration,
+    squarely Identity & Access Management within Cybersecurity Management.
+- tag: SSH Credentials
+  spec_file: ngrok-ssh-credentials-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: 'POST /ssh_credentials createSshCredential ''Ngrok Create SSH Credential''; schemas: SshCredential,
+    SshCredentialList'
+  reason: Issuance and revocation of SSH public-key credentials used to authenticate agents is identity
+    and access credential management.
+- tag: SSH User Certificates
+  spec_file: ngrok-ssh-user-certificates-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: POST /ssh_user_certificates createSshUserCertificate 'Ngrok Create SSH User Certificate'
+  reason: Issuing SSH user certificates that grant authenticated access to hosts is directly identity
+    and access credential management, not a vertical business capability.
+- tag: SSH Host Certificates
+  spec_file: ngrok-ssh-host-certificates-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: POST /ssh_host_certificates createSshHostCertificate 'Ngrok Create SSH Host Certificate'
+  reason: Signing and lifecycle of SSH host certificates is certificate/credential issuance for authenticating
+    hosts — Identity & Access Management under Cybersecurity.
