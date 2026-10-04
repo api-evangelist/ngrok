@@ -136,6 +136,13 @@ paths:
           description: Event destination deleted.
 components:
   parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
     Id:
       name: id
       in: path
@@ -150,25 +157,7 @@ components:
       schema:
         type: string
       description: An ID to use for pagination. Results returned will be before this ID.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
   schemas:
-    EventDestinationList:
-      type: object
-      properties:
-        event_destinations:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventDestination'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     EventDestination:
       type: object
       properties:
@@ -186,6 +175,17 @@ components:
         target:
           type: object
         uri:
+          type: string
+    EventDestinationList:
+      type: object
+      properties:
+        event_destinations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventDestination'
+        uri:
+          type: string
+        next_page_uri:
           type: string
   securitySchemes:
     bearerAuth:

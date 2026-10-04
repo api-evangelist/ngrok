@@ -138,7 +138,49 @@ paths:
         '204':
           description: Event subscription deleted.
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
   schemas:
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+    EventSubscriptionList:
+      type: object
+      properties:
+        event_subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSubscription'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
     EventSubscription:
       type: object
       properties:
@@ -166,48 +208,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ref'
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
-    EventSubscriptionList:
-      type: object
-      properties:
-        event_subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventSubscription'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: A unique identifier for the resource.
-    BeforeId:
-      name: before_id
-      in: query
-      required: false
-      schema:
-        type: string
-      description: An ID to use for pagination. Results returned will be before this ID.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
   securitySchemes:
     bearerAuth:
       type: http

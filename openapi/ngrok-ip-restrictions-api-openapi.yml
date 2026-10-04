@@ -134,26 +134,6 @@ paths:
           description: IP restriction deleted.
 components:
   schemas:
-    IpRestrictionList:
-      type: object
-      properties:
-        ip_restrictions:
-          type: array
-          items:
-            $ref: '#/components/schemas/IpRestriction'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
     IpRestriction:
       type: object
       properties:
@@ -176,6 +156,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ref'
+    IpRestrictionList:
+      type: object
+      properties:
+        ip_restrictions:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpRestriction'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
   parameters:
     Id:
       name: id

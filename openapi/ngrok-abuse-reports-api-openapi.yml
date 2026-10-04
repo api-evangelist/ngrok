@@ -65,6 +65,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/AbuseReport'
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
   schemas:
     AbuseReport:
       type: object
@@ -93,14 +101,6 @@ components:
                 type: string
               status:
                 type: string
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: A unique identifier for the resource.
   securitySchemes:
     bearerAuth:
       type: http

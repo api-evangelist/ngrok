@@ -114,29 +114,18 @@ paths:
         '204':
           description: IP policy deleted.
 components:
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: A unique identifier for the resource.
-    BeforeId:
-      name: before_id
-      in: query
-      required: false
-      schema:
-        type: string
-      description: An ID to use for pagination. Results returned will be before this ID.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
   schemas:
+    IpPolicyList:
+      type: object
+      properties:
+        ip_policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPolicy'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
     IpPolicy:
       type: object
       properties:
@@ -151,17 +140,28 @@ components:
           type: string
         metadata:
           type: string
-    IpPolicyList:
-      type: object
-      properties:
-        ip_policies:
-          type: array
-          items:
-            $ref: '#/components/schemas/IpPolicy'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
   securitySchemes:
     bearerAuth:
       type: http

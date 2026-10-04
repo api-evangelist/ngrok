@@ -124,6 +124,17 @@ paths:
           description: TLS certificate deleted.
 components:
   schemas:
+    TlsCertificateList:
+      type: object
+      properties:
+        tls_certificates:
+          type: array
+          items:
+            $ref: '#/components/schemas/TlsCertificate'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
     TlsCertificate:
       type: object
       properties:
@@ -169,18 +180,14 @@ components:
             type: string
         private_key_type:
           type: string
-    TlsCertificateList:
-      type: object
-      properties:
-        tls_certificates:
-          type: array
-          items:
-            $ref: '#/components/schemas/TlsCertificate'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
   parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
     Id:
       name: id
       in: path
@@ -195,13 +202,6 @@ components:
       schema:
         type: string
       description: An ID to use for pagination. Results returned will be before this ID.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
   securitySchemes:
     bearerAuth:
       type: http
