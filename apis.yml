@@ -1069,6 +1069,12 @@ apis:
   - type: GitHubRepository
     url: https://github.com/ngrok/ngrok-openapi
 common:
+  - type: Plans
+    url: plans/ngrok-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/ngrok-rate-limits.yml
+  - type: FinOps
+    url: finops/ngrok-finops.yml
   - type: CapabilityMap
     url: capabilities/ngrok-capability-edges.yml
     name: ngrok Business Capability Map
