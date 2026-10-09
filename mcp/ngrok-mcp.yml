@@ -1,0 +1,20 @@
+generated: '2026-09-23'
+method: probed
+source: https://ngrok.com/docs/mcp
+status: published
+server:
+  name: ngrok
+  transport: http
+  url: https://ngrok.com/docs/mcp
+deployment:
+  mode: remote
+  endpoint: https://ngrok.com/docs/mcp
+  verified: probed
+  probe: live
+  checked: '2026-09-23'
+  source: docs-check 2026-09-23 (MCP server named in the provider's own llms.txt/docs, then probed; roadmap#590)
+tools_note: No tool list captured. This manifest records a PROBED, reachable endpoint only; anonymous
+  tools/list was auth-gated or the server requires an initialize handshake this reachability probe does
+  not perform. Run signals/audit_mcp_authorship.py --probe to enumerate tools and settle platform-vs-provider
+  authorship. Do NOT derive a tool list from the OpenAPI and store it here -- that is a candidate manifest,
+  and it belongs under an X-MCPServerCandidate pointer.
