@@ -2,17 +2,17 @@
 kin_checks:
   slug: ngrok
   schema_version: 0.23.0
-  scored_at: '2026-10-03'
-  run_ts: 2026-10-03T024842
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.23.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 153
-    earned: 33
-    partial: 31
+    earned: 31
+    partial: 32
     missed: 66
-    na: 23
+    na: 24
   checks:
   - id: newsroom_present
     status: missed
@@ -269,6 +269,10 @@ kin_checks:
     status: partial
     earned: 2.5
     detail: 'authorship: derived'
+  - id: mcp_server
+    status: partial
+    earned: 4.8
+    detail: 'grade: documented'
   - id: auth_clarity
     status: partial
     earned: 3.5
@@ -291,6 +295,7 @@ kin_checks:
   - graphql_sdl_present
   - graphql_type_depth
   - inbound_contract_published
+  - mcp_endpoint_discoverable
   - messages_with_schema
   - reg_ai_transparency
   - reg_camara_conformance
