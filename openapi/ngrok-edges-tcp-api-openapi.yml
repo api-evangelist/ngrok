@@ -139,17 +139,6 @@ paths:
           description: TCP edge deleted.
 components:
   schemas:
-    TcpEdgeList:
-      type: object
-      properties:
-        tcp_edges:
-          type: array
-          items:
-            $ref: '#/components/schemas/TcpEdge'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
     TcpEdge:
       type: object
       properties:
@@ -172,21 +161,18 @@ components:
           type: object
         ip_restriction:
           type: object
+    TcpEdgeList:
+      type: object
+      properties:
+        tcp_edges:
+          type: array
+          items:
+            $ref: '#/components/schemas/TcpEdge'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
   parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: A unique identifier for the resource.
     BeforeId:
       name: before_id
       in: query
@@ -194,6 +180,20 @@ components:
       schema:
         type: string
       description: An ID to use for pagination. Results returned will be before this ID.
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
   securitySchemes:
     bearerAuth:
       type: http

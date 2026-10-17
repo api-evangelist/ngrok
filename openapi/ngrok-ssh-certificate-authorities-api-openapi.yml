@@ -124,6 +124,17 @@ paths:
           description: SSH certificate authority deleted.
 components:
   schemas:
+    SshCertificateAuthorityList:
+      type: object
+      properties:
+        ssh_certificate_authorities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SshCertificateAuthority'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
     SshCertificateAuthority:
       type: object
       properties:
@@ -142,25 +153,7 @@ components:
           type: string
         key_type:
           type: string
-    SshCertificateAuthorityList:
-      type: object
-      properties:
-        ssh_certificate_authorities:
-          type: array
-          items:
-            $ref: '#/components/schemas/SshCertificateAuthority'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
   parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
     BeforeId:
       name: before_id
       in: query
@@ -175,6 +168,13 @@ components:
       schema:
         type: string
       description: A unique identifier for the resource.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
   securitySchemes:
     bearerAuth:
       type: http

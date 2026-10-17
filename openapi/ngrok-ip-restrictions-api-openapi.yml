@@ -133,7 +133,49 @@ paths:
         '204':
           description: IP restriction deleted.
 components:
+  parameters:
+    BeforeId:
+      name: before_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: An ID to use for pagination. Results returned will be before this ID.
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: A unique identifier for the resource.
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: string
+      description: The maximum number of results to return. Maximum is 100.
   schemas:
+    Ref:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A resource identifier.
+        uri:
+          type: string
+          description: A URI for locating a resource.
+    IpRestrictionList:
+      type: object
+      properties:
+        ip_restrictions:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpRestriction'
+        uri:
+          type: string
+        next_page_uri:
+          type: string
     IpRestriction:
       type: object
       properties:
@@ -156,48 +198,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ref'
-    IpRestrictionList:
-      type: object
-      properties:
-        ip_restrictions:
-          type: array
-          items:
-            $ref: '#/components/schemas/IpRestriction'
-        uri:
-          type: string
-        next_page_uri:
-          type: string
-    Ref:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A resource identifier.
-        uri:
-          type: string
-          description: A URI for locating a resource.
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: A unique identifier for the resource.
-    BeforeId:
-      name: before_id
-      in: query
-      required: false
-      schema:
-        type: string
-      description: An ID to use for pagination. Results returned will be before this ID.
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: string
-      description: The maximum number of results to return. Maximum is 100.
   securitySchemes:
     bearerAuth:
       type: http
