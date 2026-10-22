@@ -115,3 +115,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: ngrok-digital-ocean-own
+  label: Digital Ocean (own)
+  partner: digital-ocean
+  partner_name: Digital Ocean (own)
+  category: Network Tools
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.digitalocean.com/apps/ngrok-ingress-controller
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

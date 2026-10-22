@@ -10,6 +10,7 @@ checked:
 - okta/integrations/okta-integration-edges.yml
 - opentofu/integrations/opentofu-integration-edges.yml
 - terraform/integrations/terraform-integration-edges.yml
+- digital-ocean/integrations/digital-ocean-integration-edges.yml
 source:
 - datadog/integrations/datadog-integration-edges.yml
 - okta/integrations/okta-integration-edges.yml
@@ -150,3 +151,20 @@ edges:
   badges:
   - Verified publisher (Terraform partner tier)
   - Verified publisher (GitHub domain-verified organization)
+- partner_name: Digital Ocean (own)
+  partner: digital-ocean
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.digitalocean.com/apps/ngrok-ingress-controller
+  mirror_of: digital-ocean/integrations/digital-ocean-integration-edges.yml
+  apps:
+  - ngrok Ingress Controller
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: Network Tools
