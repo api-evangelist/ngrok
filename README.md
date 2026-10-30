@@ -1,4 +1,4 @@
-# ngrok (ngrok)
+# ngrok
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,100 +66,214 @@
 
 ngrok is a unified application delivery network for developers, providing secure tunnels, ingress-as-a-service, API gateway, and AI gateway capabilities. It enables developers to expose local services on the public internet, manage edge ingress, and route traffic to AI providers without redeploying applications. ngrok provides a unique URL for each tunnel, traffic policy controls, and a comprehensive REST API for programmatic management of all resources.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/ngrok/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ngrok/refs/heads/main/apis.yml)
+**Areas:** AI Gateway · API Gateway · Compute · Developer Tools · Gateways · Ingress · Platform · Proxies · Servers · Tunnels
 
-## Scope
+## ngrok on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for ngrok is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ngrok/](https://apis.io/providers/ngrok/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (24)
 
-- AI Gateway
-- API Gateway
-- Compute
-- Developer Tools
-- Gateways
-- Ingress
-- Platform
-- Proxies
-- Servers
-- Tunnels
+- [ngrok Abuse Reports API](https://apis.io/apis/ngrok/ngrok-abuse-reports-api/) — Abuse Reports allow you to submit reports of abusive endpoints.
+- [ngrok Agent Ingresses API](https://apis.io/apis/ngrok/ngrok-agent-ingresses-api/) — Agent Ingresses are the addresses ngrok agents connect to.
+- [ngrok API Keys API](https://apis.io/apis/ngrok/ngrok-api-keys-api/) — API Keys are used to authenticate to the ngrok API.
+- [ngrok Backends API](https://apis.io/apis/ngrok/ngrok-backends-api/) — Backends define how traffic is handled, including tunnel group, weighted, failover, HTTP response, and static address backends.
+- [ngrok Certificate Authorities API](https://apis.io/apis/ngrok/ngrok-certificate-authorities-api/) — Certificate Authorities are x509 certificates used for mutual TLS authentication.
+- [ngrok Credentials API](https://apis.io/apis/ngrok/ngrok-credentials-api/) — Tunnel Credentials are authtokens used to start ngrok tunnels.
+- [ngrok Edges HTTPS API](https://apis.io/apis/ngrok/ngrok-edges-https-api/) — HTTPS Edges define HTTPS endpoints with routes and modules.
+- [ngrok Edges TCP API](https://apis.io/apis/ngrok/ngrok-edges-tcp-api/) — TCP Edges define TCP endpoints for non-HTTP protocols.
+- [ngrok Edges TLS API](https://apis.io/apis/ngrok/ngrok-edges-tls-api/) — TLS Edges define TLS endpoints with TLS termination and mutual TLS.
+- [ngrok Endpoints API](https://apis.io/apis/ngrok/ngrok-endpoints-api/) — Endpoints represent the public URLs of active tunnels and edges.
+- [ngrok Event Destinations API](https://apis.io/apis/ngrok/ngrok-event-destinations-api/) — Event Destinations define where event data is sent.
+- [ngrok Event Subscriptions API](https://apis.io/apis/ngrok/ngrok-event-subscriptions-api/) — Event Subscriptions define which events trigger notifications.
+- [ngrok IP Policies API](https://apis.io/apis/ngrok/ngrok-ip-policies-api/) — IP Policies contain rules to allow or deny traffic from IP ranges.
+- [ngrok IP Policy Rules API](https://apis.io/apis/ngrok/ngrok-ip-policy-rules-api/) — IP Policy Rules are CIDR-based allow/deny rules within an IP Policy.
+- [ngrok IP Restrictions API](https://apis.io/apis/ngrok/ngrok-ip-restrictions-api/) — IP Restrictions apply IP Policies to specific ngrok resources.
+- [ngrok Reserved Addresses API](https://apis.io/apis/ngrok/ngrok-reserved-addresses-api/) — Reserved Addresses are static TCP addresses for TCP tunnels.
+- [ngrok Reserved Domains API](https://apis.io/apis/ngrok/ngrok-reserved-domains-api/) — Reserved Domains are custom hostnames for HTTP/HTTPS/TLS tunnels.
+- [ngrok SSH Certificate Authorities API](https://apis.io/apis/ngrok/ngrok-ssh-certificate-authorities-api/) — SSH Certificate Authorities manage keys for signing SSH certificates.
+- [ngrok SSH Credentials API](https://apis.io/apis/ngrok/ngrok-ssh-credentials-api/) — SSH Credentials are public keys for authenticating SSH tunnel sessions.
+- [ngrok SSH Host Certificates API](https://apis.io/apis/ngrok/ngrok-ssh-host-certificates-api/) — SSH Host Certificates authenticate ngrok tunnel servers to clients.
+- [ngrok SSH User Certificates API](https://apis.io/apis/ngrok/ngrok-ssh-user-certificates-api/) — SSH User Certificates authenticate users to ngrok SSH tunnel servers.
+- [ngrok TLS Certificates API](https://apis.io/apis/ngrok/ngrok-tls-certificates-api/) — TLS Certificates are x509 certificate/key pairs used to terminate TLS traffic.
+- [ngrok Tunnel Sessions API](https://apis.io/apis/ngrok/ngrok-tunnel-sessions-api/) — Tunnel Sessions represent running ngrok agent connections.
+- [ngrok Tunnels API](https://apis.io/apis/ngrok/ngrok-tunnels-api/) — Tunnels represent individual tunnels within a tunnel session.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-08
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### ngrok API
+Model Context Protocol servers that expose the API to agents.
 
-The ngrok API provides programmatic access to all of ngrok's resources. The API is REST-ish, follows most REST conventions, and listens only on port 443 to avoid accidental unencrypted requests. All API access requires an API key. Resources include endpoints, tunnels, edges (HTTPS, TCP, TLS), backends, reserved domains and addresses, IP policies and restrictions, TLS and SSH certificates, event subscriptions, API keys, and credentials.
+- [Moved to /providers/ngrok/](https://apis.io/servers/ngrok/ngrok/)
 
-- **Human URL:** [https://ngrok.com/docs/api](https://ngrok.com/docs/api)
-- **Base URL:** `https://api.ngrok.com`
+#### Agent skills (1)
 
-#### Tags
+Agent skills built on the API.
 
-- API Gateway
-- Compute
-- Demonstration
-- Gateways
-- Platform
-- Proxies
-- Servers
-- Testing
-- Tunnels
+- [expose-localhost](https://apis.io/agent-skills/ngrok/expose-localhost/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://ngrok.com/docs/api)
-- [API Reference](https://ngrok.com/docs/api)
-- [OpenAPI](openapi/ngrok-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/ngrok-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ngrok-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON-LD](json-ld/ngrok-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/tunnel.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/endpoint.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/https-edge.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/tcp-edge.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/tls-edge.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/reserved-domain.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/reserved-addr.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/api-key.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/ip-policy.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/tls-certificate.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/event-subscription.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/tunnel-session.json) — [JSON Schema](https://json-schema.org/specification)
-- [GitHub Repository](https://github.com/ngrok/ngrok-openapi)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Common Properties
+- [Ngrok Agentic Access](https://apis.io/agentic-access/ngrok/ngrok-agentic-access/)
 
-- [LinkedIn](https://www.linkedin.com/company/ngrok)
+#### JSON Schema (12)
+
+The data models the API reads and writes.
+
+- [ngrok API Key](https://apis.io/schemas/ngrok/api-key/)
+- [ngrok Endpoint](https://apis.io/schemas/ngrok/endpoint/)
+- [ngrok Event Subscription](https://apis.io/schemas/ngrok/event-subscription/)
+- [ngrok HTTPS Edge](https://apis.io/schemas/ngrok/https-edge/)
+- [ngrok IP Policy](https://apis.io/schemas/ngrok/ip-policy/)
+- [ngrok Reserved Address](https://apis.io/schemas/ngrok/reserved-addr/)
+- [ngrok Reserved Domain](https://apis.io/schemas/ngrok/reserved-domain/)
+- [ngrok TCP Edge](https://apis.io/schemas/ngrok/tcp-edge/)
+- [ngrok TLS Certificate](https://apis.io/schemas/ngrok/tls-certificate/)
+- [ngrok TLS Edge](https://apis.io/schemas/ngrok/tls-edge/)
+- [ngrok Tunnel](https://apis.io/schemas/ngrok/tunnel/)
+- [ngrok Tunnel Session](https://apis.io/schemas/ngrok/tunnel-session/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Ngrok Context](https://apis.io/jsonld/ngrok/ngrok-context/)
+
+#### Collections (49)
+
+Postman and Open Collection request collections.
+
+- [Ngrok Abuse Reports API](https://apis.io/collections/ngrok/open-ngrok-abuse-reports-api/)
+- [Ngrok Abuse Reports Agent Ingresses API](https://apis.io/collections/ngrok/open-ngrok-agent-ingresses-api/)
+- [Ngrok API](https://apis.io/collections/ngrok/open-ngrok-api/)
+- [Ngrok Abuse Reports API Keys API](https://apis.io/collections/ngrok/open-ngrok-api-keys-api/)
+- [Ngrok Abuse Reports Backends API](https://apis.io/collections/ngrok/open-ngrok-backends-api/)
+- [Ngrok Abuse Reports Certificate Authorities API](https://apis.io/collections/ngrok/open-ngrok-certificate-authorities-api/)
+- [Ngrok Abuse Reports Credentials API](https://apis.io/collections/ngrok/open-ngrok-credentials-api/)
+- [Ngrok Abuse Reports Edges HTTPS API](https://apis.io/collections/ngrok/open-ngrok-edges-https-api/)
+- [Ngrok Abuse Reports Edges TCP API](https://apis.io/collections/ngrok/open-ngrok-edges-tcp-api/)
+- [Ngrok Abuse Reports Edges TLS API](https://apis.io/collections/ngrok/open-ngrok-edges-tls-api/)
+- [Ngrok Abuse Reports Endpoints API](https://apis.io/collections/ngrok/open-ngrok-endpoints-api/)
+- [Ngrok Abuse Reports Event Destinations API](https://apis.io/collections/ngrok/open-ngrok-event-destinations-api/)
+- [Ngrok Abuse Reports Event Subscriptions API](https://apis.io/collections/ngrok/open-ngrok-event-subscriptions-api/)
+- [Ngrok Abuse Reports IP Policies API](https://apis.io/collections/ngrok/open-ngrok-ip-policies-api/)
+- [Ngrok Abuse Reports IP Policy Rules API](https://apis.io/collections/ngrok/open-ngrok-ip-policy-rules-api/)
+- [Ngrok Abuse Reports IP Restrictions API](https://apis.io/collections/ngrok/open-ngrok-ip-restrictions-api/)
+- [Ngrok Abuse Reports Reserved Addresses API](https://apis.io/collections/ngrok/open-ngrok-reserved-addresses-api/)
+- [Ngrok Abuse Reports Reserved Domains API](https://apis.io/collections/ngrok/open-ngrok-reserved-domains-api/)
+- [Ngrok Abuse Reports SSH Certificate Authorities API](https://apis.io/collections/ngrok/open-ngrok-ssh-certificate-authorities-api/)
+- [Ngrok Abuse Reports SSH Credentials API](https://apis.io/collections/ngrok/open-ngrok-ssh-credentials-api/)
+- [Ngrok Abuse Reports SSH Host Certificates API](https://apis.io/collections/ngrok/open-ngrok-ssh-host-certificates-api/)
+- [Ngrok Abuse Reports SSH User Certificates API](https://apis.io/collections/ngrok/open-ngrok-ssh-user-certificates-api/)
+- [Ngrok Abuse Reports TLS Certificates API](https://apis.io/collections/ngrok/open-ngrok-tls-certificates-api/)
+- [Ngrok Abuse Reports Tunnel Sessions API](https://apis.io/collections/ngrok/open-ngrok-tunnel-sessions-api/)
+- [Ngrok Abuse Reports Tunnels API](https://apis.io/collections/ngrok/open-ngrok-tunnels-api/)
+- …and 24 more published on APIs.io
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [ngrok — jsonschema rules](https://apis.io/rules/ngrok/ngrok-jsonschema-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Ngrok Authentication](https://apis.io/security/ngrok/ngrok-authentication/)
+- [Ngrok Domain Security](https://apis.io/security/ngrok/ngrok-domain-security/)
+- [Ngrok Trust Center](https://apis.io/security/ngrok/ngrok-trust-center/)
+- [Ngrok Vulnerability Disclosure](https://apis.io/security/ngrok/ngrok-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Ngrok Plans Pricing](https://apis.io/plans/ngrok/ngrok-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Ngrok Rate Limits](https://apis.io/rate-limits/ngrok/ngrok-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Ngrok Finops](https://apis.io/finops/ngrok/ngrok-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://ngrok.com)
 - [Documentation](https://ngrok.com/docs)
-- [API Reference](https://ngrok.com/docs/api)
-- [Getting Started](https://ngrok.com/docs/getting-started)
-- [Blog](https://ngrok.com/blog)
-- [Changelog](https://ngrok.com/docs/changelog)
+- [Getting started](https://ngrok.com/docs/getting-started)
+- [API reference](https://ngrok.com/docs/api)
 - [Pricing](https://ngrok.com/pricing)
 - [Support](https://ngrok.com/support)
-- [Status Page](https://status.ngrok.com)
-- [GitHub Organization](https://github.com/ngrok)
-- [SDK](https://github.com/ngrok/ngrok-go)
-- [SDK](https://github.com/ngrok/ngrok-rust)
-- [SDK](https://github.com/ngrok/ngrok-javascript)
-- [SDK](https://github.com/ngrok/ngrok-python)
-- [Terraform](https://registry.terraform.io/providers/ngrok/ngrok/latest)
-- [Kubernetes Operator](https://github.com/ngrok/ngrok-operator)
-- [X (Twitter)](https://x.com/ngrokHQ)
-- [Integrations](https://ngrok.com/docs/integrations)
-- [Agent Skill](https://github.com/ngrok/agent-skills)
-- [L L Ms Txt](https://ngrok.com/llms.txt)
+- [Changelog](https://ngrok.com/docs/changelog)
+- [Blog](https://ngrok.com/blog)
+- [GitHub](https://github.com/ngrok)
+- [Status](https://status.ngrok.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 46.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 64.0 |
+| Contract governance | 9.8 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 71.9 |
+| Access clarity | 26.3 |
+
+**Agent readiness 31.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ngrok/](https://apis.io/providers/ngrok/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ngrok: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ngrok/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
